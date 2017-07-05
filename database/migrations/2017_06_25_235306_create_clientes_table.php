@@ -48,8 +48,7 @@ class CreateClientesTable extends Migration
 
             $table->foreign('cliente_id')
                 ->references('id')
-                ->on('clientes')
-                ->onDelete('cascade');
+                ->on('clientes');
 
         });
     }

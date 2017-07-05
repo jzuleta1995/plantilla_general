@@ -3,13 +3,17 @@
 @section('action', 'Actualizar cliente')
 
 @section('content')
-    <a href="{{ route('cliente.index') }}" class="btn btn-primary pull-right">Listado</a><hr>
+    <div class="container panel">
+        <br>
+    <a href="{{ route('cliente.index') }}" class="btn btn-primary pull-right">Listado</a>
+        </br></br>
 
-    <div class="container">
+    <!-- se incluye mensajes de erros -->
+    @include('template.partials.error')
+
         {!! Form::model($clientes, ['route' => ['cliente.update' ,$clientes->id], 'method' => 'PUT']) !!}
-
-        @include('aplicacion.cliente.fragment.form')
-
+             @include('aplicacion.cliente.fragment.form')
         {!! Form::close() !!}
+        <br>
     </div>
 @endsection

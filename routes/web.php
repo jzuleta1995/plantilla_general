@@ -12,12 +12,26 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
 Route::resource('/user', 'UserController');
 Route::resource('/cliente', 'ClienteController');
+Route::resource('/cobrador', 'CobradorController');
+Route::resource('/prestamo', 'PrestamoController');
+Route::resource('/cobroPrestamo', 'CobroPrestamoController');
+Route::resource('excel','ExcelController');
+
+
 Route::DELETE('/eliminar-user/{id}','UserController@destroy')->name('destroy');
 
 Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/cliente', 'ClienteController@index')->name('index');
+Route::get('/autocomplete',
+            array('as' => 'autocomplete',
+                  'uses'=>'ClienteController@autocomplete'
+            ));
+
+Route::name('cliente.general')
+        ->get('cliente/informes/general', 'ClienteController@general');

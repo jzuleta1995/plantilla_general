@@ -3,9 +3,16 @@
 @section('action', 'Crear usuario')
 
 @section('content')
-    <a href="{{ route('user.index') }}" class="btn btn-primary pull-right">Listado</a><hr>
+    <div class="container panel">
+        <br>
+    <p>
+        <a href="{{ route('user.index') }}" class="btn btn-primary pull-right">Listado</a>
+    </p>
+    </br></br>
 
-    <div class="container">
+        <!-- se incluye mensajes de erros -->
+    @include('template.partials.error')
+
         {!! Form::open(['route' => 'user.store', 'method'   =>  'POST']) !!}
             <div class="row">
                 <div class="col-md-6">

@@ -38,7 +38,18 @@
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
+
+                <li>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-home"></span>
+                    </a>
+                </li>
                 <li><a href="{{ route('cliente.index') }}">cliente</a></li>
+                <li><a href="{{ route('cliente.general') }}">Informe clientes</a></li>
+
+                <li><a href="{{ route('cobrador.index') }}">cobrador</a>
+                <li><a href="{{ route('prestamo.index') }}">prestamo</a></li>
+                <li><a href="{{ route('cobroPrestamo.index') }}">cobroPrestamo</a></li>
                 <li><a href="{{ route('user.index') }}">usuario</a></li>
 
             @if (Auth::guest())

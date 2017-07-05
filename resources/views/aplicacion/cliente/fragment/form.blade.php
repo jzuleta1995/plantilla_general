@@ -3,8 +3,8 @@
     <div class="col-md-6">
         <div class="form-group">
             {!! Form::label('nombre', 'Nombre') !!}
-            {!! Form::text('nombre', null, ['class'=>'form-control', 'placeholder'  =>  'Nombre de cliente']) !!}
-        </div>
+            {!! Form::text('nombre', null, ['class'=>'form-control input-sm', 'id' =>'nombre', 'value' => '', 'placeholder'  =>  'Nombre de cliente']) !!}
+    </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">
@@ -17,13 +17,13 @@
     <div class="col-md-6">
         <div class="form-group">
             {!! Form::label('documento', 'Documento ') !!}
-            {!! Form::text('documento', null, ['class'=>'form-control','placeholder'  =>  'Documento de cliente']) !!}
+            {!! Form::text('documento', null, ['class'=>'form-control input-sm','placeholder'  =>  'Documento de cliente']) !!}
         </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">
             {!! Form::label('direccion_casa', 'Direccion Casa') !!}
-            {!! Form::text('direccion_casa', null, ['class'=>'form-control', 'placeholder' =>   'Direccion casa cliente']) !!}
+            {!! Form::text('direccion_casa', null, ['class'=>'form-control input-sm', 'placeholder' =>   'Direccion casa cliente']) !!}
         </div>
     </div>
 </div>
@@ -31,13 +31,13 @@
     <div class="col-md-6">
         <div class="form-group">
             {!! Form::label('direccion_trabajo', 'Direccion trabajo') !!}
-            {!! Form::text('direccion_trabajo', null, ['class'=>'form-control','placeholder'  =>  'Direccion trabajo cliente']) !!}
+            {!! Form::text('direccion_trabajo', null, ['class'=>'form-control input-sm','placeholder'  =>  'Direccion trabajo cliente']) !!}
         </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">
             {!! Form::label('telefono', 'Telefono') !!}
-            {!! Form::text('telefono', null, ['class'=>'form-control', 'placeholder' =>   'Telefono de cliente']) !!}
+            {!! Form::text('telefono', null, ['class'=>'form-control input-sm', 'placeholder' =>   'Telefono de cliente']) !!}
         </div>
     </div>
 </div>
@@ -45,7 +45,7 @@
     <div class="col-md-6">
         <div class="form-group">
             {!! Form::label('celular', 'Celular') !!}
-            {!! Form::text('celular', null, ['class'=>'form-control', 'placeholder' =>   'Telefono celular']) !!}
+            {!! Form::text('celular', null, ['class'=>'form-control input-sm', 'placeholder' =>   'Telefono celular']) !!}
         </div>
     </div>
     <div class="col-md-6">

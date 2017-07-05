@@ -3,8 +3,15 @@
 @section('action', 'Editar usuario')
 
 @section('content')
-    <a href="{{ route('user.index') }}" class="btn btn-primary pull-right">Listado</a><hr>
-    <div class="container">
+    <div class="container panel">
+        <br>
+    <a href="{{ route('user.index') }}" class="btn btn-primary pull-right">Listado</a>
+        </br></br>
+
+
+        <!-- se incluye mensajes de erros -->
+    @include('template.partials.error')
+
         {!! Form::model($users, ['route' => ['user.update' ,$users->id], 'method' => 'PUT']) !!}
 
         <div class="row">

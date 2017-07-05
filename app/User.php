@@ -24,6 +24,13 @@ class User extends Authenticatable
      *
      * @var array
      */
+    public function scopeNombre($query, $nombre)
+    {
+        if(trim($nombre) != ''){
+            $query->where(\DB::raw("CONCAT(nombre, ' ' ,apellido)"), "LIKE", "%$nombre%");
+        }
+    }
+
     protected $hidden = [
         'password', 'remember_token',
     ];

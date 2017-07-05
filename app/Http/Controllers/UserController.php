@@ -2,78 +2,50 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function index(Request $request)
     {
-        $users = User::orderBy('id', 'ASC')->paginate(3);
+       // dd($request->get('nombre'));
+        //listar con scope
+        $users = User::nombre($request->get('nombre'))->orderBy('id', 'ASC')->paginate(3);
+       //listar normal
+        //$users = User::orderBy('id', 'ASC')->paginate(3);
 
         return view('aplicacion.user.index')->with('users', $users);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('aplicacion.user.create', compact('user'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         $user = new User($request->all());
         $user->password = bcrypt($request->password);
         $user->save();
-        return "Grabo exitosamente";
+        return Redirect()->route('user.index')
+            ->with('info', 'Cliente registrado  exitosamente');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $users = User::find($id);
         return view('aplicacion.user.edit', compact('users'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
         $users = User::find($id);
 
@@ -90,19 +62,11 @@ class UserController extends Controller
         $users->estado             = $request->estado;
 
         $users->save();
-        return "Usuario exitosamente";
+        return Redirect()->route('user.index')
+            ->with('info', 'Usuario Actualizado  exitosamente');
 
-
-        /* return Redirect()->route('profesors.index')
-             ->with('info', 'El profesor fue actualizado');*/
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Request $request, $id)
     {
         if($request->ajax()){
