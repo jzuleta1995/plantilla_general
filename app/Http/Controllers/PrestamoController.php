@@ -62,7 +62,7 @@ class PrestamoController extends Controller
 
         // dd($users);
 
-        $prestamos->cliente                   = $request->cliente;
+        $prestamos->cliente_id                = $request->cliente_id;
         $prestamos->valor_prestamo            = $request->valor_prestamo;
         $prestamos->tasa                      = $request->tasa;
         $prestamos->tipo_prestamo             = $request->tipo_prestamo;

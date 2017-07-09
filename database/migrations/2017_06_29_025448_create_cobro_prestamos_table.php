@@ -21,13 +21,15 @@ class CreateCobroPrestamosTable extends Migration
             $table->double('valor_pagar');
             $table->double('valor_real_pagar');
             $table->string('observacion');
+            $table->string('tipo_cobro');
+            $table->string('estado');
+
             $table->integer('user_id')->unsigned();
             $table->foreign('cliente_id')->references('id')->on('clientes');
             $table->foreign('prestamo_id')->references('id')->on('prestamos');
 
             $table->foreign('user_id')
-                ->references('id')->on('users')
-                ->onDelete('cascade');
+                ->references('id')->on('users');
 
             $table->timestamps();
         });

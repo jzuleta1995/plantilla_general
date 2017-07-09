@@ -21,14 +21,20 @@ class CreateClientesTable extends Migration
             $table->string('documento')->unique();
             $table->string('direccion_casa');
             $table->string('direccion_trabajo')->nullable();
+            $table->string('lugar_trabajo');
             $table->string('telefono');
             $table->string('celular')->nullable();
+            $table->string('ciudad');
             $table->string('estado');
             $table->integer('user_id')->unsigned();
+            $table->integer('cobrador_id')->unsigned();
+
             $table->foreign('user_id')
                 ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
+                ->on('users');
+           /* $table->foreign('prestamo_id')
+                ->references('id')
+                ->on('prestamos');*/
 
             $table->timestamps();
         });

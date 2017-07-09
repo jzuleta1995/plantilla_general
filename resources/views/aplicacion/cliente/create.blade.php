@@ -17,4 +17,19 @@
         <br>
     </div>
 @endsection
+@section('script')
 
+    <script type="text/javascript">
+        $( "#cobrador" ).autocomplete({
+            source:'{!! route('autocomplete', ['ruta'   =>  'cobrador'])!!}',
+            minlength:1,
+            autoFocus:true,
+            select:function(e,ui)
+            {
+                $('#cobrador').val(ui.item.id);
+                $('#cobrador_id').val(ui.item.id);
+
+            }
+        });
+    </script>
+@endsection

@@ -3,7 +3,7 @@
     <div class="col-md-6">
         <div class="form-group">
             {!! Form::label('nombre', 'Nombre') !!}
-            {!! Form::text('nombre', null, ['class'=>'form-control input-sm', 'id' =>'nombre', 'value' => '', 'placeholder'  =>  'Nombre de cliente']) !!}
+            {!! Form::text('nombre', null, ['class'=>'form-control', 'id' =>'nombre', 'value' => '', 'placeholder'  =>  'Nombre de cliente']) !!}
     </div>
     </div>
     <div class="col-md-6">
@@ -17,13 +17,13 @@
     <div class="col-md-6">
         <div class="form-group">
             {!! Form::label('documento', 'Documento ') !!}
-            {!! Form::text('documento', null, ['class'=>'form-control input-sm','placeholder'  =>  'Documento de cliente']) !!}
+            {!! Form::text('documento', null, ['class'=>'form-control','placeholder'  =>  'Documento de cliente']) !!}
         </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">
             {!! Form::label('direccion_casa', 'Direccion Casa') !!}
-            {!! Form::text('direccion_casa', null, ['class'=>'form-control input-sm', 'placeholder' =>   'Direccion casa cliente']) !!}
+            {!! Form::text('direccion_casa', null, ['class'=>'form-control', 'placeholder' =>   'Direccion casa cliente']) !!}
         </div>
     </div>
 </div>
@@ -31,30 +31,64 @@
     <div class="col-md-6">
         <div class="form-group">
             {!! Form::label('direccion_trabajo', 'Direccion trabajo') !!}
-            {!! Form::text('direccion_trabajo', null, ['class'=>'form-control input-sm','placeholder'  =>  'Direccion trabajo cliente']) !!}
+            {!! Form::text('direccion_trabajo', null, ['class'=>'form-control','placeholder'  =>  'Direccion trabajo cliente']) !!}
         </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">
-            {!! Form::label('telefono', 'Telefono') !!}
-            {!! Form::text('telefono', null, ['class'=>'form-control input-sm', 'placeholder' =>   'Telefono de cliente']) !!}
+            {!! Form::label('lugar_trabajo', 'Lugar trabajo') !!}
+            {!! Form::text('lugar_trabajo', null, ['class'=>'form-control','placeholder'  =>  'Lugar trabajo cliente']) !!}
         </div>
     </div>
+
 </div>
 <div class="row">
     <div class="col-md-6">
         <div class="form-group">
-            {!! Form::label('celular', 'Celular') !!}
-            {!! Form::text('celular', null, ['class'=>'form-control input-sm', 'placeholder' =>   'Telefono celular']) !!}
+            {!! Form::label('telefono', 'Telefono') !!}
+            {!! Form::text('telefono', null, ['class'=>'form-control', 'placeholder' =>   'Telefono de cliente']) !!}
         </div>
     </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            {!! Form::label('celular', 'Celular') !!}
+            {!! Form::text('celular', null, ['class'=>'form-control', 'placeholder' =>   'Telefono celular']) !!}
+        </div>
+    </div>
+
+
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            {!! Form::label('cobrador', 'Cobrador') !!}
+            {!! Form::hidden('cobrador_id', null, ['class'=>'form-control', 'id' => 'cobrador_id', 'value' => 'id', 'placeholder'  =>  'Nombre de cliente']) !!}
+            @if(is_object($cobrador))
+                {!! Form::text('cobrador', $cobrador->nombre, ['class'=>'form-control', 'id' => 'cobrador', 'value' => 'id', 'placeholder'  =>  'Nombre de cliente', 'size'    => 'S']) !!}
+            @else
+                {!! Form::text('cobrador', null, ['class'=>'form-control', 'id' => 'cobrador', 'value' => 'id', 'placeholder'  =>  'Nombre de cliente', 'size'    => 'S']) !!}
+            @endif
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            {!! Form::label('ciudad', 'Ciudad') !!}
+            {!! Form::text('ciudad', null, ['class'=>'form-control','placeholder'  =>  'Ciudad de Residencia']) !!}
+        </div>
+    </div>
+
+</div>
+<div class="row">
     <div class="col-md-6">
         <div class="form-group">
             {!! Form::label('estado', 'Estado del cliente') !!}
             {!! Form::select('estado', ['' => 'Seleccione un Estado', 'ACTIVO' => 'ACTIVO', 'INACTIVO' => 'INACTIVO'], null,  ['class'=>'form-control']) !!}
         </div>
+
     </div>
 </div>
+
 </br>
     <!-- detalle -->
 

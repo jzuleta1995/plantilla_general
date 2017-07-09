@@ -8,7 +8,7 @@ class Cliente extends Model
 {
     protected $fillable = [
         'nombre', 'apellido', 'documento','direccion_casa','direccion_trabajo',
-        'telefono','celular', 'estado',
+        'lugar_trabajo', 'ciudad', 'telefono','celular', 'estado', 'cobrador_id',
     ];
 
     public function scopeNombre($query, $nombre)

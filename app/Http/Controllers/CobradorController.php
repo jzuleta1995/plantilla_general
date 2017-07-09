@@ -18,6 +18,7 @@ class CobradorController extends Controller
 
     public function create()
     {
+        $cobrador ="";
         return view('aplicacion.cobrador.create', compact('cobrador'));
     }
 

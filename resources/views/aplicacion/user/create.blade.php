@@ -79,6 +79,14 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
+                    {!! Form::label('tipo_usuario', 'Estado del usuario') !!}
+                    {!! Form::select('tipo_usuario', ['' => 'Seleccione un Tipo', 'ADMINISTRADOR' => 'ADMINISTRADOR', 'MIEMBRO' => 'MIEMBRO'], null,  ['class'=>'form-control']) !!}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
                     {!! Form::label('estado', 'Estado del usuario') !!}
                     {!! Form::select('estado', ['' => 'Seleccione un Estado', 'ACTIVO' => 'ACTIVO', 'INACTIVO' => 'INACTIVO'], null,  ['class'=>'form-control']) !!}
                 </div>

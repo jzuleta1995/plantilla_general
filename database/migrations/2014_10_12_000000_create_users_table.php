@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->integer('pregunta_id')->nullable();
             $table->string('respuesta_secreta')->nullable();
             $table->string('password')->nullable();
+            $table->string('tipo_usuario');
             $table->string('estado');
 
 

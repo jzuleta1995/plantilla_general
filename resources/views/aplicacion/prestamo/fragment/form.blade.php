@@ -50,10 +50,18 @@
             {!! Form::text('valor_cuota_pagar', null, ['class'=>'form-control', 'placeholder' =>   'Valor Cuota a Pagar']) !!}
         </div>
     </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            {!! Form::label('valor_total_prestamo', 'Valor Total') !!}
+            {!! Form::text('valor_total_prestamo', null, ['class'=>'form-control', 'placeholder' =>   'Valor Total']) !!}
+        </div>
+    </div>
+</div>
+<div class="row">
 
     <div class="col-md-6">
         <div class="form-group">
-            {!! Form::label('estado', 'Estado del cliente') !!}
+            {!! Form::label('estado', 'Estado del prestamo') !!}
             {!! Form::select('estado', ['' => 'Seleccione un Estado', 'ABIERTO' => 'ABIERTO', 'CERRADO' => 'CERRADO'], null,  ['class'=>'form-control']) !!}
         </div>
     </div>

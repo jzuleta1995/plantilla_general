@@ -11,9 +11,10 @@ class AutocompleteController extends Controller
     public function autocomplete(Request $request){
 
         $path = $request->ruta;
+        $term = $request->term;
 
         if($path == 'cliente'){
-            $term = $request->term;
+
 
             $queries = DB::table('clientes')
                 ->where('nombre', 'like', '%'.$term.'%')
@@ -23,8 +24,21 @@ class AutocompleteController extends Controller
             {
                 $results[] = ['id' => $query->id, 'value' => $query->nombre]; //you can take custom values as you want
             }
-            return response()->json($results);
+
+        }else if($path == 'cobrador'){
+           //$term = $request->term;
+
+            $queries = DB::table('cobradors')
+                ->where('nombre', 'like', '%'.$term.'%')
+                ->take(2)->get();
+
+            foreach ($queries as $query)
+            {
+                $results[] = ['id' => $query->id, 'value' => $query->nombre]; //you can take custom values as you want
+            }
         }
+        return response()->json($results);
+
 
     }
 

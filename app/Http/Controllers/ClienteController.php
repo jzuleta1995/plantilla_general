@@ -21,7 +21,8 @@ class ClienteController extends Controller
 
     public function create()
     {
-        return view('aplicacion.cliente.create', compact('clientes'));
+        $cobrador ="";
+        return view('aplicacion.cliente.create', compact('clientes' , 'cobrador'));
     }
 
     public function store(ClienteRequest $request)
