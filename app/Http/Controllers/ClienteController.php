@@ -101,23 +101,6 @@ class ClienteController extends Controller
         //
     }
 
-    public function autocomplete(Request $request)
-    {
-
-
-        $term = $request->term;
-
-        $queries = DB::table('clientes')
-            ->where('nombre', 'like', '%'.$term.'%')
-            ->take(2)->get();
-
-        foreach ($queries as $query)
-        {
-            $results[] = ['id' => $query->id, 'value' => $query->nombre]; //you can take custom values as you want
-        }
-        return response()->json($results);
-    }
-
     public function general(Request $request)
     {
         return view('aplicacion.cliente.informes.general', compact('clientes'));

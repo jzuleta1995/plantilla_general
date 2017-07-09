@@ -1,0 +1,7 @@
+.nav-link{
+    font-size: 1.2em;
+}
+
+.nav-link:hover{
+    background-color: #2aabd2;
+}

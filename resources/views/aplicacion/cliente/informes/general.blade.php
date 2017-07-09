@@ -44,14 +44,13 @@
 
             <script type="text/javascript">
                 $( "#cliente" ).autocomplete({
-                    source:'{!! route('autocomplete')!!}',
+                    source:'{!! route('autocomplete', ['ruta'   =>  'cliente'])!!}',
                     minlength:1,
                     autoFocus:true,
                     select:function(e,ui)
                     {
                         $('#cliente').val(ui.item.id);
                         $('#cliente_id').val(ui.item.id);
-
                     }
                 });
             </script>

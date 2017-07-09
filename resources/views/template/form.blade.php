@@ -3,7 +3,6 @@
 <head>
 	<title>Appname - @yield('title', 'ejemplo')</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" src="{{ asset('bootstrap/css/bootstrap.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 </head>

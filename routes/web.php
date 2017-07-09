@@ -30,7 +30,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('/cliente', 'ClienteController@index')->name('index');
 Route::get('/autocomplete',
             array('as' => 'autocomplete',
-                  'uses'=>'ClienteController@autocomplete'
+                  'uses'=>'AutocompleteController@autocomplete'
             ));
 
 Route::name('cliente.general')
