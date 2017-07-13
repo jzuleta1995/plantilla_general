@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cliente;
+use App\Cobrador;
 use App\Http\Requests\ClienteRequest;
 use App\ItemClientes;
 use Illuminate\Http\Request;

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Prestamo;
+use App\Cliente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
@@ -52,7 +53,9 @@ class PrestamoController extends Controller
     public function edit($id)
     {
         $prestamos = Prestamo::find($id);
-        return view('aplicacion.prestamo.edit', compact('prestamos'));
+        $cliente = Cliente::find($prestamos->cliente_id);
+
+        return view('aplicacion.prestamo.edit', compact('prestamos', 'cliente'));
     }
 
 
