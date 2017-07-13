@@ -24,6 +24,7 @@ Route::group(['prefix'  =>  '/', 'middleware'   =>  'auth'], function () {
     Route::resource('/prestamo', 'PrestamoController');
     Route::resource('/cobroPrestamo', 'CobroPrestamoController');
     Route::resource('excel', 'ExcelController');
+    Route::resource('utilidadPrestamos', 'UtilidadPrestamosController');
 
 //Route::get('/home','HomeController@cargarVisor')->name('home');
 
@@ -42,4 +43,34 @@ Route::group(['prefix'  =>  '/', 'middleware'   =>  'auth'], function () {
 
     Route::name('cliente.general')
         ->get('cliente/informes/general', 'ClienteController@general');
+
+
+    Route::name('cliente.general')
+        ->get('cliente/informes/general', 'ExcelController@index');
+
+    Route::name('prestamo.utilidad')
+        ->get('prestamo/informes/utilidad', 'UtilidadPrestamosController@cargarUtilidad');
+
+    /**
+     * Route::name('excel')
+     * ->get('cliente/informes/general', 'ExcelController@index');**
+     */
+
+    /*Route::get('/excel/cargar',
+        [
+            'as' => 'aplicacion.cliente.general',
+            'uses' => 'ExcelController@excel'
+        ]);*/
+
+
+    Route::get('pdf', function () {
+        $users = App\User::all();
+
+        dd($users);
+        $pdf = PDF::loadview('prestamo.pdfUtilidad', ['users' => $users]);
+
+        return $pdf->download('archivo.pdf');
+
+    });
+
 });

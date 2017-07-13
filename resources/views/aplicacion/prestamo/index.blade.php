@@ -27,7 +27,7 @@
 
             @include('template.partials.info')
 
-            <table class="table table-striped">
+            <table class="table table-hover table-striped table-condensed">
                 <thead>
                 <th>ID</th>
                 <th>Cliente</th>

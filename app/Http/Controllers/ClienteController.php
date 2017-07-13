@@ -71,7 +71,8 @@ class ClienteController extends Controller
     public function edit($id)
     {
         $clientes = Cliente::find($id);
-        return view('aplicacion.cliente.edit', compact('clientes'));
+        $cobrador = Cobrador::find($clientes->cobrador_id);
+        return view('aplicacion.cliente.edit', compact('clientes', 'cobrador'));
     }
 
     public function update(ClienteRequest $request, $id)

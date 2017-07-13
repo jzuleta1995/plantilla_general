@@ -5,12 +5,20 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-12 panel">
+        <div class="col-md-12 panel" id="formulario_uno">
             {!! Form::open(['route' => 'home', 'method'   =>  'GET']) !!}
 
-            <div class="container">
+           <!-- <p>
+                <a id="paso_mostrar" href="" class="btn btn-primary">Mostrar</a>
+            </p>-->
+
+
+            <div class="container "  >
+              <!--  <p>
+                    <a id="paso_ocultar" href="" class="btn btn-primary">Ocultar</a>
+                </p>-->
                 <br>
-                <div class="row">
+                <div class="row " id="principal">
                     <div class="col-md-3">
                         <div class="form-group">
                             {{ Form::Label('cliente', 'Cliente') }}
@@ -71,7 +79,7 @@
 </div>
 
 <div class="container">
-    <table class="table table-hover table-striped" >
+    <table class="table table-hover table-striped table-condensed" >
         <thead>
         <th>Cliente</th>
         <th>Lugar de Trabajo</th>
@@ -124,5 +132,19 @@
 
             }
         });
+
+        /* funcion que oculta formulafio*/
+        $('body').on('click', '#formulario_uno a', function (elemeto) {
+            elemeto.preventDefault();
+
+            //alert($(this).attr('id'))
+            mostrar = $(this).attr('id');
+
+            if( mostrar == 'paso_mostrar' ){
+               $('#principal').show('hide');
+            }else if( mostrar == 'paso_ocultar' ){
+                $('#principal').hide('hide');
+            }
+        })
     </script>
 @endsection

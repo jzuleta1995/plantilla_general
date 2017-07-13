@@ -179,6 +179,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         'Maatwebsite\Excel\ExcelServiceProvider',
         'Laracasts\Utilities\JavaScript\JavaScriptServiceProvider',
+        Barryvdh\DomPDF\ServiceProvider::class,
 
 
     ],
@@ -233,6 +234,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Excel' => 'Maatwebsite\Excel\Facades\Excel',
         'Flash' => 'Laracasts\Flash\Flash::class',
+        'Pdf' => Barryvdh\DomPDF\Facade::class,
 
 
     ],

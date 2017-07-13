@@ -99,4 +99,10 @@ class PrestamoController extends Controller
             ]);
         }
     }
+
+    public function utilidad(Request $request)
+    {
+
+        return view('aplicacion.prestamo.informes.utilidad', 'prestamos');
+    }
 }
