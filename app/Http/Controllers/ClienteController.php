@@ -104,9 +104,5 @@ class ClienteController extends Controller
         //
     }
 
-    public function general(Request $request)
-    {
-        return view('aplicacion.cliente.informes.general', compact('clientes'));
 
-    }
 }

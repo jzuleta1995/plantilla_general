@@ -22,7 +22,8 @@ class AutocompleteController extends Controller
 
             foreach ($queries as $query)
             {
-                $results[] = ['id' => $query->id, 'value' => $query->nombre]; //you can take custom values as you want
+                $nombre_completo = $query->nombre . ' ' . $query->apellido;
+                $results[] = ['id' => $query->id, 'value' => $nombre_completo]; //you can take custom values as you want
             }
 
         }else if($path == 'cobrador'){

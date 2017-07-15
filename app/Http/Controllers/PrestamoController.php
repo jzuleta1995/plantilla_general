@@ -28,7 +28,9 @@ class PrestamoController extends Controller
 
     public function create()
     {
-        return view('aplicacion.prestamo.create', compact('prestamo'));
+        $cliente = "";
+        return view('aplicacion.prestamo.create', compact('prestamo'))
+                    ->with('cliente', $cliente);
     }
 
     public function store(Request $request)

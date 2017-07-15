@@ -17,7 +17,7 @@
                 <li><a class="nav-link" href="{{ route('prestamo.index') }}">Prestamo</a></li>
                 <li><a class="nav-link" href="{{ route('cobroPrestamo.index') }}">cobroPrestamo</a></li>
                 <li><a class="nav-link" href="{{ route('prestamo.utilidad') }}">Visor Utilidad</a></li>
-                <li><a class="nav-link" href="{{ route('cliente.general') }}">Informe Clientes</a></li>
+                <li><a class="nav-link" href="{{ route('excel.index') }}">Informe Clientes</a></li>
 
                 <li><a class="nav-link" href="{{ route('user.index') }}">Usuario</a></li>
             @if (Auth::guest())

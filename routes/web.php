@@ -19,15 +19,29 @@ Auth::routes();
 Route::resource('/user', 'UserController');
 
 Route::group(['prefix'  =>  '/', 'middleware'   =>  'auth'], function () {
-    Route::resource('/cliente', 'ClienteController');
-    Route::resource('/cobrador', 'CobradorController');
-    Route::resource('/prestamo', 'PrestamoController');
-    Route::resource('/cobroPrestamo', 'CobroPrestamoController');
-    Route::resource('excel', 'ExcelController');
+    Route::resource('cliente', 'ClienteController');
+    Route::resource('cobrador', 'CobradorController');
+    Route::resource('prestamo', 'PrestamoController');
+    Route::resource('cobroPrestamo', 'CobroPrestamoController');
+    //Route::resource('excel', 'ExcelController');
     Route::resource('utilidadPrestamos', 'UtilidadPrestamosController');
 
-//Route::get('/home','HomeController@cargarVisor')->name('home');
 
+   // Route::get('cliente/general', 'ClienteController@general')->name('cliente.general');
+   // Route::get('excel/informe', 'ExcelController@informe')->name('excel.informe');
+
+    Route::resource('excel', 'ExcelController');
+
+    Route::name('excel.informe')
+        ->post('/excel', 'ExcelController@informe');
+
+    /*Route::get('/excel/cliente', 'ExcelController@index')->name('excel.index');
+    Route::post('/excel/cliente  ', 'ExcelController@informe')->name('excel.informe');*/
+
+
+
+    //Route::get('/home','HomeController@cargarVisor')->name('home');
+    //Route::get('/generar-informe', 'ExcelController@general')->name('general');
     Route::name('home')
         ->get('/home', 'HomeController@cargarVisor');
 
@@ -41,12 +55,8 @@ Route::group(['prefix'  =>  '/', 'middleware'   =>  'auth'], function () {
             'uses' => 'AutocompleteController@autocomplete'
         ));
 
-    Route::name('cliente.general')
-        ->get('cliente/informes/general', 'ClienteController@general');
 
-
-    Route::name('cliente.general')
-        ->get('cliente/informes/general', 'ExcelController@index');
+    //Route::resource('cliente/informes/general', 'ExcelController');
 
     Route::name('prestamo.utilidad')
         ->get('prestamo/informes/utilidad', 'UtilidadPrestamosController@cargarUtilidad');

@@ -39,9 +39,13 @@ class ExcelController extends Controller
     }*/
 
 
-    public function index() {
+    public function index(Request $request)
+    {
+        return view('aplicacion.cliente.informes.general');
+    }
 
-      //dd('ingrese');
+
+    public function informe(Request $request) {
 
         $payments = Cliente::join('users', 'users.id', '=', 'clientes.user_id')
             ->select(
@@ -81,7 +85,7 @@ class ExcelController extends Controller
             $excel->sheet('sheet1', function($sheet) use ($paymentsArray) {
                 $sheet->fromArray($paymentsArray, null, 'A1', false, false);
             });
+        })->export('xls');
 
-        })->download('xlsx');
     }
 }

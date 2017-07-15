@@ -6,11 +6,8 @@
     <a href="{{ route('user.index') }}" class="btn btn-primary pull-right">Listado</a><hr>
     <!-- se incluye mensajes de erros -->
     @include('template.partials.error')
-    <form class="form-horizontal" role="form">
-
     <div class="container">
-
-        {!! Form::open(['route' => 'excel']) !!}
+        {!! Form::open(['route' => 'excel.informe']) !!}
 
         <div class="form-group">
             {!! Form::label('cliente', 'Cliente', ['class' =>'col-lg-3 control-label']) !!}
@@ -18,18 +15,16 @@
                 <div class="col-lg-10">
 
                     {!! Form::hidden('cliente_id', null, ['class'=>'form-control', 'id' => 'cliente_id', 'value' => 'id', 'placeholder'  =>  'Nombre de cliente']) !!}
-                    {!! Form::text('cliente', null, ['class'=>'form-control', 'id' => 'cliente', 'value' => 'id', 'placeholder'  =>  'Nombre de cliente', 'size'    => 'S']) !!}
+                    {!! Form::text('cliente', null, ['class'=>'form-control', 'id' => 'cliente', 'value' => 'id', 'placeholder'  =>  'Nombre de cliente']) !!}
                 </div>
             </div>
         </div>
-
-
             <div class="form-group">
                 {!! Form::label('fecha_proximo_cobro', 'Fecha proximo cobro Desde:', ['class' =>'col-lg-3 control-label']) !!}
                 <div class="col-xs-3">
 
                 <div class="col-lg-10">
-                   {!! Form::date('fecha_proximo_cobro', null, ['class'=>'form-control', 'placeholder' =>   'Documento fiador']) !!}
+                   {!! Form::date('fecha_proximo_cobro', null, ['class'=>'form-control']) !!}
                 </div>
                 </div>
 
@@ -38,7 +33,7 @@
 
                     <div class="col-lg-10">
 
-                     {!! Form::date('fecha_proximo_cobro1', null, ['class'=>'form-control', 'placeholder' =>   'Documento fiador','width'=>'2px']) !!}
+                     {!! Form::date('fecha_proximo_cobro1', null, ['class'=>'form-control']) !!}
                     </div>
                     </div>
 
@@ -49,10 +44,7 @@
                 {!! Form::submit('ENVIAR',  ['class'=>'btn btn-primary']) !!}
             </div>
         </div>
-        {!! link_to_route('cliente.general',
-              'Export to Excel', null,
-              ['class' => 'btn btn-primary'])
-        !!}
+
 
         {!! Form::close() !!}
 
@@ -61,7 +53,7 @@
     </form>
 
 
-    <form class="form-horizontal" role="form">
+    <!--<form class="form-horizontal" role="form">
         <div class="form-group">
             <label for="ejemplo_email_3" class="col-lg-2 control-label">Email</label>
             <div class="col-lg-10">
@@ -92,7 +84,7 @@
             </div>
         </div>
 
-    </form>
+    </form>-->
 @endsection
 
         @section('script')
