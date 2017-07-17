@@ -50,13 +50,13 @@
     <div class="col-md-4">
         <div class="form-group">
             {!! Form::label('valor_cuota_pagar', 'Valor Cuota') !!}
-            {!! Form::Number('valor_cuota_pagar', null, ['class'=>'form-control', 'placeholder' =>   'Valor Cuota a Pagar']) !!}
+            {!! Form::Number('valor_cuota_pagar', null, ['class'=>'form-control', 'placeholder' =>   'Valor Cuota a Pagar', 'readonly' => 'true' ]) !!}
         </div>
     </div>
     <div class="col-md-push-2 col-md-4">
         <div class="form-group">
             {!! Form::label('valor_total_prestamo', 'Valor Total') !!}
-            {!! Form::Number('valor_total_prestamo', null, ['class'=>'form-control', 'placeholder' =>   'Valor Total']) !!}
+            {!! Form::Number('valor_total_prestamo', null, ['class'=>'form-control', 'placeholder' =>   'Valor Total', 'readonly' => 'true']) !!}
         </div>
     </div>
 </div>
@@ -99,19 +99,19 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             {!! Form::label('valor_total_deuda', 'Valor total deuda') !!}
-                            {!! Form::Number('valor_total_deuda', 0, ['class'=>'form-control', 'placeholder' =>   'valor total deuda', 'disabled']) !!}
+                            {!! Form::Number('valor_total_deuda', null, ['class'=>'form-control', 'placeholder' =>   'valor total deuda', 'readonly' => 'true']) !!}
                         </div>
                     </div>
                     <div class="col-md-push-1 col-md-3">
                         <div class="form-group">
                             {!! Form::label('valor_abono_deuda', 'Valor abono deuda') !!}
-                            {!! Form::Number('valor_abono_deuda', 0, ['class'=>'form-control', 'placeholder' =>   'Valor abono deuda', 'disabled']) !!}
+                            {!! Form::Number('valor_abono_deuda', null, ['class'=>'form-control', 'placeholder' =>   'Valor abono deuda', 'readonly' => 'true']) !!}
                         </div>
                     </div>
                     <div class="col-md-push-2 col-md-3">
                         <div class="form-group">
                             {!! Form::label('valor_proximo_pago_deuda', 'Valor cancelar') !!}
-                            {!! Form::Number('valor_proximo_pago_deuda', 0, ['class'=>'form-control', 'placeholder' =>   'Valor proximo pago deuda', 'disabled']) !!}
+                            {!! Form::Number('valor_proximo_pago_deuda', null, ['class'=>'form-control', 'placeholder' =>   'Valor proximo pago deuda', 'readonly' => 'true']) !!}
                         </div>
                     </div>
                 </div>

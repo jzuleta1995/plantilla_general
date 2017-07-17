@@ -4,7 +4,8 @@
         <div class="form-group">
             {!! Form::label('cliente', 'Cliente') !!}
             {!! Form::hidden('cliente_id', null, ['class'=>'form-control', 'id' => 'cliente_id', 'value' => 'id', 'placeholder'  =>  'Nombre de cliente']) !!}
-            @if(is_object($cliente))
+            {!! Form::hidden('prestamo_id', 6, ['class'=>'form-control', 'id' => 'prestamo_id', 'value' => 'id', 'placeholder'  =>  'Nombre de cliente']) !!}
+        @if(is_object($cliente))
                 {!! Form::text('cliente', $cliente->nombre, ['class'=>'form-control', 'id' => 'cliente', 'value' => 'id', 'placeholder'  =>  'Nombre de cliente', 'size'    => 'S']) !!}
             @else
                 {!! Form::text('cliente', null, ['class'=>'form-control', 'id' => 'cliente', 'value' => 'id', 'placeholder'  =>  'Nombre de cliente', 'size'    => 'S']) !!}

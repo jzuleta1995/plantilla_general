@@ -62,14 +62,14 @@
             </thead>
 
             <tbody>
-            @foreach($prestamos as $prestamo)
+            @foreach($utilidad as $prestamo)
 
                 <tr>
-                    <td>{{ $prestamo->nombre }}</td>
-                    <td>{{ $prestamo->lugar_trabajo }}</td>
-                    <td>{{ $prestamo->fecha_proximo_cobro }}</td>
-                    <td>{{ $prestamo->valor_proximo_pago_deuda }}</td>
-                    <td>{{ $prestamo->tasa }} %</td>
+                    <td>{{ $prestamo->cobrador }}</td>
+                    <td>{{ $prestamo->cliente }}</td>
+                    <td>{{ $prestamo->valor_real_pagar }}</td>
+                    <td>{{ $prestamo->valor_pagado_a_capital }}</td>
+                    <td>{{ $prestamo->valor_pagado_a_interes }} %</td>
 
                 </tr>
             @endforeach

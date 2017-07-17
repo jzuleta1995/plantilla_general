@@ -1,5 +1,6 @@
 <?php
 
+use Barryvdh\DomPDF\Facade AS PDF;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,6 +46,9 @@ Route::group(['prefix'  =>  '/', 'middleware'   =>  'auth'], function () {
     Route::name('home')
         ->get('/home', 'HomeController@cargarVisor');
 
+    Route::name('color')
+        ->get('/home/color', 'HomeController@index');
+
 
     Route::DELETE('/eliminar-user/{id}', 'UserController@destroy')->name('destroy');
 
@@ -76,8 +80,8 @@ Route::group(['prefix'  =>  '/', 'middleware'   =>  'auth'], function () {
     Route::get('pdf', function () {
         $users = App\User::all();
 
-        dd($users);
-        $pdf = PDF::loadview('prestamo.pdfUtilidad', ['users' => $users]);
+       // dd($users);
+        $pdf = PDF::loadview('aplicacion.prestamo.informes.pdfUtilidad', ['users' => $users]);
 
         return $pdf->download('archivo.pdf');
 

@@ -11,15 +11,29 @@
             </button>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
             <ul class="nav navbar-nav navbar-right">
                 <li><a class="nav-link" href="{{ route('cliente.index') }}">Cliente</a></li>
                 <li><a class="nav-link nav-header" href="{{ route('cobrador.index') }}">Cobrador</a>
                 <li><a class="nav-link" href="{{ route('prestamo.index') }}">Prestamo</a></li>
                 <li><a class="nav-link" href="{{ route('cobroPrestamo.index') }}">cobroPrestamo</a></li>
                 <li><a class="nav-link" href="{{ route('prestamo.utilidad') }}">Visor Utilidad</a></li>
-                <li><a class="nav-link" href="{{ route('excel.index') }}">Informe Clientes</a></li>
 
                 <li><a class="nav-link" href="{{ route('user.index') }}">Usuario</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reportes <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a class="nav-link" href="{{ route('excel.index') }}">Informe Clientes</a></li>
+                        <li><a class="nav-link" href="{{ route('excel.index') }}">Informe Cobradores</a></li>
+
+                        <li><a class="nav-link" href="{{ route('excel.index') }}">Informe Prestamos</a></li>
+                        <li><a class="nav-link" href="{{ route('excel.index') }}">Informe Usuario</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a class="nav-link" href="{{ route('excel.index') }}">Informe Utilidad</a></li>
+                    </ul>
+                </li>
             @if (Auth::guest())
                 <!-- <li><a href="{{ route('login') }}">Ingresar</a></li>
                             <li><a href="{{ route('register') }}">Registrar</a></li> -->

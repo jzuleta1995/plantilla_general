@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Pagination\Paginator;
 
 class HomeController extends Controller
 {
@@ -24,12 +25,28 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
-    }
+       $query = 'select fc_color(1) ';
+      $colors =DB::select($query);
 
-    public function cargarVisor(Request $request){
+      /*$prestamos =DB::select('PERFORMANCE fc_color(?)', array(1));*/
+      //dd($colors);
+      return view('home')->with('colors', $colors);
+  }
 
-        //dd("hola");
+  public function cargarVisor(Request $request){
+
+      //dd("hola");
+     // $prestamos =DB::select('SELECT fc_color(?)', array(1));
+      //dd($prestamos);
+
+     /* $query = 'SELECT c.nombre, c.lugar_trabajo, p.fecha_proximo_cobro,p.tasa,p.valor_proximo_pago_deuda,fc_color(1) as color
+                FROM clientes C 
+                INNER JOIN prestamos P ON P.cliente_id = C.id';
+
+      $prestamos = DB::select($query);
+        $prestamos::paginate(3);*/
+     /* dd($prestamos);*/
+
         $prestamos = DB::table('clientes')
             ->join('prestamos', 'prestamos.cliente_id', '=', 'clientes.id')
             ->select('clientes.nombre', 'clientes.lugar_trabajo', 'prestamos.fecha_proximo_cobro', 'prestamos.tasa', 'prestamos.valor_proximo_pago_deuda');
@@ -48,11 +65,11 @@ class HomeController extends Controller
             }
             if($request->fecha_inicial !='' && $request->fecha_final !=''){
                 $prestamos->whereBetween('prestamos.fecha_proximo_cobro',  array($request->fecha_inicial, $request->fecha_final));
-           }
+            }
 
 
         //dd($prestamos);
-        $prestamos = $prestamos->paginate(15);
+      $prestamos = $prestamos->paginate(15);
 
         //return view('aplicacion.prestamo.index', compact('prestamo'));
 
@@ -60,4 +77,7 @@ class HomeController extends Controller
 
 
     }
+
+
+
 }

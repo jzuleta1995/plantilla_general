@@ -34,6 +34,7 @@
                   <th>ID</th>
                   <th>Nombre</th>
                   <th>Apellido</th>
+                   <th>Tipo</th>
                   <th>Estado</th>
                   <th>Accion</th>
                 </tr>
@@ -43,14 +44,16 @@
                            <td>{{ $user->id }}</td>
                            <td>{{ $user->nombre }}</td>
                            <td>{{ $user->apellido }}</td>
+                           <td>
+                               @if($user->tipo_usuario == 'ADMINISTRADOR')
+                                   <span class="label label-danger">{{ $user->tipo_usuario }}</span>
+                               @else
+                                   <span class="label label-success">{{ $user->tipo_usuario }}</span>
+                               @endif
+                           </td>
                            <td>{{ $user->estado }}</td>
                            <td>
                                <a href="{{ route('user.edit', $user->id) }}" class="btn btn-link">Editar</a>
-
-
-                               <a href="{{ route('excel.index', $user->id) }}" class="btn btn-link">ver</a>
-
-
                               <!--
 
                                {!! Form::open(['route' =>['destroy', $user->id], 'method' => 'DELETE']) !!}

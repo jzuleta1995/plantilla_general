@@ -92,7 +92,8 @@
             @foreach($prestamos as $prestamo)
 
                 <tr>
-                <td>{{ $prestamo->nombre }}</td>
+
+                <td >{{ $prestamo->nombre }}</td>
                 <td>{{ $prestamo->lugar_trabajo }}</td>
                 <td>{{ $prestamo->fecha_proximo_cobro }}</td>
                 <td>{{ $prestamo->valor_proximo_pago_deuda }}</td>
