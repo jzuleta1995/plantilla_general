@@ -24,14 +24,14 @@ class ClienteRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre'             => 'required',
-            'apellido'           => 'required',
-            'documento'          => 'required',
-            'direccion_casa'     => 'required',
-            'direccion_trabajo'  => 'required',
-            'telefono'           => 'required',
-            'celular'            => 'required',
-            'estado'             => 'required',
+            'cliente_nombre'             => 'required',
+            'cliente_apellido'           => 'required',
+            'cliente_documento'          => 'required',
+            'cliente_direccion_casa'     => 'required',
+            'cliente_direccion_trabajo'  => 'required',
+            'cliente_telefono'           => 'required',
+            'cliente_celular'            => 'required',
+            'cliente_estado'             => 'required',
         ];
     }
 }

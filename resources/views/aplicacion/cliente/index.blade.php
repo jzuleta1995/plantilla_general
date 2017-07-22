@@ -1,6 +1,6 @@
 @extends('template.form')
 
-@section('action', 'Listado cliente')
+@section('action', 'Listado de Clientes')
 
 @section('content')
     <div class="panel panel-default">
@@ -9,7 +9,7 @@
             <!-- inicio campo buscar -->
             {!! Form::open(['route' => 'cliente.index', 'method' => 'GET', 'class' => 'navbar-form navbar-left pull-right', 'role' => 'search'] ) !!}
             <div class="form-group">
-                {!! Form::text('nombre', null, ['class' => 'form-control', 'placeholder' => 'Nombre de Cliente']) !!}
+                {!! Form::text('nombre', null, ['class' => 'form-control', 'placeholder' => 'Nombre del Cliente']) !!}
             </div>
             <button type="submit" class="btn btn-default">Buscar</button>
 
@@ -28,27 +28,25 @@
 
             <table class="table table-hover table-striped table-condensed" >
             <thead>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Estado</th>
-                <th>Accion</th>
+                <th class="text-center">ID</th>
+                <th class="text-center">Nombre</th>
+                <th class="text-center">Apellido</th>
+                <th class="text-center">Estado</th>
+                <th class="text-center">Acción</th>
             </thead>
             <tbody>
             @foreach($clientes as $cliente)
                 <tr>
-                    <td>{{ $cliente->id }}</td>
-                    <td>{{ $cliente->nombre }}</td>
-                    <td>{{ $cliente->apellido }}</td>
-                    <td>{{ $cliente->estado }}</td>
-                    <td>
-                        <a href="{{ route('cliente.edit', $cliente->id) }}" class="btn btn-info">Editar</a>
+                    <td class="text-center">{{ $cliente->id }}</td>
+                    <td class="text-center">{{ $cliente->cliente_nombre }}</td>
+                    <td class="text-center">{{ $cliente->cliente_apellido }}</td>
+                    <td class="text-center">{{ $cliente->cliente_estado }}</td>
+
+                    <td class="text-center">
+                        <a href="{{ route('cliente.edit', $cliente->id) }}" class="btn btn-link">Editar</a>
                     </td>
 
                 </tr>
-
-
-
             @endforeach
 
             </tbody>

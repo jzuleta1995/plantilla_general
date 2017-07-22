@@ -6,9 +6,10 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\AbonoPrestamo' => $baseDir . '/app/AbonoPrestamo.php',
     'App\\Cliente' => $baseDir . '/app/Cliente.php',
+    'App\\ClienteFiador' => $baseDir . '/app/ClienteFiador.php',
     'App\\Cobrador' => $baseDir . '/app/Cobrador.php',
-    'App\\CobroPrestamo' => $baseDir . '/app/CobroPrestamo.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -35,8 +36,8 @@ return array(
     'App\\Http\\Requests\\CobradorRequest' => $baseDir . '/app/Http/Requests/CobradorRequest.php',
     'App\\Http\\Requests\\CobroPrestamoRequest' => $baseDir . '/app/Http/Requests/CobroPrestamoRequest.php',
     'App\\Http\\Requests\\PrestamoRequest' => $baseDir . '/app/Http/Requests/PrestamoRequest.php',
+    'App\\Http\\Requests\\UserEditRequest' => $baseDir . '/app/Http/Requests/UserEditRequest.php',
     'App\\Http\\Requests\\UserRequest' => $baseDir . '/app/Http/Requests/UserRequest.php',
-    'App\\ItemClientes' => $baseDir . '/app/ItemClientes.php',
     'App\\Prestamo' => $baseDir . '/app/Prestamo.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
@@ -58,9 +59,9 @@ return array(
     'Collective\\Html\\HtmlFacade' => $vendorDir . '/laravelcollective/html/src/HtmlFacade.php',
     'Collective\\Html\\HtmlServiceProvider' => $vendorDir . '/laravelcollective/html/src/HtmlServiceProvider.php',
     'Cpdf' => $vendorDir . '/dompdf/dompdf/lib/Cpdf.php',
+    'CreateAbonoPrestamosTable' => $baseDir . '/database/migrations/2017_06_29_025448_create_abono_prestamos_table.php',
     'CreateClientesTable' => $baseDir . '/database/migrations/2017_06_25_235306_create_clientes_table.php',
-    'CreateCobradorsTable' => $baseDir . '/database/migrations/2017_06_28_014421_create_cobradors_table.php',
-    'CreateCobroPrestamosTable' => $baseDir . '/database/migrations/2017_06_29_025448_create_cobro_prestamos_table.php',
+    'CreateCobradoresTable' => $baseDir . '/database/migrations/2017_06_24_014421_create_cobradores_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreatePrestamosTable' => $baseDir . '/database/migrations/2017_06_28_175959_create_prestamos_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',

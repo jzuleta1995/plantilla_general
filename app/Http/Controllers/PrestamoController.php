@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Abono;
 use App\Prestamo;
 use App\Cliente;
 use Illuminate\Http\Request;
@@ -12,16 +13,11 @@ class PrestamoController extends Controller
 {
     public function index()
     {
-        //$prestamos = Prestamo::orderBy('id', 'ASC')->paginate(3);
         $prestamos = DB::table('prestamos')
                     ->join('clientes', 'prestamos.cliente_id', '=', 'clientes.id')
-                    ->select('prestamos.id', 'clientes.nombre', 'prestamos.tasa', 'prestamos.valor_prestamo');
-                   // ->where('prestamos.id', '=', 1);
+                    ->select('prestamos.id', 'clientes.cliente_nombre_completo', 'prestamos.prestamo_tasa', 'prestamos.prestamo_valor');
 
-        //$prestamos->;
         $prestamos = $prestamos->paginate(2);
-        
-        //return view('aplicacion.prestamo.index', compact('prestamo'));
 
         return view('aplicacion.prestamo.index')->with('prestamos', $prestamos);
     }
@@ -29,65 +25,87 @@ class PrestamoController extends Controller
     public function create()
     {
         $cliente = "";
+
         return view('aplicacion.prestamo.create', compact('prestamo'))
                     ->with('cliente', $cliente);
     }
 
     public function store(Request $request)
     {
-       // dd($request->all());
-        $prestamos = new Prestamo($request->all());
-        $prestamos->user_id = Auth::id();
+        $prestamo = new Prestamo($request->all());
+
+        $prestamo->cliente_id                    = $request->cliente_id;
+        $prestamo->prestamo_valor                = $request->prestamo_valor;
+        $prestamo->prestamo_tasa                 = $request->prestamo_tasa;
+        $prestamo->prestamo_tipo                 = $request->prestamo_tipo;
+        $prestamo->prestamo_tiempo_cobro         = $request->prestamo_tiempo_cobro;
+        $prestamo->prestamo_numero_cuotas        = $request->prestamo_numero_cuotas;
+        $prestamo->prestamo_valor_cuota          = $request->prestamo_valor_cuota;
+        $prestamo->prestamo_fecha                = $request->prestamo_fecha;
+        $prestamo->prestamo_fecha_inicial        = $request->prestamo_fecha_inicial;
+        $prestamo->prestamo_fecha_proximo_cobro  = $request->prestamo_fecha_proximo_cobro;
+        $prestamo->prestamo_valor_total          = $request->prestamo_valor_total;
+        $prestamo->prestamo_valor_abonado        = $request->prestamo_valor_abonado;
+        $prestamo->prestamo_valor_proxima_cuota  = $request->prestamo_valor_proxima_cuota;
+        $prestamo->prestamo_estado               = $request->prestamo_estado;
+        $prestamo->prestamo_valor_actual         = $request->prestamo_valor_actual;
+        $prestamo->prestamo_estado               = 'ACTIVO';
+        $prestamo->user_id                       = Auth::id();
+        $prestamo->save();
 
 
-        $prestamos->save();
         return Redirect()->route('prestamo.index')
-            ->with('info', 'Cobrador registrado exitosamente');
+            ->with('info', 'Prestamo registrado exitosamente');
     }
 
 
     public function show($id)
     {
-        //
+        $prestamo = Prestamo::find($id);
+        $cliente = $prestamo->cliente;
+
+        $abonos = DB::table('abonos')
+                  ->join('prestamos', 'abonos.prestamo_id', '=', 'prestamos.id')
+                  ->select('abonos.abono_valor_cuota', 'abonos.abono_valor', 'abonos.abono_tipo_pago', 'abonos.abono_observacion',
+                            'abonos.abono_fecha')
+                  ->paginate(4);
+
+        return view('aplicacion.prestamo.show', compact('prestamo', 'cliente', 'abonos'));
     }
 
 
     public function edit($id)
     {
-        $prestamos = Prestamo::find($id);
-        $cliente = Cliente::find($prestamos->cliente_id);
-
+        $prestamo = Prestamo::find($id);
+        $cliente = $prestamo->cliente;
         return view('aplicacion.prestamo.edit', compact('prestamos', 'cliente'));
     }
 
 
     public function update(Request $request, $id)
     {
-        $prestamos = Prestamo::find($id);
+        $prestamo = Prestamo::find($id);
 
-        // dd($users);
-
-        $prestamos->cliente_id                = $request->cliente_id;
-        $prestamos->valor_prestamo            = $request->valor_prestamo;
-        $prestamos->tasa                      = $request->tasa;
-        $prestamos->tipo_prestamo             = $request->tipo_prestamo;
-        $prestamos->tiempo_cobro              = $request->tiempo_cobro;
-        $prestamos->cantidad_cuotas_pagar     = $request->cantidad_cuotas_pagar;
-        $prestamos->valor_cuota_pagar         = $request->valor_cuota_pagar;
-        $prestamos->fecha_prestamo            = $request->fecha_prestamo;
-        $prestamos->fecha_inicio_prestamo     = $request->fecha_inicio_prestamo;
-        $prestamos->fecha_proximo_cobro       = $request->fecha_proximo_cobro;
-        $prestamos->valor_total_deuda         = $request->valor_total_deuda;
-        $prestamos->valor_abono_deuda         = $request->valor_abono_deuda;
-        $prestamos->valor_proximo_pago_deuda  = $request->valor_proximo_pago_deuda;
-        $prestamos->estado                    = $request->estado;
-        $prestamos->user_id                   = Auth::id();
-
-
-        $prestamos->save();
+        $prestamo->cliente_id                    = $request->cliente_id;
+        $prestamo->prestamo_valor                = $request->prestamo_valor;
+        $prestamo->prestamo_tasa                 = $request->prestamo_tasa;
+        $prestamo->prestamo_tipo                 = $request->prestamo_tipo;
+        $prestamo->prestamo_tiempo_cobro         = $request->prestamo_tiempo_cobro;
+        $prestamo->prestamo_numero_cuotas        = $request->prestamo_numero_cuotas;
+        $prestamo->prestamo_valor_cuota          = $request->prestamo_valor_cuota;
+        $prestamo->prestamo_fecha                = $request->prestamo_fecha;
+        $prestamo->prestamo_fecha_inicial        = $request->prestamo_fecha_inicial;
+        $prestamo->prestamo_fecha_proximo_cobro  = $request->prestamo_fecha_proximo_cobro;
+        $prestamo->prestamo_valor_total          = $request->prestamo_valor_total;
+        $prestamo->prestamo_valor_abonado        = $request->prestamo_valor_abonado;
+        $prestamo->prestamo_valor_proxima_cuota  = $request->prestamo_valor_proxima_cuota;
+        $prestamo->prestamo_estado               = 'ACTIVO';
+        $prestamo->prestamo_valor_actual         = $request->prestamo_valor_actual;
+        $prestamo->user_id                       = Auth::id();
+        $prestamo->save();
 
         return Redirect()->route('prestamo.index')
-            ->with('info', 'Cobrador Actualizado exitosamente');
+                ->with('info', 'Cobrador Actualizado exitosamente');
     }
 
     public function destroy(Request $request, $id)
@@ -100,7 +118,6 @@ class PrestamoController extends Controller
             return response()->json([
                 'total'   => $prestamos_total,
                 'message' => $prestamos->nombre .' fue eliminado correctamente'
-
             ]);
         }
     }

@@ -29,29 +29,24 @@
 
             <table class="table table-hover table-striped table-condensed">
                 <thead>
-                <th>ID</th>
-                <th>Cliente</th>
-                <th>Valor Prestamo</th>
-                <th>Tasa %</th>
-                <th>Accion</th>
+                <th class="text-center">ID</th>
+                <th class="text-center">Cliente</th>
+                <th class="text-center">Valor Prestamo</th>
+                <th class="text-center">Tasa %</th>
+                <th class="text-center">Accion</th>
                 </thead>
                 <tbody>
                 @foreach($prestamos as $prestamo)
                     <tr>
-                        <td>{{ $prestamo->id }}</td>
-                        <td>{{ $prestamo->nombre }}</td>
-                        <td>{{ $prestamo->valor_prestamo }}</td>
-                        <td>{{ $prestamo->tasa }} %</td>
-                        <td>
-                            <a href="{{ route('prestamo.edit', $prestamo->id) }}" class="btn btn-link">editar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          <!--  {!! Form::open(['route' =>['destroy', $prestamo->id], 'method' => 'DELETE']) !!}
-                            <a href="#" class="btn-delete">Eliminar</a>
-                            {!! Form::close() !!}-->
+                        <td class="text-center">{{ $prestamo->id }}</td>
+                        <td class="text-center">{{ $prestamo->cliente_nombre_completo }}</td>
+                        <td class="text-center"> {{ $prestamo->prestamo_valor}}</td>
+                        <td class="text-center">{{ $prestamo->prestamo_tasa }} %</td>
+                        <td class="text-center">
+                            <a href="{{ route('prestamo.show', $prestamo->id) }}" class="btn btn-link">Ver</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="{{ route('abono.create', $prestamo->id) }}" class="btn btn-link">Realizar Pago</a>
                         </td>
                     </tr>
-
-
-
                 @endforeach
 
                 </tbody>

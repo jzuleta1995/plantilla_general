@@ -6,10 +6,37 @@ use Illuminate\Database\Eloquent\Model;
 
 class Prestamo extends Model
 {
-    protected $fillable = [
-        'cliente_id', 'valor_prestamo', 'tasa','tipo_prestamo',
-        'tiempo_cobro','cantidad_cuotas_pagar', 'valor_cuota_pagar', 'fecha_prestamo',
-        'fecha_inicio_prestamo', 'fecha_proximo_cobro', 'valor_total_deuda',
-        'valor_abono_deuda', 'valor_proximo_pago_deuda', 'valor_total_prestamo', 'estado',
+    protected $fillable =
+    [
+        'cliente_id',
+        'prestamo_valor',
+        'prestamo_tasa',
+        'prestamo_tipo',
+        'prestamo_tiempo_cobro',
+        'prestamo_numero_cuotas',
+        'valor_cuota',
+        'prestamo_fecha',
+        'prestamo_fecha_inicial',
+        'prestamo_fecha_proximo_cobro',
+        'prestamo_valor_total',
+        'prestamo_valor_abonado',
+        'prestamo_valor_proxima_cuota',
+        'prestamo_valor_actual',
+        'prestamo_estado',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function cliente()
+    {
+        return $this->belongsTo('App\Cliente');
+    }
+
+    public function abonos()
+    {
+        return $this->hasMany('App\Abono');
+    }
 }

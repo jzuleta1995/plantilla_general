@@ -25,11 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-       $query = 'select fc_color(1) ';
+        $query = 'select fc_color(1) ';
       $colors =DB::select($query);
 
-      /*$prestamos =DB::select('PERFORMANCE fc_color(?)', array(1));*/
-      //dd($colors);
       return view('home')->with('colors', $colors);
   }
 

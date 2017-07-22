@@ -8,39 +8,39 @@ use DB;
 
 class AutocompleteController extends Controller
 {
-    public function autocomplete(Request $request){
+    public function autocomplete(Request $request)
+    {
+        $results = "";
 
-        $path = $request->ruta;
-        $term = $request->term;
+        if($request->ajax()){
+            $path = $request->ruta;
+            $term = $request->term;
 
-        if($path == 'cliente'){
+            if($path == 'cliente'){
+                $queries = DB::table('clientes')
+                    ->where('cliente_nombre_completo', 'ilike', '%'.$term.'%')
+                    ->take(2)->get();
 
+                foreach ($queries as $query)
+                {
+                    $nombre_completo = $query->cliente_nombre_completo;
+                    $results[] = ['id' => $query->id, 'value' => $nombre_completo]; //you can take custom values as you want
+                }
 
-            $queries = DB::table('clientes')
-                ->where('nombre', 'like', '%'.$term.'%')
-                ->take(2)->get();
+            }else if($path == 'cobrador'){
 
-            foreach ($queries as $query)
-            {
-                $nombre_completo = $query->nombre . ' ' . $query->apellido;
-                $results[] = ['id' => $query->id, 'value' => $nombre_completo]; //you can take custom values as you want
-            }
+                $queries = DB::table('cobradors')
+                    ->where('cobrador_nombre_completo', 'ilike', '%'.$term.'%')
+                    ->take(3)->get();
 
-        }else if($path == 'cobrador'){
-           //$term = $request->term;
-
-            $queries = DB::table('cobradors')
-                ->where('nombre', 'like', '%'.$term.'%')
-                ->take(2)->get();
-
-            foreach ($queries as $query)
-            {
-                $results[] = ['id' => $query->id, 'value' => $query->nombre]; //you can take custom values as you want
+                foreach ($queries as $query)
+                {
+                    $results[] = ['id' => $query->id, 'value' => $query->cobrador_nombre_completo]; //you can take custom values as you want
+                }
             }
         }
+
         return response()->json($results);
-
-
     }
 
 }

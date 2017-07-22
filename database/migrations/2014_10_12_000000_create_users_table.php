@@ -17,22 +17,16 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('apellido');
+            $table->string('nombre_completo');
             $table->string('documento')->unique();
             $table->string('direccion')->nullable();
             $table->string('telefono')->nullable();
             $table->string('email')->unique();
-            $table->integer('pregunta_id')->nullable();
-            $table->string('respuesta_secreta')->nullable();
-            $table->string('password')->nullable();
-            $table->string('tipo_usuario');
+            $table->integer('pregunta_secreta');
+            $table->string('respuesta_secreta');
+            $table->string('password');
+            $table->string('tipo');
             $table->string('estado');
-
-
-
-            /**$table->foreign('pregunta_id')
-                    ->references('id')
-                    ->on('preguntasecreta')
-                    ->onDelete('cascade');**/
 
             $table->rememberToken();
             $table->timestamps();
@@ -46,6 +40,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user');
+        Schema::dropIfExists('users');
     }
 }

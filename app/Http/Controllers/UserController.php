@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserEditRequest;
 use App\Http\Requests\UserRequest;
 use App\User;
 use Illuminate\Http\Request;
@@ -11,13 +12,12 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
-       // dd($request->get('nombre'));
-        //listar con scope
-        $users = User::nombre($request->get('nombre'))->orderBy('id', 'ASC')->paginate(3);
-       //listar normal
-        //$users = User::orderBy('id', 'ASC')->paginate(3);
+        $users = User::nombre($request->get('nombre'))
+                 ->orderBy('id', 'ASC')
+                 ->paginate(3);
 
-        return view('aplicacion.user.index')->with('users', $users);
+        return view('aplicacion.user.index')
+               ->with('users', $users);
     }
 
     public function create()
@@ -27,11 +27,23 @@ class UserController extends Controller
 
     public function store(UserRequest $request)
     {
-        $user = new User($request->all());
-        $user->password = bcrypt($request->password);
+        $user = new User();
+        $user->nombre               = trim(strtoupper($request->nombre));
+        $user->apellido             = trim(strtoupper($request->apellido));
+        $user->nombre_completo      = trim(strtoupper($request->nombre . " " . $request->apellido));
+        $user->documento            = trim($request->documento);
+        $user->direccion            = trim(strtoupper($request->direccion));
+        $user->telefono             = trim($request->telefono);
+        $user->email                = trim($request->email);
+        $user->password             = bcrypt($request->password);
+        $user->pregunta_secreta     = $request->pregunta_secreta;
+        $user->respuesta_secreta    = $request->respuesta_secreta;
+        $user->tipo                 = $request->tipo;
+        $user->estado               = $request->estado;
         $user->save();
+
         return Redirect()->route('user.index')
-            ->with('info', 'Cliente registrado  exitosamente');
+               ->with('info', 'El usuario ' . $user->nombre_completo . ' ha sido registrado  exitosamente');
     }
 
     public function show($id)
@@ -41,43 +53,39 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $users = User::find($id);
-        return view('aplicacion.user.edit', compact('users'));
+        $user = User::find($id);
+        return view('aplicacion.user.edit', compact('user'));
     }
 
-    public function update(UserRequest $request, $id)
+    public function update(UserEditRequest $request, $id)
     {
-        $users = User::find($id);
+        $user = User::find($id);
 
-       // dd($users);
+        $user->nombre           = trim(strtoupper($request->nombre));
+        $user->apellido         = trim(strtoupper($request->apellido));
+        $user->nombre_completo  = trim(strtoupper($request->nombre . " " . $request->apellido));
+        $user->documento        = $request->documento;
+        $user->direccion        = trim(strtoupper($request->direccion));
+        $user->telefono         = $request->telefono;
+        $user->email            = $request->email;
+        $user->tipo             = $request->tipo;
+        $user->estado           = $request->estado;
+        $user->save();
 
-        $users->nombre             = $request->nombre;
-        $users->apellido           = $request->apellido;
-        $users->documento          = $request->documento;
-        $users->direccion          = $request->direccion;
-        $users->telefono           = $request->telefono;
-        $users->email              = $request->email;
-        $users->pregunta_id        = $request->pregunta_id;
-        $users->respuesta_secreta  = $request->respuesta_secreta;
-        $users->estado             = $request->estado;
-
-        $users->save();
         return Redirect()->route('user.index')
-            ->with('info', 'Usuario Actualizado  exitosamente');
-
+               ->with('info', 'El usuario ' . $user->nombre_completo . ' ha sido actualizado  exitosamente');
     }
 
     public function destroy(Request $request, $id)
     {
         if($request->ajax()){
-            $users =User::find($id);
+            $users = User::find($id);
             $users->delete();
             $users_total = User::all()->count();
 
             return response()->json([
                 'total'   => $users_total,
                 'message' => $users->nombre .' fue eliminado correctamente'
-
             ]);
         }
     }

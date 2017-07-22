@@ -11,15 +11,14 @@
             </button>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
             <ul class="nav navbar-nav navbar-right">
                 <li><a class="nav-link" href="{{ route('cliente.index') }}">Cliente</a></li>
                 <li><a class="nav-link nav-header" href="{{ route('cobrador.index') }}">Cobrador</a>
                 <li><a class="nav-link" href="{{ route('prestamo.index') }}">Prestamo</a></li>
-                <li><a class="nav-link" href="{{ route('cobroPrestamo.index') }}">cobroPrestamo</a></li>
                 <li><a class="nav-link" href="{{ route('prestamo.utilidad') }}">Visor Utilidad</a></li>
-
-                <li><a class="nav-link" href="{{ route('user.index') }}">Usuario</a></li>
+                @if(Auth::user()->tipo == 'ADMINISTRADOR')
+                    <li><a class="nav-link" href="{{ route('user.index') }}">Usuario</a></li>
+                @endif
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reportes <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -45,9 +44,8 @@
                     <ul class="dropdown-menu" role="menu">
                         <li>
                             <a href="{{ route('logout') }}" class="nav-link"
-                               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                Logout
+                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Cerrar Sesión
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

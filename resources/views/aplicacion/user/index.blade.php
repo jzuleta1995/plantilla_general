@@ -1,6 +1,6 @@
 @extends('template.form')
 
-@section('action', 'Listado usuario')
+@section('action', 'Listado de Usuarios')
 
 @section('content')
     <div class="panel panel-default">
@@ -9,7 +9,7 @@
             <!-- inicio campo buscar -->
             {!! Form::open(['route' => 'user.index', 'method' => 'GET', 'class' => 'navbar-form navbar-left pull-right', 'role' => 'search'] ) !!}
             <div class="form-group">
-                {!! Form::text('nombre', null, ['class' => 'form-control', 'placeholder' => 'Nombre de Usuario']) !!}
+                {!! Form::text('nombre', null, ['class' => 'form-control', 'placeholder' => 'Nombre del Usuario']) !!}
             </div>
             <button type="submit" class="btn btn-default">Buscar</button>
 
@@ -31,35 +31,29 @@
 
             <table class="table  table-striped" >
                 <tr>
-                  <th>ID</th>
-                  <th>Nombre</th>
-                  <th>Apellido</th>
-                   <th>Tipo</th>
-                  <th>Estado</th>
-                  <th>Accion</th>
+                  <th class="text-center">ID</th>
+                  <th class="text-center">Nombre</th>
+                  <th class="text-center">Apellido</th>
+                  <th class="text-center">Tipo</th>
+                  <th class="text-center">Estado</th>
+                  <th class="text-center">Acción</th>
                 </tr>
                 <tbody>
                    @foreach($users as $user)
                        <tr>
-                           <td>{{ $user->id }}</td>
-                           <td>{{ $user->nombre }}</td>
-                           <td>{{ $user->apellido }}</td>
-                           <td>
-                               @if($user->tipo_usuario == 'ADMINISTRADOR')
-                                   <span class="label label-danger">{{ $user->tipo_usuario }}</span>
+                           <td class="text-center">{{ $user->id }}</td>
+                           <td class="text-center">{{ $user->nombre }}</td>
+                           <td class="text-center">{{ $user->apellido }}</td>
+                           <td class="text-center">
+                               @if($user->tipo == 'ADMINISTRADOR')
+                                   <span class="label label-danger">{{ $user->tipo }}</span>
                                @else
-                                   <span class="label label-success">{{ $user->tipo_usuario }}</span>
+                                   <span class="label label-success">{{ $user->tipo }}</span>
                                @endif
                            </td>
-                           <td>{{ $user->estado }}</td>
-                           <td>
+                           <td class="text-center">{{ $user->estado }}</td>
+                           <td class="text-center">
                                <a href="{{ route('user.edit', $user->id) }}" class="btn btn-link">Editar</a>
-                              <!--
-
-                               {!! Form::open(['route' =>['destroy', $user->id], 'method' => 'DELETE']) !!}
-                               <a href="#" class="btn-delete">Eliminar</a>
-                               {!! Form::close() !!}
-                               -->
                            </td>
                        </tr>
                     @endforeach

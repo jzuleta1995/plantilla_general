@@ -15,46 +15,49 @@ class CreateClientesTable extends Migration
     {
         Schema::create('clientes', function (Blueprint $table) {
             $table->increments('id');
-
-            $table->string('nombre');
-            $table->string('apellido');
-            $table->string('documento')->unique();
-            $table->string('direccion_casa');
-            $table->string('direccion_trabajo')->nullable();
-            $table->string('lugar_trabajo');
-            $table->string('telefono');
-            $table->string('celular')->nullable();
-            $table->string('ciudad');
-            $table->string('estado');
+            $table->string('cliente_nombre');
+            $table->string('cliente_apellido');
+            $table->string('cliente_nombre_completo');
+            $table->string('cliente_documento')->unique();
+            $table->string('cliente_direccion_casa');
+            $table->string('cliente_direccion_trabajo')->nullable();
+            $table->string('cliente_lugar_trabajo');
+            $table->string('cliente_telefono');
+            $table->string('cliente_celular')->nullable();
+            $table->string('cliente_ciudad');
+            $table->string('cliente_estado');
+            $table->integer('calificacion')->nullable();
             $table->integer('user_id')->unsigned();
             $table->integer('cobrador_id')->unsigned();
 
             $table->foreign('user_id')
-                ->references('id')
-                ->on('users');
-           /* $table->foreign('prestamo_id')
-                ->references('id')
-                ->on('prestamos');*/
+                  ->references('id')
+                  ->on('users');
+
+            $table->foreign('cobrador_id')
+                  ->references('id')
+                  ->on('cobradors');
 
             $table->timestamps();
         });
 
-        Schema::create('item_clientes', function (Blueprint $table){
+        Schema::create('fiadors', function (Blueprint $table){
 
             $table->integer('id');
             $table->integer('cliente_id')->unsigned();
-            $table->string('nombre_fiador');
-            $table->string('apellido_fiador');
-            $table->string('documento_fiador');
-            $table->string('direccion_casa_fiador');
-            $table->string('direccion_trabajo_fiador')->nullable();
-            $table->string('telefono_fiador');
+            $table->string('fiador_nombre');
+            $table->string('fiador_apellido');
+            $table->string('fiador_nombre_completo');
+            $table->string('fiador_documento');
+            $table->string('fiador_direccion_casa');
+            $table->string('fiador_direccion_trabajo')->nullable();
+            $table->string('fiador_telefono');
             $table->primary(['cliente_id', 'id']);
             $table->timestamps();
 
             $table->foreign('cliente_id')
-                ->references('id')
-                ->on('clientes');
+                  ->references('id')
+                  ->on('clientes');
 
         });
     }
@@ -66,7 +69,7 @@ class CreateClientesTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('fiadors');
         Schema::dropIfExists('clientes');
-        Schema::dropIfExists('item_clientes');
     }
 }

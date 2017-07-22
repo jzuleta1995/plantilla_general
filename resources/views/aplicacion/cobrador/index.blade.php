@@ -1,6 +1,6 @@
 @extends('template.form')
 
-@section('action', 'Listado cobrador')
+@section('action', 'Listado de Cobradores')
 
 @section('content')
     <div class="panel panel-default">
@@ -9,12 +9,11 @@
             <!-- inicio campo buscar -->
             {!! Form::open(['route' => 'cobrador.index', 'method' => 'GET', 'class' => 'navbar-form navbar-left pull-right', 'role' => 'search'] ) !!}
             <div class="form-group">
-                {!! Form::text('nombre', null, ['class' => 'form-control', 'placeholder' => 'Nombre de Usuario']) !!}
+                {!! Form::text('nombre', null, ['class' => 'form-control', 'placeholder' => 'Nombre Cobrador']) !!}
             </div>
                    <button type="submit" class="btn btn-default">Buscar</button>
             {!! Form::close() !!}
          <!-- fin campo buscar-->
-
             <p>
                 <a href="{{ route('cobrador.create') }}" class="btn btn-primary">Registrar nuevo cobrador</a>
             </p>
@@ -28,33 +27,23 @@
 
         <table class="table table-hover table-striped table-condensed">
             <thead>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Estado</th>
-            <th>Editar</th>
-            <th>Eliminar</th>
-
+                <th class="text-center">ID</th>
+                <th class="text-center">Nombre</th>
+                <th class="text-center">Apellido</th>
+                <th class="text-center">Estado</th>
+                <th class="text-center">Acción</th>
             </thead>
             <tbody>
             @foreach($cobradors as $cobrador)
                 <tr>
-                    <td>{{ $cobrador->id }}</td>
-                    <td>{{ $cobrador->nombre }}</td>
-                    <td>{{ $cobrador->apellido }}</td>
-                    <td>{{ $cobrador->estado }}</td>
-                    <td>
+                    <td class="text-center">{{ $cobrador->id }}</td>
+                    <td class="text-center">{{ $cobrador->cobrador_nombre }}</td>
+                    <td class="text-center">{{ $cobrador->cobrador_apellido }}</td>
+                    <td class="text-center">{{ $cobrador->cobrador_estado }}</td>
+                    <td class="text-center">
                         <a href="{{ route('cobrador.edit', $cobrador->id) }}" class="btn btn-link">editar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </td>
-                    <td>
-                        {!! Form::open(['route' =>['destroy', $cobrador->id], 'method' => 'DELETE']) !!}
-                        <a href="#" class="btn-delete">Eliminar</a>
-                        {!! Form::close() !!}
-                    </td>
                 </tr>
-
-
-
             @endforeach
 
             </tbody>

@@ -17,65 +17,57 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::resource('/user', 'UserController');
 
-Route::group(['prefix'  =>  '/', 'middleware'   =>  'auth'], function () {
-    Route::resource('cliente', 'ClienteController');
-    Route::resource('cobrador', 'CobradorController');
-    Route::resource('prestamo', 'PrestamoController');
-    Route::resource('cobroPrestamo', 'CobroPrestamoController');
-    //Route::resource('excel', 'ExcelController');
-    Route::resource('utilidadPrestamos', 'UtilidadPrestamosController');
+Route::resource('/user', 'UserController', [
+    'except' =>  ['destroy']
+]);
 
+Route::group(['prefix'  =>  '/admin', 'middleware'   =>  'auth'], function () {
 
-   // Route::get('cliente/general', 'ClienteController@general')->name('cliente.general');
-   // Route::get('excel/informe', 'ExcelController@informe')->name('excel.informe');
+    Route::resource('cobrador', 'CobradorController' , [
+        'except' =>  ['destroy']
+    ]);
 
-    Route::resource('excel', 'ExcelController');
-
-    Route::name('excel.informe')
-        ->post('/excel', 'ExcelController@informe');
-
-    /*Route::get('/excel/cliente', 'ExcelController@index')->name('excel.index');
-    Route::post('/excel/cliente  ', 'ExcelController@informe')->name('excel.informe');*/
-
-
-
-    //Route::get('/home','HomeController@cargarVisor')->name('home');
-    //Route::get('/generar-informe', 'ExcelController@general')->name('general');
     Route::name('home')
-        ->get('/home', 'HomeController@cargarVisor');
+          ->get('/home', 'HomeController@cargarVisor');
 
-    Route::name('color')
-        ->get('/home/color', 'HomeController@index');
+    Route::resource('cliente', 'ClienteController', [
+        'except' => ['destroy']
+    ]);
 
+    Route::resource('prestamo', 'PrestamoController', [
+        'except' => ['edit', 'update', 'destroy']
+    ]);
 
-    Route::DELETE('/eliminar-user/{id}', 'UserController@destroy')->name('destroy');
+    Route::resource('abono', 'AbonoController', [
+        'only' => ['create', 'store']
+    ]);
 
-//Route::get('/home', 'HomeController@index')->name('home');
-//Route::get('/cliente', 'ClienteController@index')->name('index');
+    Route::get('/abono/create/{prestamo_id}',
+        array('as' => 'abono.create',
+              'uses' => 'AbonoController@create'
+        )
+    );
+
     Route::get('/autocomplete',
         array('as' => 'autocomplete',
             'uses' => 'AutocompleteController@autocomplete'
         ));
 
+    Route::resource('utilidadPrestamos', 'UtilidadPrestamosController');
 
-    //Route::resource('cliente/informes/general', 'ExcelController');
+    Route::resource('excel', 'ExcelController');
+
+    Route::name('excel.informe')
+         ->post('/excel', 'ExcelController@informe');
+
+    Route::name('color')
+        ->get('/home/color', 'HomeController@index');
+
+
 
     Route::name('prestamo.utilidad')
         ->get('prestamo/informes/utilidad', 'UtilidadPrestamosController@cargarUtilidad');
-
-    /**
-     * Route::name('excel')
-     * ->get('cliente/informes/general', 'ExcelController@index');**
-     */
-
-    /*Route::get('/excel/cargar',
-        [
-            'as' => 'aplicacion.cliente.general',
-            'uses' => 'ExcelController@excel'
-        ]);*/
-
 
     Route::get('pdf', function () {
         $users = App\User::all();

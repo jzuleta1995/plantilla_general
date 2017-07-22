@@ -15,22 +15,20 @@ class CreatePrestamosTable extends Migration
     {
         Schema::create('prestamos', function (Blueprint $table) {
             $table->increments('id');
-
-            $table->double('valor_prestamo');
-            $table->double('tasa');
-            $table->string('tipo_prestamo');
-            $table->string('tiempo_cobro')->nullable();
-            $table->integer('cantidad_cuotas_pagar');
-            $table->double('valor_cuota_pagar')->nullable();
-            $table->date('fecha_prestamo');
-
-            $table->date('fecha_inicio_prestamo');
-            $table->date('fecha_proximo_cobro')->nullable();
-            $table->double('valor_total_deuda');
-            $table->double('valor_abono_deuda')->nullable();
-            $table->double('valor_proximo_pago_deuda');
-            $table->double('valor_total_prestamo');
-            $table->string('estado');
+            $table->double('prestamo_valor');
+            $table->double('prestamo_tasa');
+            $table->string('prestamo_tipo');
+            $table->string('prestamo_tiempo_cobro');
+            $table->integer('prestamo_numero_cuotas');
+            $table->double('prestamo_valor_cuota');
+            $table->date('prestamo_fecha');
+            $table->date('prestamo_fecha_inicial');
+            $table->date('prestamo_fecha_proximo_cobro');
+            $table->double('prestamo_valor_total');
+            $table->double('prestamo_valor_abonado');
+            $table->double('prestamo_valor_proxima_cuota');
+            $table->double('prestamo_valor_actual');
+            $table->string('prestamo_estado');
             $table->integer('user_id')->unsigned();
             $table->integer('cliente_id')->unsigned();
 
@@ -44,10 +42,6 @@ class CreatePrestamosTable extends Migration
 
             $table->timestamps();
         });
-
-
-
-
     }
 
     /**

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Cliente;
 use App\Cobrador;
 use App\Http\Requests\ClienteRequest;
-use App\ItemClientes;
+use App\Fiador;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
@@ -15,53 +15,102 @@ class ClienteController extends Controller
 
     public function index(Request $request)
     {
-        $clientes = Cliente::nombre($request->get('nombre'))->orderBy('id', 'ASC')->paginate(3);
+        $clientes = Cliente::nombre($request->get('nombre'))
+                    ->orderBy('id', 'ASC')
+                    ->paginate(3);
 
         return view('aplicacion.cliente.index')->with('clientes', $clientes);
     }
 
     public function create()
     {
+        $aplica_fiador = false;
         $cobrador ="";
-        return view('aplicacion.cliente.create', compact('clientes' , 'cobrador'));
+
+        return view('aplicacion.cliente.create', compact('cliente' , 'cobrador'))
+                    ->with('aplica_fiador', $aplica_fiador);
     }
 
     public function store(ClienteRequest $request)
     {
 
-        $clientes = new Cliente($request->all());
+        $cliente = new Cliente();
+        $cliente->cliente_nombre            = trim(strtoupper($request->cliente_nombre));
+        $cliente->cliente_apellido          = trim(strtoupper($request->cliente_apellido));
+        $cliente->cliente_nombre_completo   = trim(strtoupper($request->cliente_nombre . " " . $request->cliente_apellido));
+        $cliente->cliente_documento         = $request->cliente_documento;
+        $cliente->cliente_direccion_casa    = trim(strtoupper($request->cliente_direccion_casa));
+        $cliente->cliente_direccion_trabajo = trim(strtoupper($request->cliente_direccion_trabajo));
+        $cliente->cliente_lugar_trabajo     = trim(strtoupper($request->cliente_lugar_trabajo));
+        $cliente->cliente_telefono          = $request->cliente_telefono;
+        $cliente->cliente_celular           = $request->cliente_celular;
+        $cliente->cobrador_id               = $request->cobrador_id;
+        $cliente->cliente_ciudad            = $request->cliente_ciudad;
+        $cliente->cliente_estado            = $request->cliente_estado;
+        $cliente->user_id                   = Auth::id();
+        $cliente->save();
 
-        $clientes->user_id = Auth::id();
-        $clientes->save();
+        if ($request->aplica_fiador == "on" && $request->fiador1_nombre && $request->fiador1_apellido
+            && $request->fiador1_documento && $request->fiador1_direccion_casa && $request->fiador1_telefono){
 
-        if ($request->nombre_fiador1 !=''){
-            $this->storeItemCliente(1, $clientes->id, $request->nombre_fiador1, $request->apellido_fiador1,
-                                     $request->documento_fiador1, $request->direccion_casa_fiador1,
-                                     $request->direccion_trabajo_fiador1, $request->telefono_fiador1);
+            $this->storeFiador(1, $cliente->id, $request->fiador1_nombre, $request->fiador1_apellido,
+                                     $request->fiador1_documento, $request->fiador1_direccion_casa,
+                                     $request->fiador1_direccion_trabajo, $request->fiador1_telefono);
+
         }
 
-        if ($request->nombre_fiador2 !=''){
-            $this->storeItemCliente(2, $clientes->id, $request->nombre_fiador2, $request->apellido_fiador2,
-                                    $request->documento_fiador2, $request->direccion_casa_fiador2,
-                                    $request->direccion_trabajo_fiador2, $request->telefono_fiador2);
+        if ($request->aplica_fiador == "on" && $request->fiador2_nombre && $request->fiador2_apellido
+            && $request->fiador2_documento && $request->fiador2_direccion_casa && $request->fiador2_telefono){
+
+            $this->storeFiador(2, $cliente->id, $request->fiador2_nombre, $request->fiador2_apellido,
+                                    $request->fiador2_documento, $request->fiador2_direccion_casa,
+                                    $request->fiador2_direccion_trabajo, $request->fiador2_telefono);
         }
 
-        return Redirect()->route('cliente.index')
-            ->with('info', 'Cliente registrado  exitosamente');
+       return Redirect()->route('cliente.index')
+            ->with('info', 'El cliente ' . $cliente->cliente_nombre_completo . ' ha sido registrado exitosamente');
     }
 
-    public function storeItemCliente($id, $cliente_id, $nombre_fiador, $apellido_fiador, $documento_fiador, $direccion_casa_fiador, $direccion_trabajo_fiador  ,$telefono_fiador){
+    public function storeFiador($id, $cliente_id, $fiador_nombre, $fiador_apellido, $fiador_documento, $fiador_direccion_casa,
+                                $fiador_direccion_trabajo  ,$fiador_telefono){
 
-        $itemcliente = new ItemClientes;
-        $itemcliente->id                       = $id;
-        $itemcliente->cliente_id               = $cliente_id;
-        $itemcliente->nombre_fiador            = $nombre_fiador;
-        $itemcliente->apellido_fiador          = $apellido_fiador;
-        $itemcliente->documento_fiador         = $documento_fiador;
-        $itemcliente->direccion_casa_fiador    = $direccion_casa_fiador;
-        $itemcliente->direccion_trabajo_fiador = $direccion_trabajo_fiador;
-        $itemcliente->telefono_fiador          = $telefono_fiador;
-        $itemcliente->save();
+        $fiador = new Fiador();
+        $fiador->id                       = $id;
+        $fiador->cliente_id               = $cliente_id;
+        $fiador->fiador_nombre            = trim(strtoupper($fiador_nombre));
+        $fiador->fiador_apellido          = trim(strtoupper($fiador_apellido));
+        $fiador->fiador_nombre_completo   = trim(strtoupper($fiador_nombre . " " . $fiador_apellido));
+        $fiador->fiador_documento         = $fiador_documento;
+        $fiador->fiador_direccion_casa    = trim(strtoupper($fiador_direccion_casa));
+        $fiador->fiador_direccion_trabajo = trim(strtoupper($fiador_direccion_trabajo));
+        $fiador->fiador_telefono          = $fiador_telefono;
+        $fiador->save();
+    }
+
+    public function updateFiador($id, $cliente_id, $fiador_nombre, $fiador_apellido, $fiador_documento, $fiador_direccion_casa,
+                                $fiador_direccion_trabajo  ,$fiador_telefono){
+
+        $fiador = Fiador::where('id', $id)
+                  ->where('cliente_id', $cliente_id)
+                  ->get();
+
+        if (!$fiador->isEmpty()){
+
+            $fiador[0]->fiador_nombre            = trim(strtoupper($fiador_nombre));
+            $fiador[0]->fiador_apellido          = trim(strtoupper($fiador_apellido));
+            $fiador[0]->fiador_nombre_completo   = trim(strtoupper($fiador_nombre . " " . $fiador_apellido));
+            $fiador[0]->fiador_documento         = $fiador_documento;
+            $fiador[0]->fiador_direccion_casa    = trim(strtoupper($fiador_direccion_casa));
+            $fiador[0]->fiador_direccion_trabajo = trim(strtoupper($fiador_direccion_trabajo));
+            $fiador[0]->fiador_telefono          = $fiador_telefono;
+            $fiador[0]->save();
+
+        }else{
+            $this->storeFiador($id, $cliente_id, $fiador_nombre, $fiador_apellido, $fiador_documento, $fiador_direccion_casa,
+                $fiador_direccion_trabajo  ,$fiador_telefono);
+
+        }
+
     }
 
     public function show($id)
@@ -71,31 +120,68 @@ class ClienteController extends Controller
 
     public function edit($id)
     {
-        $clientes = Cliente::find($id);
-        $cobrador = Cobrador::find($clientes->cobrador_id);
-        return view('aplicacion.cliente.edit', compact('clientes', 'cobrador'));
+        $cliente = Cliente::find($id);
+        $cobrador =  $cliente->cobrador;
+
+        $fiadors = $cliente->fiadors;
+
+        $aplica_fiador = true;
+
+        if ($fiadors->isEmpty()){
+            $aplica_fiador = false;
+        }
+
+        $fiador1 =  Fiador::where('id', 1)
+                    ->where('cliente_id', $cliente->id)
+                    ->get();
+
+        $fiador2 = Fiador::where('id', 2)
+                   ->where('cliente_id', $cliente->id)
+                    ->get();
+
+        return view('aplicacion.cliente.edit', compact('cliente', 'cobrador', 'fiadors'))
+                    ->with('aplica_fiador', $aplica_fiador)
+                    ->with('fiador1', $fiador1)
+                    ->with('fiador2', $fiador2);
     }
 
     public function update(ClienteRequest $request, $id)
     {
-        $clientes = Cliente::find($id);
+        $cliente = Cliente::find($id);
 
-        // dd($users);
+        $cliente->cliente_nombre                = trim(strtoupper($request->cliente_nombre));
+        $cliente->cliente_apellido              = trim(strtoupper($request->cliente_apellido));
+        $cliente->cliente_nombre_completo       = trim(strtoupper($request->cliente_nombre . " " . $request->cliente_apellido));
+        $cliente->cliente_documento             = $request->cliente_documento;
+        $cliente->cliente_direccion_casa        = trim(strtoupper($request->cliente_direccion_casa));
+        $cliente->cliente_direccion_trabajo     = trim(strtoupper($request->cliente_direccion_trabajo));
+        $cliente->cliente_telefono              = $request->cliente_telefono;
+        $cliente->cliente_celular               = $request->cliente_celular;
+        $cliente->cobrador_id                   = $request->cobrador_id;
+        $cliente->cliente_ciudad                = $request->cliente_ciudad;
+        $cliente->cliente_estado                = $request->cliente_estado;
+        $cliente->user_id                       = Auth::id();
+        $cliente->save();
 
-        $clientes->nombre                = $request->nombre;
-        $clientes->apellido              = $request->apellido;
-        $clientes->documento             = $request->documento;
-        $clientes->direccion_casa        = $request->direccion_casa;
-        $clientes->direccion_trabajo     = $request->direccion_trabajo;
-        $clientes->telefono              = $request->telefono;
-        $clientes->celular               = $request->celular;
-        $clientes->estado                = $request->estado;
+        if ($request->aplica_fiador == "on" && $request->fiador1_nombre && $request->fiador1_apellido && $request->fiador1_documento
+            && $request->fiador1_direccion_casa && $request->fiador1_telefono){
 
-        $clientes->user_id               = Auth::id();
-        $clientes->save();
+            $this->updateFiador(1, $cliente->id, $request->fiador1_nombre, $request->fiador1_apellido,
+                $request->fiador1_documento, $request->fiador1_direccion_casa,
+                $request->fiador1_direccion_trabajo, $request->fiador1_telefono);
+
+        }
+
+        if ($request->aplica_fiador == "on" && $request->fiador2_nombre && $request->fiador2_apellido && $request->fiador2_documento
+            && $request->fiador2_direccion_casa && $request->fiador2_telefono){
+
+            $this->UpdateFiador(2, $cliente->id, $request->fiador2_nombre, $request->fiador2_apellido,
+                $request->fiador2_documento, $request->fiador2_direccion_casa,
+                $request->fiador2_direccion_trabajo, $request->fiador2_telefono);
+        }
 
         return Redirect()->route('cliente.index')
-            ->with('info', 'Cliente Actualizado  exitosamente');
+            ->with('info', 'El cliente ' . $cliente->cliente_nombre_completo . ' ha sido actualizado exitosamente');
 
     }
 

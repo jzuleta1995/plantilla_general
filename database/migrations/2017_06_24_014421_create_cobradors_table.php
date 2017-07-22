@@ -15,19 +15,20 @@ class CreateCobradorsTable extends Migration
     {
         Schema::create('cobradors', function (Blueprint $table) {
             $table->increments('id');
-
-            $table->string('nombre');
-            $table->string('apellido');
-            $table->string('documento')->unique();
-            $table->string('direccion');
-            $table->string('telefono');
-            $table->string('celular');
-            $table->string('ciudad');
-            $table->string('estado');
+            $table->string('cobrador_nombre');
+            $table->string('cobrador_apellido');
+            $table->string('cobrador_nombre_completo');
+            $table->string('cobrador_documento')->unique();
+            $table->string('cobrador_direccion');
+            $table->string('cobrador_telefono')->nullable();
+            $table->string('cobrador_celular');
+            $table->string('cobrador_ciudad');
+            $table->string('cobrador_estado');
             $table->integer('user_id')->unsigned();
-            //$table->foreign('user_id')->references('id')->on('users');
+
             $table->foreign('user_id')
-                ->references('id')->on('users');
+                  ->references('id')
+                  ->on('users');
 
             $table->timestamps();
         });

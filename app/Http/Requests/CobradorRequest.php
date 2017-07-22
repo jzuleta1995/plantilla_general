@@ -24,14 +24,14 @@ class CobradorRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre'    => 'required',
-            'apellido'  => 'required',
-            'documento' => 'required',
-            'direccion' => 'required',
-            'telefono'  => 'required',
-            'celular'   => 'required',
-            'ciudad'    => 'required',
-            'estado'    => 'required',
+            'cobrador_nombre'    => 'required',
+            'cobrador_apellido'  => 'required',
+            'cobrador_documento' => 'required',
+            'cobrador_direccion' => 'required',
+            'cobrador_telefono'  => 'required',
+            'cobrador_celular'   => 'required',
+            'cobrador_ciudad'    => 'required',
+            'cobrador_estado'    => 'required',
         ];
     }
 }

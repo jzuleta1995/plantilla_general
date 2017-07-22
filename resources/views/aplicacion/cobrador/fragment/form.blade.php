@@ -1,69 +1,67 @@
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-push-1 col-md-4">
         <div class="form-group">
-            {!! Form::label('nombre', 'Nombre') !!}
-            {!! Form::text('nombre', null, ['class'=>'form-control', 'placeholder'  =>  'Nombre de cobrador']) !!}
+            {!! Form::label('cobrador_nombre', 'Nombre') !!}
+            {!! Form::text('cobrador_nombre', null, ['class'=>'form-control', 'placeholder'  =>  'Nombre del cobrador']) !!}
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-push-2 col-md-4">
         <div class="form-group">
-            {!! Form::label('apellido', 'Apellido') !!}
-            {!! Form::text('apellido', null, ['class'=>'form-control','placeholder'  =>  'Apellido de cobrador']) !!}
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-6">
-        <div class="form-group">
-            {!! Form::label('documento', 'Documento ') !!}
-            {!! Form::text('documento', null, ['class'=>'form-control','placeholder'  =>  'Documento de cobrador']) !!}
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            {!! Form::label('direccion', 'Direccion') !!}
-            {!! Form::text('direccion', null, ['class'=>'form-control', 'placeholder' =>   'Direccion casa cobrador']) !!}
+            {!! Form::label('cobrador_apellido', 'Apellido') !!}
+            {!! Form::text('cobrador_apellido', null, ['class'=>'form-control','placeholder'  =>  'Apellido del cobrador']) !!}
         </div>
     </div>
 </div>
 <div class="row">
-
-    <div class="col-md-6">
+    <div class="col-md-push-1 col-md-3">
         <div class="form-group">
-            {!! Form::label('telefono', 'Telefono') !!}
-            {!! Form::text('telefono', null, ['class'=>'form-control', 'placeholder' =>   'Telefono de cobrador']) !!}
+            {!! Form::label('cobrador_documento', 'Documento ') !!}
+            {!! Form::text('cobrador_documento', null, ['class'=>'form-control','placeholder'  =>  'Documento del cobrador']) !!}
         </div>
     </div>
-
-    <div class="col-md-6">
+    <div class="col-md-push-3 col-md-4">
         <div class="form-group">
-            {!! Form::label('celular', 'Celular') !!}
-            {!! Form::text('celular', null, ['class'=>'form-control', 'placeholder' =>   'Telefono cobrador']) !!}
+            {!! Form::label('cobrador_direccion', 'Direccion') !!}
+            {!! Form::text('cobrador_direccion', null, ['class'=>'form-control', 'placeholder' =>   'Direccion del cobrador']) !!}
         </div>
     </div>
 </div>
 <div class="row">
 
-    <div class="col-md-6">
+    <div class="col-md-push-1 col-md-3">
         <div class="form-group">
-            {!! Form::label('ciudad', 'Ciudad') !!}
-            {!! Form::text('ciudad', null, ['class'=>'form-control','placeholder'  =>  'Ciudad de Residencia']) !!}
+            {!! Form::label('cobrador_telefono', 'Telefono') !!}
+            {!! Form::text('cobrador_telefono', null, ['class'=>'form-control', 'placeholder' =>   'Telefono del cobrador']) !!}
         </div>
     </div>
-    <div class="col-md-6">
+
+    <div class="col-md-push-3 col-md-3">
         <div class="form-group">
-            {!! Form::label('estado', 'Estado del cobrador') !!}
-            {!! Form::select('estado', ['' => 'Seleccione un Estado', 'ACTIVO' => 'ACTIVO', 'INACTIVO' => 'INACTIVO'], null,  ['class'=>'form-control']) !!}
+            {!! Form::label('cobrador_celular', 'Celular') !!}
+            {!! Form::text('cobrador_celular', null, ['class'=>'form-control', 'placeholder' =>   'Telefono del cobrador']) !!}
+        </div>
+    </div>
+</div>
+<div class="row">
+
+    <div class="col-md-push-1 col-md-4">
+        <div class="form-group">
+            {!! Form::label('cobrador_ciudad', 'Ciudad') !!}
+            {!! Form::text('cobrador_ciudad', null, ['class'=>'form-control','placeholder'  =>  'Ciudad del Residencia']) !!}
+        </div>
+    </div>
+    <div class="col-md-push-2 col-md-3">
+        <div class="form-group">
+            {!! Form::label('cobrador_estado', 'Estado del cobrador') !!}
+            {!! Form::select('cobrador_estado', ['' => 'SELECCIONE UN ESTADO', 'ACTIVO' => 'ACTIVO', 'INACTIVO' => 'INACTIVO'], null,  ['class'=>'form-control']) !!}
         </div>
     </div>
 </div>
 </br>
-
-
-<br>
+</br>
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-push-1 col-md-6">
         {!! Form::submit('ENVIAR',  ['class'=>'btn btn-primary']) !!}
     </div>
 </div>
