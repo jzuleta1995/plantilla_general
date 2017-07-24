@@ -51,28 +51,37 @@
     </div>
     </div>
 
-    <div class="container">
+    <div class="container" id="design">
         <table class="table table-hover table-striped" >
             <thead>
-            <th>Cliente</th>
-            <th>Lugar de Trabajo</th>
-            <th>Fecha Cobro</th>
-            <th>Valor Cuota</th>
-            <th>Tasa %</th>
+            <th class="text-center">Vendedor</th>
+            <th class="text-center">Cliente</th>
+            <th class="text-center">Couta Pagada</th>
+            <th class="text-center">Capital Pagado</th>
+            <th class="text-center">Interes Pagado %</th>
             </thead>
 
             <tbody>
             @foreach($utilidad as $prestamo)
 
                 <tr>
-                    <td>{{ $prestamo->cobrador }}</td>
-                    <td>{{ $prestamo->cliente }}</td>
-                    <td>{{ $prestamo->valor_real_pagar }}</td>
-                    <td>{{ $prestamo->valor_pagado_a_capital }}</td>
-                    <td>{{ $prestamo->valor_pagado_a_interes }} %</td>
-
+                    <td class="text-center">{{ $prestamo->cobrador }}</td>
+                    <td class="text-center">{{ $prestamo->cliente }}</td>
+                    <td class="text-center">{{ $prestamo->valor_real_pagado }}</td>
+                    <td class="text-center">{{ $prestamo->valor_pagado_a_capital }}</td>
+                    <td class="text-center">{{ $prestamo->valor_pagado_a_interes }} %</td>
                 </tr>
             @endforeach
+                <tr>
+                    <td class="text-center">TOTAL</td>
+                    <td class="text-center"></td>
+                    <td class="text-center">{{ $prestamo->valor_total_pagado }}</td>
+                    <td class="text-center">{{ $prestamo->valor_total_capital }}</td>
+                    <td class="text-center">{{ $prestamo->valor_total_interes }}</td>
+
+
+                </tr>
+
 
             </tbody>
 

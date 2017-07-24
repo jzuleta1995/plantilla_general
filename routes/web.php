@@ -56,10 +56,20 @@ Route::group(['prefix'  =>  '/admin', 'middleware'   =>  'auth'], function () {
 
     Route::resource('utilidadPrestamos', 'UtilidadPrestamosController');
 
-    Route::resource('excel', 'ExcelController');
+    //Route::resource('excel', 'ExcelController');
 
-    Route::name('excel.informe')
-         ->post('/excel', 'ExcelController@informe');
+
+    Route::name('excel.indexInformeCliente')
+        ->get('/excel/cliente', 'ExcelController@indexInformeCliente');
+
+    Route::name('excel.informeCliente')
+         ->post('/excel/cliente', 'ExcelController@informeCliente');
+
+    Route::name('excel.indexInformeCobrador')
+        ->get('/excel/cobrador', 'ExcelController@indexInformeCobrador');
+
+   Route::name('excel.informeCobrador')
+        ->post('/excel', 'ExcelController@informeCobrador');
 
     Route::name('color')
         ->get('/home/color', 'HomeController@index');
@@ -80,3 +90,5 @@ Route::group(['prefix'  =>  '/admin', 'middleware'   =>  'auth'], function () {
     });
 
 });
+
+

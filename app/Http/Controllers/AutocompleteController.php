@@ -10,7 +10,7 @@ class AutocompleteController extends Controller
 {
     public function autocomplete(Request $request)
     {
-        $results = "";
+        //$results = "";
 
         if($request->ajax()){
             $path = $request->ruta;

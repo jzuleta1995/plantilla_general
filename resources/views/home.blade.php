@@ -3,7 +3,7 @@
 @section('action', 'Visor Cliente')
 
 @section('content')
-<div class="container">
+<div class="container"  >
     <div class="row">
         <div class="col-md-12 panel" id="formulario_uno">
             {!! Form::open(['route' => 'home', 'method'   =>  'GET']) !!}
@@ -13,7 +13,6 @@
             </p>-->
 
 
-            <div class="container "  >
               <!--  <p>
                     <a id="paso_ocultar" href="" class="btn btn-primary">Ocultar</a>
                 </p>-->
@@ -49,7 +48,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
@@ -78,26 +77,34 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container" id="design">
     <table class="table table-hover table-striped table-condensed" >
         <thead>
-        <th>Cliente</th>
-        <th>Lugar de Trabajo</th>
-        <th>Fecha Cobro</th>
-        <th>Valor Cuota</th>
-        <th>Tasa %</th>
+        <th class="text-center">Cliente</th>
+        <th class="text-center">Lugar de Trabajo</th>
+        <th class="text-center">Fecha Cobro</th>
+        <th class="text-center">Valor Cuota</th>
+        <th class="text-center">Tasa %</th>
         </thead>
 
         <tbody>
             @foreach($prestamos as $prestamo)
 
-                <tr>
+                @if($prestamo->color =='AZUL')
+                    <tr class="info">
+                @elseif($prestamo->color =='ROSADO')
+                    <tr class="success">
+                @elseif($prestamo->color =='MORADO')
+                    <tr class="warning">
+                @elseif($prestamo->color =='ROJO')
+                    <tr class="danger">
+                @endif
 
-                <td >{{ $prestamo->nombre }}</td>
-                <td>{{ $prestamo->lugar_trabajo }}</td>
-                <td>{{ $prestamo->fecha_proximo_cobro }}</td>
-                <td>{{ $prestamo->valor_proximo_pago_deuda }}</td>
-                    <td>{{ $prestamo->tasa }} %</td>
+                <td class="text-center" >{{ $prestamo->cliente_nombre_completo }}</td>
+                <td class="text-center">{{ $prestamo->cliente_lugar_trabajo }}</td>
+                <td class="text-center">{{ $prestamo->prestamo_fecha_proximo_cobro }}</td>
+                <td class="text-center">{{ $prestamo->prestamo_valor_proxima_cuota }}</td>
+                 <td class="text-center">{{ $prestamo->prestamo_tasa }} %</td>
 
                 </tr>
             @endforeach

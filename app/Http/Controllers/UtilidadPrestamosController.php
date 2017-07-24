@@ -18,7 +18,9 @@ class UtilidadPrestamosController extends Controller
         //dd("hola");
         $utilidad = DB::table('view_utilidaprestamos')
            // ->join('view_utilidaprestamos', 'view_utilidaprestamos.cobrador_id', '=', 'cobradors.id')
-            ->select('cobrador', 'cliente', 'valor_real_pagar', 'valor_pagado_a_capital', 'valor_pagado_a_interes','fecha_cobroprestamo', 'valor_total_pagado', 'valor_total_capital', 'valor_total_interes', 'tasa');
+            ->select('cobrador', 'cliente', 'valor_real_pagado', 'valor_pagado_a_capital', 'valor_pagado_a_interes','fecha_cobroprestamo', 'valor_total_pagado', 'valor_total_capital', 'valor_total_interes', 'tasa');
+
+
 
         //dd($utilidad);
         if($request->cobrador_id !=''){

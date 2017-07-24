@@ -1,6 +1,5 @@
 $('#tabs').tabs();
 
-
 var TabFunctions = {
 
     tabSelect: function () {

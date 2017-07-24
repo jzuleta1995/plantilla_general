@@ -31,43 +31,32 @@ class HomeController extends Controller
       return view('home')->with('colors', $colors);
   }
 
-  public function cargarVisor(Request $request){
-
-      //dd("hola");
-     // $prestamos =DB::select('SELECT fc_color(?)', array(1));
-      //dd($prestamos);
-
-     /* $query = 'SELECT c.nombre, c.lugar_trabajo, p.fecha_proximo_cobro,p.tasa,p.valor_proximo_pago_deuda,fc_color(1) as color
-                FROM clientes C 
-                INNER JOIN prestamos P ON P.cliente_id = C.id';
-
-      $prestamos = DB::select($query);
-        $prestamos::paginate(3);*/
-     /* dd($prestamos);*/
+    public function cargarVisor(Request $request){
 
         $prestamos = DB::table('clientes')
             ->join('prestamos', 'prestamos.cliente_id', '=', 'clientes.id')
-            ->select('clientes.nombre', 'clientes.lugar_trabajo', 'prestamos.fecha_proximo_cobro', 'prestamos.tasa', 'prestamos.valor_proximo_pago_deuda');
+            ->selectRaw('clientes.cliente_nombre_completo, clientes.cliente_lugar_trabajo, prestamos.prestamo_fecha_proximo_cobro,prestamos.prestamo_tasa,prestamos.prestamo_valor_proxima_cuota,fc_estado_del_prestamo(prestamos.id) as color');
+        $prestamos->where('prestamo_estado', '=', 'ACTIVO');
 
-            if($request->cliente_id !=''){
-                $prestamos->where('clientes.id', '=', $request->cliente_id);
-            }
-            if($request->cobrador_id !=''){
-                $prestamos->where('clientes.cobrador_id', '=', $request->cobrador_id);
-            }
-            if($request->lugar_trabajo !=''){
-                $prestamos->where('clientes.lugar_trabajo', 'like', '%'.$request->lugar_trabajo.'%');
-            }
-            if($request->tasa !=''){
-                $prestamos->where('prestamos.tasa', '=', $request->tasa);
-            }
-            if($request->fecha_inicial !='' && $request->fecha_final !=''){
-                $prestamos->whereBetween('prestamos.fecha_proximo_cobro',  array($request->fecha_inicial, $request->fecha_final));
-            }
+        if($request->cliente_id !=''){
+            $prestamos->where('clientes.id', '=', $request->cliente_id);
+        }
+        if($request->cobrador_id !=''){
+            $prestamos->where('clientes.cobrador_id', '=', $request->cobrador_id);
+        }
+        if($request->lugar_trabajo !=''){
+            $prestamos->where('clientes.cliente_lugar_trabajo', 'like', '%'.$request->lugar_trabajo.'%');
+        }
+        if($request->tasa !=''){
+            $prestamos->where('prestamos.prestamo_tasa', '=', $request->tasa);
+        }
+        if($request->fecha_inicial !='' && $request->fecha_final !=''){
+            $prestamos->whereBetween('prestamos.prestamo_fecha_proximo_cobro',  array($request->fecha_inicial, $request->fecha_final));
+        }
 
 
         //dd($prestamos);
-      $prestamos = $prestamos->paginate(15);
+        $prestamos = $prestamos->paginate(2);
 
         //return view('aplicacion.prestamo.index', compact('prestamo'));
 

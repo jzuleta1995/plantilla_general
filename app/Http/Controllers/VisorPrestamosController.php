@@ -12,7 +12,7 @@ class VisorPrestamosController extends Controller
 
         $prestamos = DB::table('clientes')
             ->join('prestamos', 'prestamos.cliente_id', '=', 'clientes.id')
-            ->select('clientes.nombre', 'clientes.lugar_trabajo', 'prestamos.fecha_proximo_cobro', 'prestamos.tasa', 'prestamos.valor_proximo_pago_deuda');
+            ->select('clientes.nombre', 'clientes.lugar_trabajo', 'prestamos.fecha_proximo_cobro', 'prestamos.prestamo_tasa', 'prestamos.valor_proximo_pago_deuda');
 
         //dd($prestamos);
         $prestamos = $prestamos->paginate(2);

@@ -180,6 +180,9 @@ return [
         'Maatwebsite\Excel\ExcelServiceProvider',
         'Laracasts\Utilities\JavaScript\JavaScriptServiceProvider',
         Barryvdh\DomPDF\ServiceProvider::class,
+        Spatie\Backup\BackupServiceProvider::class,
+
+
 
 
     ],

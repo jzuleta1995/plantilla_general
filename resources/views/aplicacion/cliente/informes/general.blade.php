@@ -1,105 +1,70 @@
 @extends('template.form')
 
-@section('action', 'Crear usuario')
+@section('action', 'Informe Clientes')
 
 @section('content')
-    <a href="{{ route('user.index') }}" class="btn btn-primary pull-right">Listado</a><hr>
     <!-- se incluye mensajes de erros -->
-    @include('template.partials.error')
-    <div class="container">
-        {!! Form::open(['route' => 'excel.informe']) !!}
+    <div class="container panel" id="design">
 
-        <div class="form-group">
-            {!! Form::label('cliente', 'Cliente', ['class' =>'col-lg-3 control-label']) !!}
-            <div class="col-xs-3">
-                <div class="col-lg-10">
+        @include('template.partials.error')
+        {!! Form::open(['route' => 'excel.informeCliente']) !!}
 
+        <br>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('cliente', 'Cliente:') !!}
                     {!! Form::hidden('cliente_id', null, ['class'=>'form-control', 'id' => 'cliente_id', 'value' => 'id', 'placeholder'  =>  'Nombre de cliente']) !!}
                     {!! Form::text('cliente', null, ['class'=>'form-control', 'id' => 'cliente', 'value' => 'id', 'placeholder'  =>  'Nombre de cliente']) !!}
                 </div>
             </div>
         </div>
-            <div class="form-group">
-                {!! Form::label('fecha_proximo_cobro', 'Fecha proximo cobro Desde:', ['class' =>'col-lg-3 control-label']) !!}
-                <div class="col-xs-3">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('fecha_proximo_cobro', 'Fecha proximo cobro Desde:') !!}
+                    {!! Form::date('fecha_proximo_cobro', null, ['class'=>'form-control']) !!}
 
-                <div class="col-lg-10">
-                   {!! Form::date('fecha_proximo_cobro', null, ['class'=>'form-control']) !!}
                 </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('fecha_proximo_cobro1', 'Hasta:') !!}
+                    {!! Form::date('fecha_proximo_cobro1', null, ['class'=>'form-control']) !!}
+
                 </div>
-
-                {!! Form::label('fecha_proximo_cobro1', 'Hasta', ['class' =>'col-xs-1 control-label']) !!}
-                    <div class="col-xs-3">
-
-                    <div class="col-lg-10">
-
-                     {!! Form::date('fecha_proximo_cobro1', null, ['class'=>'form-control']) !!}
-                    </div>
-                    </div>
-
+            </div>
         </div>
+
 
         <div class="row">
+            <br>
             <div class="col-md-6">
-                {!! Form::submit('ENVIAR',  ['class'=>'btn btn-primary']) !!}
+                {!! Form::submit('EXPORTAR EN EXCEL',  ['class'=>'btn btn-primary']) !!}
             </div>
         </div>
-
+        <br>
 
         {!! Form::close() !!}
-
-
     </div>
-    </form>
 
-
-    <!--<form class="form-horizontal" role="form">
-        <div class="form-group">
-            <label for="ejemplo_email_3" class="col-lg-2 control-label">Email</label>
-            <div class="col-lg-10">
-                <input type="email" class="form-control" id="ejemplo_email_3"
-                       placeholder="Email">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="ejemplo_password_3" class="col-lg-2 control-label">Contraseña</label>
-            <div class="col-xs-3">
-
-            <div class="col-lg-10">
-
-                <input type="password" class="form-control" id="ejemplo_password_3"
-                       placeholder="Contraseña">
-            </div>
-            </div>
-            <label for="ejemplo_password_3" class="col-lg-1 control-label">hasta</label>
-
-            <div class="col-xs-3">
-
-                <div class="col-lg-10">
-
-
-                    <input type="password" class="form-control" id="ejemplo_password_3"
-                           placeholder="Contraseña">
-                </div>
-            </div>
-        </div>
-
-    </form>-->
 @endsection
 
-        @section('script')
+@section('script')
+    <script src="{{ asset('js/autocomplete.js') }}"></script>
+    <script>autocompleteClass.autocompleteComponent('#cliente', '#cliente_id', 'cliente');</script>
 
-            <script type="text/javascript">
-                $( "#cliente" ).autocomplete({
-                    source:'{!! route('autocomplete', ['ruta'   =>  'cliente'])!!}',
-                    minlength:1,
-                    autoFocus:true,
-                    select:function(e,ui)
-                    {
-                        $('#cliente').val(ui.item.id);
-                        $('#cliente_id').val(ui.item.id);
-                    }
-                });
-            </script>
-        @endsection
+  <!--  <script type="text/javascript">
+        $( "#cliente" ).autocomplete({
+            source:'{!! route('autocomplete', ['ruta'   =>  'cliente'])!!}',
+            minlength:1,
+            autoFocus:true,
+            select:function(e,ui)
+            {
+                $('#cliente').val(ui.item.id);
+                $('#cliente_id').val(ui.item.id);
+            }
+        });
+    </script>-->
+@endsection
 

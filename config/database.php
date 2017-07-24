@@ -65,6 +65,12 @@ return [
             'prefix' => '',
             'schema' => 'public',
             'sslmode' => 'prefer',
+            'dump' => [
+                'dump_binary_path' => 'pg_dump', // only the path, so without `mysqldump` or `pg_dump`
+                'use_single_transaction',
+                'timeout' => 60 * 5,
+                'add_extra_option' => '--optionname=optionvalue',
+            ],
         ],
 
         'sqlsrv' => [
