@@ -12,12 +12,13 @@
 
 <h1> HOLA</h1>
 
-    <table>
+    <table class="table table-striped">
         <thead>
-        <th>id</th>
-        <th>nombre</th>
-        <th>apellido</th>
-
+        <tr>
+            <th>id</th>
+            <th>nombre</th>
+            <th>apellido</th>
+        </tr>
         </thead>
         <tbody>
         @foreach($users as $user)
@@ -28,6 +29,13 @@
             </tr>
         @endforeach
         </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="2"></td>
+            <td >TOTAL</td>
+            <td>$6,500.00</td>
+        </tr>
+        </tfoot>
     </table>
 
 </body>

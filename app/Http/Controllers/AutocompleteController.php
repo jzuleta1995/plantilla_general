@@ -12,6 +12,8 @@ class AutocompleteController extends Controller
     {
         //$results = "";
 
+        //dd("auto");
+
         if($request->ajax()){
             $path = $request->ruta;
             $term = $request->term;

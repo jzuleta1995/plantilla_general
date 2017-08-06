@@ -11,9 +11,15 @@
             @include('aplicacion.prestamo.fragment.form')
         {!! Form::close() !!}
         <br>
+
+
     </div>
     <h3 class="text-center">Visor Abonos</h3>
     <br>
     @include('aplicacion.prestamo.fragment.visorabono')
+
     <br>
+@endsection
+@section('script')
+    <script src="{{asset('js/modal/anula_abono.js')}}"></script>
 @endsection

@@ -54,7 +54,7 @@
     <script src="{{ asset('js/autocomplete.js') }}"></script>
     <script>autocompleteClass.autocompleteComponent('#cliente', '#cliente_id', 'cliente');</script>
 
-  <!--  <script type="text/javascript">
+  <!-- <script type="text/javascript">
         $( "#cliente" ).autocomplete({
             source:'{!! route('autocomplete', ['ruta'   =>  'cliente'])!!}',
             minlength:1,

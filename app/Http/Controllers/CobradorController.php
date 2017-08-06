@@ -6,7 +6,7 @@ use App\Cobrador;
 use App\Http\Requests\CobradorRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use DB;
 class CobradorController extends Controller
 {
     public function index(Request $request)
@@ -90,5 +90,60 @@ class CobradorController extends Controller
                 'message' => $cobrador->nombre .' fue eliminado correctamente'
             ]);
         }
+    }
+    public function indexAsignaCobradorACliente(Request $request)
+    {
+        $clientes = "";
+        return view('aplicacion.cobrador.procedimientos.AsignaCobradorACliente',compact('clientes',$clientes));
+    }
+
+    public function CargarClienteCobrador(Request $request)
+    {
+        //dd("ingrese aqui");
+          if( $request->cobrador_quitar_cliente_id!= '') {
+
+              $clientes = DB::table('clientes')
+                  ->selectRaw('clientes.id, clientes.cliente_nombre_completo');
+              $clientes->where('cliente_estado', '=', 'ACTIVO');
+
+              if ($request->cobrador_quitar_cliente_id != '') {
+                  $clientes->where('clientes.cobrador_id', '=', $request->cobrador_quitar_cliente_id);
+              }
+              $clientes=$clientes->get();
+
+              return view('aplicacion.cobrador.procedimientos.AsignaCobradorACliente')->with('clientes', $clientes);
+
+          }else {
+              return Redirect()->route('cobrador.AsignaCobradorACliente')
+                  ->with('info', 'Debe Ingresar El Cobrador Quitar Clientes');
+          }
+    }
+
+    public function AsignaCobradorACliente(Request $request)
+    {
+
+        $clientes = explode(",", substr($request->datos, 0, -1));
+
+        if( $request->cobrador_asignar_cliente_id!= '') {
+            foreach ($clientes as $cliente) {
+                if($cliente != "0") {
+                    DB::table('clientes')
+                        ->where('id', '=', $cliente)
+                        ->update(['cobrador_id' => $request->cobrador_asignar_cliente_id]);
+                    //dd("datos".$asignacion);
+                    //$asignacion->save();
+                }
+        }
+
+            $clientes = "";
+
+            return view('aplicacion.cobrador.procedimientos.AsignaCobradorACliente')->with('clientes', $clientes);
+
+
+        }else {
+            return Redirect()->route('cobrador.AsignaCobradorACliente')
+                ->with('info', 'Debe Ingresar El Cobrador Asignar Clientes');
+        }
+
     }
 }

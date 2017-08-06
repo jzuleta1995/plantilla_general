@@ -105,6 +105,10 @@
                 <td class="text-center">{{ $prestamo->prestamo_fecha_proximo_cobro }}</td>
                 <td class="text-center">{{ $prestamo->prestamo_valor_proxima_cuota }}</td>
                  <td class="text-center">{{ $prestamo->prestamo_tasa }} %</td>
+                <td class="text-center">
+
+                    <button class="btn btn-warning" data-toggle="modal" data-target="#editModal" onclick="fun_edit('{{$prestamo -> id}}')">Anular Prestamo</button>
+                </td>
 
                 </tr>
             @endforeach
@@ -112,9 +116,53 @@
         </tbody>
 
     </table>
+
+    <!-- Edit Modal start -->
+    <input type="hidden" name="hidden_view" id="hidden_view" value="{{url('admin/prestamo/view')}}">
+
+    <div class="modal fade" id="editModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Editar</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ url('admin/prestamo/updateAnulaPrestamo') }}" method="post">
+                        {{ csrf_field() }}
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="edit_cliente">cliente:</label>
+                                <input type="text" class="form-control" id="edit_cliente" name="edit_cliente" readonly="true">
+                            </div>
+                            <div class="form-group">
+                                <label for="edit_observacion">Observacion:</label>
+                                <input type="text" class="form-control" id="edit_observacion" name="edit_observacion">
+                            </div>
+                        </div>
+
+                        <input type="hidden" id="edit_id" name="edit_id">
+
+                        <button type="button" onclick="fun_save()" class="btn btn-default">Modificar</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- Edit code ends -->
+
 </div>
 @endsection
 @section('script')
+    <script src="{{asset('js/modal/anula_prestamo.js')}}"></script>
+
 
     <script type="text/javascript">
         $( "#cliente" ).autocomplete({

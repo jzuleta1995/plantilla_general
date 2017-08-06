@@ -16,7 +16,11 @@
             {!! Form::close() !!}
         <!-- fin campo buscar-->
             <p>
-                <a href="{{ route('cliente.create') }}" class="btn btn-primary">Registrar nuevo cliente</a>
+                <a href="{{ route('cliente.create') }}" class="btn btn-primary ">Registrar nuevo cliente</a>
+               <!-- <button class="btn btn-primary" id="modalOptions">Click me</button>
+                <a href="home" class="confirm">Go to home</a>-->
+
+
             </p>
             <p>
                 <span id="clientes-total"> {{ $clientes->total() }} </span>registros |

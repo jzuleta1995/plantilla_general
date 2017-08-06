@@ -48,8 +48,10 @@
                 <div class="col-md-push-5 col-md-3">
                     <div class="form-group">
                         {!! Form::hidden('abono_estado', 'ACTIVO', ['class'=>'form-control']) !!}
-                        {!! Form::label('abono_observacion', 'Observación') !!}
-                        {!! Form::textArea('abono_observacion', null, ['class'=>'form-control', 'placeholder' =>   'Observación', 'rows' => '5']) !!}
+                        {!! Form::hidden('abono_observacion', '.', ['class'=>'form-control']) !!}
+
+                        <!-- {!! Form::label('abono_observacion', 'Observación') !!}
+                        {!! Form::textArea('abono_observacion', '.', ['class'=>'form-control', 'placeholder' =>   'Observación', 'rows' => '5']) !!}-->
                     </div>
                 </div>
             </div>

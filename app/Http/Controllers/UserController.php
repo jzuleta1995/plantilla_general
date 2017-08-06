@@ -6,6 +6,10 @@ use App\Http\Requests\UserEditRequest;
 use App\Http\Requests\UserRequest;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use DB;
+use Illuminate\Support\Facades\Hash;
+
 
 class UserController extends Controller
 {
@@ -40,6 +44,9 @@ class UserController extends Controller
         $user->respuesta_secreta    = $request->respuesta_secreta;
         $user->tipo                 = $request->tipo;
         $user->estado               = $request->estado;
+
+        //dd($user->password);
+
         $user->save();
 
         return Redirect()->route('user.index')
@@ -88,5 +95,85 @@ class UserController extends Controller
                 'message' => $users->nombre .' fue eliminado correctamente'
             ]);
         }
+    }
+
+    public function indexcambioClave(Request $request)
+    {        //dd("ingrese");
+        return view('aplicacion.user.procedimientos.cambioClave');
+    }
+
+    public function cambioClave(Request $request)
+    {
+
+    // dd(bcrypt($request->nueva_password));
+
+        if($request->nueva_password != $request->confirmacion_password){
+            return Redirect()->route('user.cambioClave')
+                ->with('info', 'La Contraseña Nueva ' . $request->nueva_password . ' no coincide con la contraseña de confirmacion '.$request->confirmacion_password);
+        }
+
+        $usuarios = User::find( Auth::id());
+
+        $clave_encriptada     = $usuarios->password;
+        $clave_sin_encriptadar = $request->password;
+        $clave_nueva          = $request->nueva_password;
+
+        //se valida si la clave actual es igual a la clave nueva
+        if(Hash::check($clave_nueva, $clave_encriptada)){
+            return Redirect()->route('user.cambioClave')
+                ->with('info', 'La Contraseña Nueva  ' . $request->password . ' Debe Ser diferente a la Contraseña Guardada');
+        }
+
+       //se valida que la clave actual sin encriptar, sea igual a la clave encritada
+        if(Hash::check($clave_sin_encriptadar, $clave_encriptada)){
+            $usuarios->password           = bcrypt($request->nueva_password);
+            $usuarios->save();
+            //se desloguea de la aplicacion para que ingrese con la nueva clave
+            Auth::logout();
+
+            return redirect('/');
+
+         }else{
+            return Redirect()->route('user.cambioClave')
+                ->with('info', 'La Contraseña Actual ' . $request->password . ' no coincide con la contraseña de Guardada');
+         }
+
+   }
+
+    public function nuevaClave(Request $request)
+    {
+
+
+        if($request->nueva_password != $request->confirmacion_password){
+            return Redirect()->route('user.cambioClave')
+                ->with('info', 'La Contraseña Nueva  no coincide con la contraseña de confirmacion ');
+        }
+
+        $usuarios = User::find( $request->email);
+
+        $clave_encriptada     = $usuarios->password;
+        $clave_sin_encriptadar = $request->password;
+        $clave_nueva          = $request->nueva_password;
+
+        //se valida si la clave actual es igual a la clave nueva
+        if(Hash::check($clave_nueva, $clave_encriptada)){
+            return Redirect()->route('user.cambioClave')
+                ->with('info', 'La Contraseña Nueva  Debe Ser diferente a la Contraseña Guardada');
+        }
+
+        //se valida que la clave actual sin encriptar, sea igual a la clave encritada
+        if(Hash::check($clave_sin_encriptadar, $clave_encriptada)){
+            $usuarios->password           = bcrypt($request->nueva_password);
+            $usuarios->save();
+            //se desloguea de la aplicacion para que ingrese con la nueva clave
+            Auth::logout();
+
+            return redirect('/');
+
+        }else{
+            return Redirect()->route('user.cambioClave')
+                ->with('info', 'La Contraseña Actual  no coincide con la contraseña de Guardada');
+        }
+
     }
 }

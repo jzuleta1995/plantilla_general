@@ -7,7 +7,8 @@
         <a href="{{ route('cliente.index') }}" class="btn btn-primary pull-right">Listado</a>
     </div>
     <div class="container">
-    <!-- se incluye mensajes de erros -->
+
+        <!-- se incluye mensajes de erros -->
         @include('template.partials.error')
 
         {!! Form::open(['route' => 'cliente.store', 'method'   =>  'POST']) !!}
@@ -21,7 +22,7 @@
             </br>
             <div class="container">
                 <div class="col-md-6">
-                    {!! Form::submit('ENVIAR',  ['class'=>'btn btn-primary']) !!}
+                    {!! Form::submit('ENVIAR',  ['class'=>'btn btn-primary confirm', 'id' => 'modalOptions']) !!}
                 </div>
             </div>
         {!! Form::close() !!}
@@ -32,4 +33,5 @@
     <script src="{{ asset('js/aplicacion/cliente/cliente.js') }}"></script>
     <script src="{{ asset('js/autocomplete.js') }}"></script>
     <script>autocompleteClass.autocompleteComponent('#cobrador', '#cobrador_id', 'cobrador');</script>
+    <script src="{{ asset('js/modal/confirm_modal.js') }}"></script>
 @endsection

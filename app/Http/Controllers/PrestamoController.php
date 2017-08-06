@@ -66,8 +66,9 @@ class PrestamoController extends Controller
 
         $abonos = DB::table('abonos')
                   ->join('prestamos', 'abonos.prestamo_id', '=', 'prestamos.id')
-                  ->select('abonos.abono_valor_cuota', 'abonos.abono_valor', 'abonos.abono_tipo_pago', 'abonos.abono_observacion',
-                            'abonos.abono_fecha')
+                  ->select('abonos.id','abonos.abono_valor_cuota', 'abonos.abono_valor', 'abonos.abono_tipo_pago',
+                           'abonos.abono_observacion', 'abonos.abono_fecha')
+                  ->where('prestamos.id','=', $id)
                   ->paginate(4);
 
         return view('aplicacion.prestamo.show', compact('prestamo', 'cliente', 'abonos'));
@@ -126,5 +127,42 @@ class PrestamoController extends Controller
     {
 
         return view('aplicacion.prestamo.informes.utilidad', 'prestamos');
+    }
+
+    public function view(Request $request, $id)
+    {
+
+        $prestamos = DB::select('select cliente_nombre_completo from prestamos p, clientes c where c.id= p.cliente_id and p.id = ?', [$id]);
+        //$prestamos = $prestamos->get();
+        //dd($prestamos);
+        if($request->ajax()){
+           //$results =Prestamo::find($id);
+
+            foreach ($prestamos as $prestamo)
+            {
+                $results[] = $prestamo;
+            }
+
+            return response()->json($results[0]);
+        }
+    }
+
+
+    /*
+    *   Update data
+    */
+    public function updateAnulaPrestamo(Request $request, $id)
+    {
+
+       // dd("id".$id);
+        $data = Prestamo::find($id);
+        $data -> prestamo_observacion = $request -> input('observacion_prestamo');
+        $data -> prestamo_estado      = 'INACTIVO';
+
+        $data -> save();
+        //return response()->json($data);
+
+        return back()
+            ->with('success','Prestamo Anulado.');
     }
 }

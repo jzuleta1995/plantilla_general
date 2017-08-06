@@ -65,4 +65,32 @@ class AbonoController extends Controller
     {
         //
     }
+
+    /*
+        * View data
+        */
+    public function view(Request $request, $id)
+    {
+        if($request->ajax()){
+            $info = Abono::find($id);
+            return response()->json($info);
+        }
+    }
+
+
+    /*
+    *   Update data
+    */
+    public function updateAnulaAbono(Request $request, $id)
+    {
+        $data = Abono::find($id);
+        $data -> abono_observacion = $request -> input('observacion_abono');
+        $data -> abono_estado      = 'INACTIVO';
+
+        $data -> save();
+        //return response()->json($data);
+
+        return back()
+            ->with('success','Abono Anulado.');
+    }
 }
