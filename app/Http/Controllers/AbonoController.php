@@ -76,13 +76,12 @@ class AbonoController extends Controller
             return response()->json($info);
         }
     }
-
-
     /*
     *   Update data
     */
     public function updateAnulaAbono(Request $request, $id)
     {
+        //dd($request -> input('observacion_abono'));
         $data = Abono::find($id);
         $data -> abono_observacion = $request -> input('observacion_abono');
         $data -> abono_estado      = 'INACTIVO';

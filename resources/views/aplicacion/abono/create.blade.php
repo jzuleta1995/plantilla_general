@@ -18,7 +18,7 @@
                 <div class="col-md-push-3 col-md-3">
                     <div class="form-group">
                         {!! Form::label('abono_valor_cuota', 'Valor A Pagar ') !!}
-                        {!! Form::text('abono_valor_cuota', $prestamo->prestamo_valor_cuota, ['class'=>'form-control','placeholder'  =>  'Valor cuota' , 'readOnly' => 'true']) !!}
+                        {!! Form::text('abono_valor_cuota', $prestamo->prestamo_valor_proxima_cuota, ['class'=>'form-control','placeholder'  =>  'Valor cuota' , 'readOnly' => 'true']) !!}
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                 <div class="col-md-push-4 col-md-3">
                     <div class="form-group">
                         {!! Form::label('abono_tipo_pago', 'Tipo Pago') !!}
-                        {!! Form::select('abono_tipo_pago', ['' => 'SELECCIONE UN TIPO', 'ABONO DEUDA' => 'ABONO DEUDA', 'ABONO CAPITAL' => 'ABONO CAPITAL', 'PAGO' => 'PAGO'], null,  ['class'=>'form-control']) !!}
+                        {!! Form::select('abono_tipo_pago', ['' => 'SELECCIONE UN TIPO',  'ABONO CAPITAL' => 'ABONO CAPITAL', 'PAGO CUOTA' => 'PAGO CUOTA', 'PAGO TOTAL DEUDA' => 'PAGO TOTAL DEUDA',], null,  ['class'=>'form-control']) !!}
                     </div>
                 </div>
 
@@ -50,8 +50,8 @@
                         {!! Form::hidden('abono_estado', 'ACTIVO', ['class'=>'form-control']) !!}
                         {!! Form::hidden('abono_observacion', '.', ['class'=>'form-control']) !!}
 
-                        <!-- {!! Form::label('abono_observacion', 'Observación') !!}
-                        {!! Form::textArea('abono_observacion', '.', ['class'=>'form-control', 'placeholder' =>   'Observación', 'rows' => '5']) !!}-->
+                         {!! Form::label('abono_observacion', 'Observación') !!}
+                        {!! Form::textArea('abono_observacion', '.', ['class'=>'form-control', 'placeholder' =>   'Observación', 'rows' => '5']) !!}
                     </div>
                 </div>
             </div>

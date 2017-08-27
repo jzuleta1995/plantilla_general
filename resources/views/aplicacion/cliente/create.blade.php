@@ -23,6 +23,8 @@
             <div class="container">
                 <div class="col-md-6">
                     {!! Form::submit('ENVIAR',  ['class'=>'btn btn-primary confirm', 'id' => 'modalOptions']) !!}
+                    {!! Form::submit('ENVIAR',  ['class'=>'btn btn-primary']) !!}
+
                 </div>
             </div>
         {!! Form::close() !!}

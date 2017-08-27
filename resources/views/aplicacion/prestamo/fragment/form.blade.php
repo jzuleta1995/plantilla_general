@@ -12,36 +12,36 @@
         </div>
         <div class="col-md-push-3 col-md-3">
             <div class="form-group">
-                {!! Form::label('prestamo_valor', 'Valor ') !!}
-                {!! Form::Number('prestamo_valor', null, ['class'=>'form-control','placeholder'  =>  'valor prestamo']) !!}
+                {!! Form::label('prestamo_tipo', 'Tipo Prestamo') !!}
+                {!! Form::select('prestamo_tipo', ['' => 'SELECCIONE UN TIPO', 'ABIERTO' => 'ABIERTO', 'CERRADO' => 'CERRADO'], null,  ['class'=>'form-control', 'onblur' =>'mostrar()']) !!}
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-push-1 col-md-2">
             <div class="form-group">
-                {!! Form::label('prestamo_tasa', 'Tasa % ') !!}
-                {!! Form::Number('prestamo_tasa', null, ['class'=>'form-control','placeholder'  =>  'Tasa interes']) !!}
+                {!! Form::label('prestamo_tiempo_cobro', 'Tiempo Prestamo') !!}
+                {!! Form::select('prestamo_tiempo_cobro', ['' => 'SELECCIONE UN ESTADO', 'SEMANAL' => 'SEMANAL', 'QUINCENAL' => 'QUINCENAL', 'MENSUAL' => 'MENSUAL'], null,  ['class'=>'form-control']) !!}
             </div>
         </div>
         <div class="col-md-push-5 col-md-3">
             <div class="form-group">
-                {!! Form::label('prestamo_tipo', 'Tipo Prestamo') !!}
-                {!! Form::select('prestamo_tipo', ['' => 'SELECCIONE UN TIPO', 'ABIERTO' => 'ABIERTO', 'CERRADO' => 'CERRADO'], null,  ['class'=>'form-control']) !!}
-            </div>
+                {!! Form::label('prestamo_valor', 'Valor ') !!}
+                {!! Form::Number('prestamo_valor', null, ['class'=>'form-control','placeholder'  =>  'valor prestamo']) !!}
+             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-push-1 col-md-3">
             <div class="form-group">
-                {!! Form::label('prestamo_tiempo_cobro', 'Tiempo Prestamo') !!}
-                {!! Form::select('prestamo_tiempo_cobro', ['' => 'SELECCIONE UN ESTADO', 'DIARIO' => 'DIARIO', 'SEMANAL' => 'SEMANAL', 'QUINCENAL' => 'QUINCENAL', 'MENSUAL' => 'MENSUAL'], null,  ['class'=>'form-control']) !!}
+                {!! Form::label('prestamo_tasa', 'Tasa % ') !!}
+                {!! Form::Number('prestamo_tasa', null, ['class'=>'form-control','placeholder'  =>  'Tasa interes']) !!}
             </div>
         </div>
         <div class="col-md-push-4 col-md-2  ">
-            <div class="form-group">
+            <div class="form-group" id="numero_cuota">
                 {!! Form::label('prestamo_numero_cuotas', 'Numero de Cuotas') !!}
-                {!! Form::Number('prestamo_numero_cuotas', null, ['class'=>'form-control', 'placeholder' =>   'Numero de Cuotas']) !!}
+                {!! Form::Number('prestamo_numero_cuotas', 0, ['class'=>'form-control', 'placeholder' =>   'Numero de Cuotas']) !!}
             </div>
         </div>
     </div>
@@ -56,6 +56,8 @@
             <div class="form-group">
                 {!! Form::label('prestamo_valor_total', 'Valor Total') !!}
                 {!! Form::Number('prestamo_valor_total', null, ['class'=>'form-control', 'placeholder' =>   'Valor Total', 'readonly' => 'true']) !!}
+                {!! Form::hidden('interes_total', 0, ['class'=>'form-control', 'readonly' => 'true']) !!}
+
             </div>
         </div>
     </div>
@@ -73,7 +75,7 @@
         <div class="col-md-push-2 col-md-2">
             <div class="form-group">
                 {!! Form::label('prestamo_fecha_inicial', 'Fecha inicio prestamo') !!}
-                {!! Form::text('prestamo_fecha_inicial', null, ['class'=>'form-control', 'readOnly' => 'true']) !!}
+                {!! Form::date('prestamo_fecha_inicial', null, ['class'=>'form-control']) !!}
             </div>
         </div>
         <div class="col-md-push-3 col-md-2">

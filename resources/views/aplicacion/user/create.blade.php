@@ -73,7 +73,7 @@
             <div class="col-md-push-1 col-md-3">
                 <div class="form-group">
                     {!! Form::label('pregunta_secreta', 'Pregunta Secreta') !!}
-                    {!! Form::select('pregunta_secreta', ['' => 'SELECCIONE UNA PREGUNTA', '1' => 'NOMBRE DE LA MADRE', '2' => 'NOMBRE DEL PADRE'], null,  ['class'=>'form-control']) !!}
+                    {!! Form::select('pregunta_secreta', ['' => 'SELECCIONE UNA PREGUNTA', 'NOMBRE DE LA MADRE' => 'NOMBRE DE LA MADRE', 'NOMBRE DEL PADRE' => 'NOMBRE DEL PADRE', 'NOMBRE DE LA MASCOTA' => 'NOMBRE DE LA MASCOTA', 'NOMBRE DEL COLEGIO' => 'NOMBRE DEL COLEGIO'], null,  ['class'=>'form-control']) !!}
                 </div>
             </div>
             <div class="col-md-push-3 col-md-5">

@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default" id="desing">
-                <div class="panel-heading">Login</div>
+                <div class="panel-heading"></div>
                 <div class="panel-body">
                     {!! Form::open(['route' => 'user.cambioClave', 'method'   =>  'POST', 'role' => 'form']) !!}
 

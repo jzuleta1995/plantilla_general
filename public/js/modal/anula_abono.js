@@ -11,8 +11,6 @@ function fun_edit(id)
             //console.log(result);
             $("#edit_id").val(result.id);
             $("#edit_valor_abono").val(result.abono_valor_cuota);
-            /*$("#edit_apellido").val(result.abono_valor);
-            $("#edit_Direccion").val(result.abono_observacion);*/
         }
     });
 }
@@ -28,11 +26,11 @@ function fun_save()
         data: {"observacion_abono":$("#edit_observacion").val(), '_token': $("input[name=_token]").val()},
         success: function(result){
 
-            alert ("hhh");
+            alert ("Abono Anulado Satisfactoriamente");
 
-            $("#editModal").modal('hide');;
+            $("#editModal").modal('hide');
 
-            //console.log(result);
+            console.log(result);
             /* $("#edit_id").val(result.id);
              $("#edit_nombre").val(result.abono_valor_cuota);
              $("#edit_apellido").val(result.abono_valor);

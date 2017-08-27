@@ -13,7 +13,7 @@ class PrestamoRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,22 @@ class PrestamoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+
+            'cliente_id'                   => 'required',
+            'prestamo_valor'               => 'required',
+            'prestamo_tasa'                => 'required',
+            'prestamo_tipo'                => 'required',
+            'prestamo_tiempo_cobro'        => 'required',
+            'prestamo_numero_cuotas'       => 'required',
+            'valor_cuota'                  => 'required',
+            'prestamo_fecha'               => 'required',
+            'prestamo_fecha_inicial'       => 'required',
+            'prestamo_fecha_proximo_cobro' => 'required',
+            'prestamo_valor_total'         => 'required',
+            'prestamo_valor_abonado'       => 'required',
+            'prestamo_valor_proxima_cuota' => 'required',
+            'prestamo_valor_actual'        => 'required',
+            'prestamo_estado'              => 'required',
         ];
     }
 }

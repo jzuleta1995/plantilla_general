@@ -13,7 +13,7 @@ class AbonoRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,14 @@ class AbonoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'cliente_id'         => 'required',
+            'prestamo_id'        => 'required',
+            'abono_valor_cuota'  => 'required',
+            'abono_valor'        => 'required',
+            'abono_fecha'        => 'required',
+            'abono_observacion'  => 'required',
+            'abono_tipo_pago'    => 'required',
+            'abono_estado'       => 'required',
         ];
     }
 }

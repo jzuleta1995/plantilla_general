@@ -5,10 +5,10 @@
         <th class="text-center">Valor Abonado</th>
         <th class="text-center">Tipo Abono</th>
         <th class="text-center">Fecha Abono</th>
+        <th class="text-center">Estado Abono</th>
         <th class="text-center">Observación</th>
         </thead>
         <tbody>
-
           @foreach($abonos as $abono)
 
               <tr>
@@ -16,11 +16,11 @@
                   <td class="text-center">{{ $abono->abono_valor }}</td>
                   <td class="text-center"> {{ $abono->abono_tipo_pago }}</td>
                   <td class="text-center">{{ $abono->abono_fecha }}</td>
+                  <td class="text-center">{{ $abono->abono_estado }}</td>
                   <td class="text-center">{{ $abono->abono_observacion }}</td>
                   <td class="text-center">
 
                          <button class="btn btn-warning" data-toggle="modal" data-target="#editModal" onclick="fun_edit('{{$abono -> id}}')">Anular Abono</button>
-
                   </td>
                   <td class="text-center">
               </tr>
@@ -60,9 +60,6 @@
                         </div>
 
                         <input type="hidden" id="edit_id" name="edit_id">
-
-
-
 
                         <button type="button" onclick="fun_save()" class="btn btn-default">Modificar</button>
                     </form>

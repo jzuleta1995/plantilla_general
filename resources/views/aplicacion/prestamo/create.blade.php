@@ -7,7 +7,7 @@
         <a href="{{ route('prestamo.index') }}" class="btn btn-primary pull-right">Listado</a>
     </div>
     <div class="container">
-        {!! Form::open(['route' => 'prestamo.store', 'method'   =>  'POST']) !!}
+        {!! Form::open(['route' => 'prestamo.store', 'method'   =>  'POST' ]) !!}
           <div class="container panel" id="design">
               @include('aplicacion.prestamo.fragment.form')
             </div>
@@ -25,4 +25,28 @@
     <script src="{{ asset('js/aplicacion/prestamo/prestamo.js') }}"></script>
     <script src="{{ asset('js/autocomplete.js') }}"></script>
     <script>autocompleteClass.autocompleteComponent('#cliente', '#cliente_id', 'cliente');</script>
+
+    <script type="text/javascript">
+        function mostrar(){
+
+            if(document.getElementById('prestamo_tipo').value =="ABIERTO"){
+               // document.getElementById('tipo_prestamo').value = 0;
+                document.getElementById('prestamo_numero_cuotas').value = 0;
+                document.getElementById('prestamo_tasa').value = 0;
+                document.getElementById('prestamo_valor').value = 0;
+
+                document.getElementById('numero_cuota').style.display = 'none';
+
+            }else if(document.getElementById('prestamo_tipo').value =="CERRADO"){
+
+                document.getElementById('prestamo_numero_cuotas').value = 0;
+                document.getElementById('prestamo_tasa').value = 0;
+                document.getElementById('prestamo_valor').value = 0;
+
+                document.getElementById('numero_cuota').style.display = 'block';
+            }
+        }
+
+
+    </script>
 @endsection

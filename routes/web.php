@@ -29,7 +29,16 @@ Route::resource('/user', 'UserController', [
 ]);
 
 Route::name('password.nuevaClave')
-    ->post('/user/procedimientos/nuevaclave', 'UserController@nuevaClave');
+    ->post('/olvidastecontrasena', 'UserController@nuevaClave');
+
+Route::get('/user/retornarRespuestaSecreta/{user_correo}',
+    array('as' => 'user.retornarRespuestaSecreta',
+        'uses' => 'UserController@retornarRespuestaSecreta'
+    )
+);
+
+/*Route::name('pepito2')
+    ->post('/olvidastecontrasena', 'UserController@nuevaClave');*/
 
 
 Route::group(['prefix'  =>  '/admin', 'middleware'   =>  'auth'], function () {
@@ -61,7 +70,7 @@ Route::group(['prefix'  =>  '/admin', 'middleware'   =>  'auth'], function () {
             )
         );
 
-        Route::post('/abono/updateAnulaAbono/{prestamo_id}',
+        Route::post('/abono/updateAnulaAbono/{abono_id}',
             array('as' => 'abono.updateAnulaAbono',
                 'uses' => 'AbonoController@updateAnulaAbono'
             )
@@ -129,8 +138,11 @@ Route::group(['prefix'  =>  '/admin', 'middleware'   =>  'auth'], function () {
             'except' => ['edit', 'update', 'destroy']
         ]);
 
-        Route::name('prestamo.utilidad')
-            ->get('prestamo/informes/utilidad', 'UtilidadPrestamosController@cargarUtilidad');
+       Route::name('prestamo.utilidad')
+        ->get('prestamo/informes/utilidad', 'PrestamoController@utilidad');
+
+       /* Route::name('prestamo.utilidad2')
+            ->get('/prestamo/informes/utilidad', 'UtilidadPrestamosController@cargarUtilidad');*/
 
         Route::resource('utilidadPrestamos', 'UtilidadPrestamosController');
 

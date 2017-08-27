@@ -20,8 +20,6 @@ class UtilidadPrestamosController extends Controller
            // ->join('view_utilidaprestamos', 'view_utilidaprestamos.cobrador_id', '=', 'cobradors.id')
             ->select('cobrador', 'cliente', 'valor_real_pagado', 'valor_pagado_a_capital', 'valor_pagado_a_interes','fecha_cobroprestamo', 'valor_total_pagado', 'valor_total_capital', 'valor_total_interes', 'tasa');
 
-
-
         //dd($utilidad);
         if($request->cobrador_id !=''){
             $utilidad->where('utilidaPrestamos.cobrador_id', '=', $request->cobrador_id);
@@ -30,7 +28,6 @@ class UtilidadPrestamosController extends Controller
         if($request->fecha_inicial !='' && $request->fecha_final !=''){
             $utilidad->whereBetween('utilidaPrestamos.fecha_cobroprestamo',  array($request->fecha_inicial, $request->fecha_final));
         }
-
 
         //dd($prestamos);
         $utilidad = $utilidad->paginate(15);

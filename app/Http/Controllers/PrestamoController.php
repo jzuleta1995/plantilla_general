@@ -67,9 +67,10 @@ class PrestamoController extends Controller
         $abonos = DB::table('abonos')
                   ->join('prestamos', 'abonos.prestamo_id', '=', 'prestamos.id')
                   ->select('abonos.id','abonos.abono_valor_cuota', 'abonos.abono_valor', 'abonos.abono_tipo_pago',
-                           'abonos.abono_observacion', 'abonos.abono_fecha')
+                           'abonos.abono_observacion', 'abonos.abono_fecha', 'abono_estado')
                   ->where('prestamos.id','=', $id)
-                  ->paginate(4);
+                  ->orderBy('abonos.id', 'desc')
+            ->paginate(10);
 
         return view('aplicacion.prestamo.show', compact('prestamo', 'cliente', 'abonos'));
     }
@@ -125,7 +126,6 @@ class PrestamoController extends Controller
 
     public function utilidad(Request $request)
     {
-
         return view('aplicacion.prestamo.informes.utilidad', 'prestamos');
     }
 

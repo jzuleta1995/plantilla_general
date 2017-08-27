@@ -26,10 +26,6 @@
                     <ul class="dropdown-menu">
                         <li><a class="nav-link" href="{{ route('excel.indexInformeCliente') }}">Informe Clientes</a></li>
                         <li><a class="nav-link" href="{{ route('excel.indexInformeCobrador') }}">Informe Cobradores</a></li>
-
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li role="separator" class="divider"></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -38,9 +34,9 @@
                         <li><a class="nav-link" href="{{ route('cobrador.indexAsignaCobradorACliente') }}">Asignar Clientes a Cobrador</a></li>
                         <li><a class="nav-link" href="{{ route('excel.indexInformeCobrador') }}">Informe Cobradores</a></li>
 
-                        <li role="separator" class="divider"></li>
+                        <!--<li role="separator" class="divider"></li>
                         <li><a href="#">Separated link</a></li>
-                        <li role="separator" class="divider"></li>
+                        <li role="separator" class="divider"></li>-->
                     </ul>
                 </li>
 
@@ -55,8 +51,10 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-expanded="false">
                         <span class="glyphicon glyphicon-user"></span> {{ Auth::user()->nombre }}
-                    </a>
+                        <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
+                        <li><a class="nav-link" href="{{ route('user.indexcambioClave') }}">Cambio Clave</a></li>
+                        <li role="separator" class="divider"></li>
                         <li>
                             <a href="{{ route('logout') }}" class="nav-link"
                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -67,7 +65,6 @@
                                 {{ csrf_field() }}
                             </form>
                         </li>
-                        <li><a class="nav-link" href="{{ route('user.indexcambioClave') }}">Cambio Clave</a></li>
                     </ul>
                 </li>
              @endif
