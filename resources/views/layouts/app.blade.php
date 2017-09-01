@@ -7,7 +7,13 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/form.css') }}">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
+    <!--libreria confirm -->
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.confirm.js') }}"></script>
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->

@@ -90,7 +90,6 @@
 
         <tbody>
             @foreach($prestamos as $prestamo)
-                {{ $prestamo->color }}
 
                 @if(trim($prestamo->color) =='AZUL')
                     <tr bgcolor="#0DB3F1">
@@ -98,7 +97,7 @@
                     <tr bgcolor="#F87595">
                 @elseif(trim($prestamo->color) =='MORADO')
                     <tr bgcolor="#CE6BFC">
-                @elseif(trim($prestamo->color) =='AZUL')
+                @elseif(trim($prestamo->color) =='ROJO')
                     <tr bgcolor="#FD364E">
                 @endif
 
