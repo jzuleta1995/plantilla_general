@@ -22,6 +22,7 @@
     </div>
 @endsection
 @section('script')
+    <script src="{{ asset('js/Fecha.js') }}"></script>
     <script src="{{ asset('js/aplicacion/prestamo/prestamo.js') }}"></script>
     <script src="{{ asset('js/autocomplete.js') }}"></script>
     <script>autocompleteClass.autocompleteComponent('#cliente', '#cliente_id', 'cliente');</script>

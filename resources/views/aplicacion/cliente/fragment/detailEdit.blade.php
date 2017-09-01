@@ -22,19 +22,19 @@
                     <br>
                     <div class="col-md-push-1 col-md-3">
                         <div class="form-group">
-                            {!! Form::label('fiador1_nombre', 'Nombre') !!}
+                            {!! Form::label('fiador1_nombre', ['class' => 'form-required'], 'Nombre') !!}
                             {!! Form::text('fiador1_nombre', !$fiador1->isEmpty() ? $fiador1[0]->fiador_nombre : null, ['class'=>'form-control not-empty', 'placeholder' =>   'Nombre del fiador']) !!}
                         </div>
                     </div>
                     <div class="col-md-push-1 col-md-3">
                         <div class="form-group">
-                            {!! Form::label('fiador1_apellido', 'Apellido') !!}
+                            {!! Form::label('fiador1_apellido', 'Apellido', ['class' => 'form-required']) !!}
                             {!! Form::text('fiador1_apellido', !$fiador1->isEmpty() ?  $fiador1[0]->fiador_apellido : null, ['class'=>'form-control not-empty', 'placeholder' =>   'Apellido del fiador']) !!}
                         </div>
                     </div>
                     <div class="col-md-push-1 col-md-3">
                         <div class="form-group">
-                            {!! Form::label('fiador1_documento', 'Documento') !!}
+                            {!! Form::label('fiador1_documento', 'Documento', ['class' => 'form-required']) !!}
                             {!! Form::text('fiador1_documento', !$fiador1->isEmpty() ?  $fiador1[0]->fiador_documento : null, ['class'=>'form-control not-empty', 'placeholder' =>   'Documento del fiador']) !!}
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                     <br>
                     <div class="col-md-push-1 col-md-3">
                         <div class="form-group">
-                            {!! Form::label('fiador1_direccion_casa', 'Direccion Casa') !!}
+                            {!! Form::label('fiador1_direccion_casa', 'Direccion Casa', ['class' => 'form-required']) !!}
                             {!! Form::text('fiador1_direccion_casa',!$fiador1->isEmpty() ? $fiador1[0]->fiador_direccion_casa : null, ['class'=>'form-control not-empty', 'placeholder' =>   'Direccion casa fiador']) !!}
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                     </div>
                     <div class="col-md-push-1 col-md-3">
                         <div class="form-group">
-                            {!! Form::label('fiador1_telefono', 'Telefono') !!}
+                            {!! Form::label('fiador1_telefono', 'Telefono', ['class' => 'form-required']) !!}
                             {!! Form::text('fiador1_telefono', !$fiador1->isEmpty() ?  $fiador1[0]->fiador_telefono : null, ['class'=>'form-control not-empty', 'placeholder' =>   'Telefono del fiador']) !!}
                         </div>
                     </div>
@@ -70,19 +70,19 @@
                     </div>
                     <div class="col-md-push-1 col-md-3">
                         <div class="form-group">
-                            {!! Form::label('fiador2_nombre', 'Nombre') !!}
+                            {!! Form::label('fiador2_nombre', 'Nombre', ['class' => 'form-required']) !!}
                             {!! Form::text('fiador2_nombre', !$fiador2->isEmpty() ? $fiador2[0]->fiador_nombre : null, ['class'=>'form-control not-empty', 'placeholder' =>   'Nombre del fiador']) !!}
                         </div>
                     </div>
                     <div class="col-md-push-1 col-md-3">
                         <div class="form-group">
-                            {!! Form::label('fiador2_apellido', 'Apellido') !!}
+                            {!! Form::label('fiador2_apellido', 'Apellido', ['class' => 'form-required']) !!}
                             {!! Form::text('fiador2_apellido',!$fiador2->isEmpty() ? $fiador2[0]->fiador_apellido :  null, ['class'=>'form-control not-empty', 'placeholder' =>   'Apellido del fiador']) !!}
                         </div>
                     </div>
                     <div class="col-md-push-1 col-md-3">
                         <div class="form-group">
-                            {!! Form::label('fiador2_documento', 'Documento') !!}
+                            {!! Form::label('fiador2_documento', 'Documento', ['class' => 'form-required']) !!}
                             {!! Form::text('fiador2_documento', !$fiador2->isEmpty() ? $fiador2[0]->fiador_documento : null, ['class'=>'form-control not-empty', 'placeholder' =>   'Documento del fiador']) !!}
                         </div>
                     </div>
@@ -93,7 +93,7 @@
                     <br>
                     <div class="col-md-push-1 col-md-3">
                         <div class="form-group">
-                            {!! Form::label('fiador2_direccion_casa', 'Direccion Casa') !!}
+                            {!! Form::label('fiador2_direccion_casa', 'Direccion Casa', ['class' => 'form-required']) !!}
                             {!! Form::text('fiador2_direccion_casa', !$fiador2->isEmpty() ? $fiador2[0]->fiador_direccion_casa : null, ['class'=>'form-control not-empty', 'placeholder' =>   'Direccion casa fiador']) !!}
                         </div>
                     </div>
@@ -105,7 +105,7 @@
                     </div>
                     <div class="col-md-push-1 col-md-3">
                         <div class="form-group">
-                            {!! Form::label('fiador2_telefono', 'Telefono') !!}
+                            {!! Form::label('fiador2_telefono', 'Telefono', ['class' => 'form-required']) !!}
                             {!! Form::text('fiador2_telefono', !$fiador2->isEmpty() ? $fiador2[0]->fiador_telefono : null, ['class'=>'form-control not-empty', 'placeholder' =>   'Telefono fiador']) !!}
                         </div>
                     </div>

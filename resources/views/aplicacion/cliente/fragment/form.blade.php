@@ -1,13 +1,13 @@
 <div class="row">
     <div class="col-md-push-1 col-md-4">
         <div class="form-group">
-            {!! Form::label('cliente_nombre', 'Nombre') !!}
+            {!! Form::label('cliente_nombre', 'Nombre', ['class' => 'form-required']) !!}
             {!! Form::text('cliente_nombre', null, ['class'=>'form-control', 'id' =>'nombre', 'value' => '', 'placeholder'  =>  'Nombre del cliente']) !!}
     </div>
     </div>
     <div class="col-md-push-2 col-md-4">
         <div class="form-group">
-            {!! Form::label('cliente_apellido', 'Apellido') !!}
+            {!! Form::label('cliente_apellido', 'Apellido', ['class' => 'form-required']) !!}
             {!! Form::text('cliente_apellido', null, ['class'=>'form-control','placeholder'  =>  'Apellido del cliente']) !!}
         </div>
     </div>
@@ -15,13 +15,13 @@
 <div class="row">
     <div class="col-md-push-1 col-md-3">
         <div class="form-group">
-            {!! Form::label('cliente_documento', 'Documento ') !!}
+            {!! Form::label('cliente_documento', 'Documento', ['class' => 'form-required']) !!}
             {!! Form::text('cliente_documento', null, ['class'=>'form-control','placeholder'  =>  'Documento del cliente']) !!}
         </div>
     </div>
     <div class="col-md-push-3 col-md-4">
         <div class="form-group">
-            {!! Form::label('cliente_direccion_casa', 'Direccion Casa') !!}
+            {!! Form::label('cliente_direccion_casa', 'Direccion Casa', ['class' => 'form-required']) !!}
             {!! Form::text('cliente_direccion_casa', null, ['class'=>'form-control', 'placeholder' =>   'Direccion casa cliente']) !!}
         </div>
     </div>
@@ -29,7 +29,7 @@
 <div class="row">
     <div class="col-md-push-1 col-md-4">
         <div class="form-group">
-            {!! Form::label('cliente_direccion_trabajo', 'Direccion trabajo') !!}
+            {!! Form::label('cliente_direccion_trabajo', 'Direccion trabajo', ['class' => 'form-required']) !!}
             {!! Form::text('cliente_direccion_trabajo', null, ['class'=>'form-control','placeholder'  =>  'Direccion trabajo cliente']) !!}
         </div>
     </div>
@@ -44,13 +44,13 @@
 <div class="row">
     <div class="col-md-push-1 col-md-3">
         <div class="form-group">
-            {!! Form::label('cliente_telefono', 'Telefono') !!}
+            {!! Form::label('cliente_telefono', 'Telefono', ['class' => 'form-required']) !!}
             {!! Form::text('cliente_telefono', null, ['class'=>'form-control', 'placeholder' =>   'Telefono del cliente']) !!}
         </div>
     </div>
     <div class="col-md-push-3 col-md-3">
         <div class="form-group">
-            {!! Form::label('cliente_celular', 'Celular') !!}
+            {!! Form::label('cliente_celular', 'Celular', ['class' => 'form-required']) !!}
             {!! Form::text('cliente_celular', null, ['class'=>'form-control', 'placeholder' =>   'Telefono celular']) !!}
         </div>
     </div>
@@ -78,7 +78,7 @@
 <div class="row">
     <div class="col-md-push-1 col-md-3">
         <div class="form-group">
-            {!! Form::label('cliente_estado', 'Estado del cliente') !!}
+            {!! Form::label('cliente_estado', 'Estado del cliente', ['class' => 'form-required']) !!}
             {!! Form::select('cliente_estado', ['' => 'SELECCIONE UN ESTADO', 'ACTIVO' => 'ACTIVO', 'INACTIVO' => 'INACTIVO'], null,  ['class'=>'form-control']) !!}
         </div>
     </div>
