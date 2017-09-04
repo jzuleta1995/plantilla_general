@@ -9,8 +9,12 @@
     <div class="container panel" id="design">
     <!-- se incluye mensajes de erros -->
         @include('template.partials.error')
-        {!! Form::model($cobrador, ['route' => ['cobrador.update' ,$cobrador->id], 'method' => 'PUT']) !!}
+        {!! Form::model($cobrador, ['route' => ['cobrador.update' ,$cobrador->id], 'method' => 'PUT', 'id' => 'formulario', 'autocomplete' => 'off']) !!}
             @include('aplicacion.cobrador.fragment.form')
         {!! Form::close() !!}
     </div>
+@endsection
+@section('script')
+    <script src="{{ asset('js/aplicacion/general/limpiarFormulario.js') }}"></script>
+    <script src="{{ asset('js/aplicacion/general/validaCamposNumericos.js') }}"></script>
 @endsection

@@ -31,7 +31,7 @@ class PrestamoRequest extends FormRequest
             'prestamo_tipo'                => 'required',
             'prestamo_tiempo_cobro'        => 'required',
             'prestamo_numero_cuotas'       => 'required',
-            'valor_cuota'                  => 'required',
+            //'valor_cuota'                  => 'required',
             'prestamo_fecha'               => 'required',
             'prestamo_fecha_inicial'       => 'required',
             'prestamo_fecha_proximo_cobro' => 'required',
@@ -39,7 +39,6 @@ class PrestamoRequest extends FormRequest
             'prestamo_valor_abonado'       => 'required',
             'prestamo_valor_proxima_cuota' => 'required',
             'prestamo_valor_actual'        => 'required',
-            'prestamo_estado'              => 'required',
         ];
     }
 }

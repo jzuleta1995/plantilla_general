@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Abono;
+use App\Http\Requests\PrestamoRequest;
 use App\Prestamo;
 use App\Cliente;
 use Illuminate\Http\Request;
@@ -15,9 +16,12 @@ class PrestamoController extends Controller
     {
         $prestamos = DB::table('prestamos')
                     ->join('clientes', 'prestamos.cliente_id', '=', 'clientes.id')
-                    ->select('prestamos.id', 'clientes.cliente_nombre_completo', 'prestamos.prestamo_tasa', 'prestamos.prestamo_valor');
+                    ->select('prestamos.id', 'clientes.cliente_nombre_completo', 'prestamos.prestamo_tasa', 'prestamos.prestamo_valor')
+                    ->where('prestamo_estado', '=', 'ACTIVO')
+                    ->orderBy('prestamos.created_at', 'desc');
 
-        $prestamos = $prestamos->paginate(2);
+
+        $prestamos = $prestamos->paginate(30);
 
         return view('aplicacion.prestamo.index')->with('prestamos', $prestamos);
     }
@@ -30,25 +34,25 @@ class PrestamoController extends Controller
                     ->with('cliente', $cliente);
     }
 
-    public function store(Request $request)
+    public function store(PrestamoRequest $request)
     {
         $prestamo = new Prestamo($request->all());
 
         $prestamo->cliente_id                    = $request->cliente_id;
-        $prestamo->prestamo_valor                = $request->prestamo_valor;
-        $prestamo->prestamo_tasa                 = $request->prestamo_tasa;
+        $prestamo->prestamo_valor                = str_replace(',','',str_replace('.','',$request->prestamo_valor));
+        $prestamo->prestamo_tasa                 = str_replace(',','',str_replace('.','',$request->prestamo_tasa));
         $prestamo->prestamo_tipo                 = $request->prestamo_tipo;
         $prestamo->prestamo_tiempo_cobro         = $request->prestamo_tiempo_cobro;
-        $prestamo->prestamo_numero_cuotas        = $request->prestamo_numero_cuotas;
-        $prestamo->prestamo_valor_cuota          = $request->prestamo_valor_cuota;
+        $prestamo->prestamo_numero_cuotas        = str_replace(',','',str_replace('.','',$request->prestamo_numero_cuotas));
+        $prestamo->prestamo_valor_cuota          = str_replace(',','',str_replace('.','',$request->prestamo_valor_cuota));
         $prestamo->prestamo_fecha                = $request->prestamo_fecha;
         $prestamo->prestamo_fecha_inicial        = $request->prestamo_fecha_inicial;
         $prestamo->prestamo_fecha_proximo_cobro  = $request->prestamo_fecha_proximo_cobro;
-        $prestamo->prestamo_valor_total          = $request->prestamo_valor_total;
-        $prestamo->prestamo_valor_abonado        = $request->prestamo_valor_abonado;
-        $prestamo->prestamo_valor_proxima_cuota  = $request->prestamo_valor_proxima_cuota;
+        $prestamo->prestamo_valor_total          = str_replace(',','',str_replace('.','',$request->prestamo_valor_total));
+        $prestamo->prestamo_valor_abonado        = str_replace(',','',str_replace('.','',$request->prestamo_valor_abonado));
+        $prestamo->prestamo_valor_proxima_cuota  = str_replace(',','',str_replace('.','',$request->prestamo_valor_proxima_cuota));
         $prestamo->prestamo_estado               = $request->prestamo_estado;
-        $prestamo->prestamo_valor_actual         = $request->prestamo_valor_actual;
+        $prestamo->prestamo_valor_actual         = str_replace(',','',str_replace('.','',$request->prestamo_valor_actual));
         $prestamo->prestamo_estado               = 'ACTIVO';
         $prestamo->user_id                       = Auth::id();
         $prestamo->save();
@@ -132,7 +136,7 @@ class PrestamoController extends Controller
     public function view(Request $request, $id)
     {
 
-        $prestamos = DB::select('select cliente_nombre_completo from prestamos p, clientes c where c.id= p.cliente_id and p.id = ?', [$id]);
+        $prestamos = DB::select('select p.id,cliente_nombre_completo from prestamos p, clientes c where c.id= p.cliente_id and p.id = ?', [$id]);
         //$prestamos = $prestamos->get();
         //dd($prestamos);
         if($request->ajax()){
@@ -164,5 +168,17 @@ class PrestamoController extends Controller
 
         return back()
             ->with('success','Prestamo Anulado.');
+    }
+
+    public function validaUnicoPrestamoCliente(Request $request, $cliente_id)
+    {
+        $prestamos = DB::table('prestamos')
+            ->select(DB::raw('id'))
+            ->where('cliente_id', '=', $cliente_id)
+            ->where('prestamo_estado', '=', 'ACTIVO')
+            ->get();
+        if($request->ajax()){
+            return response()->json($prestamos[0]);
+        }
     }
 }

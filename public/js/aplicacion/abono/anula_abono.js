@@ -1,4 +1,4 @@
-function fun_edit(id)
+function mostrarModalAbono(id)
 {
 
     var view_url = $("#hidden_view").val();
@@ -16,9 +16,8 @@ function fun_edit(id)
 }
 
 
-function fun_save()
+function AnularAbono()
 {
-
     var url = '/admin/abono/updateAnulaAbono';
     $.ajax({
         url: url+'/'+$("#edit_id").val(),
@@ -29,12 +28,7 @@ function fun_save()
             alert ("Abono Anulado Satisfactoriamente");
 
             $("#editModal").modal('hide');
-
             console.log(result);
-            /* $("#edit_id").val(result.id);
-             $("#edit_nombre").val(result.abono_valor_cuota);
-             $("#edit_apellido").val(result.abono_valor);
-             $("#edit_Direccion").val(result.abono_observacion); */
         }
     });
 }

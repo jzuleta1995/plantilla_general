@@ -2,23 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b5a27e5-0ff4-4eac-bba5-26c8384bab2c" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modal/anula_abono.js" afterPath="$PROJECT_DIR$/public/js/aplicacion/abono/anula_abono.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modal/anula_prestamo.js" afterPath="$PROJECT_DIR$/public/js/aplicacion/prestamo/anula_prestamo.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AbonoController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AbonoController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ExcelController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ExcelController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/PrestamoController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/PrestamoController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/UtilidadPrestamosController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/UtilidadPrestamosController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Requests/AbonoRequest.php" afterPath="$PROJECT_DIR$/app/Http/Requests/AbonoRequest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Requests/ClienteRequest.php" afterPath="$PROJECT_DIR$/app/Http/Requests/ClienteRequest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Requests/CobradorRequest.php" afterPath="$PROJECT_DIR$/app/Http/Requests/CobradorRequest.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Requests/PrestamoRequest.php" afterPath="$PROJECT_DIR$/app/Http/Requests/PrestamoRequest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Requests/UserRequest.php" afterPath="$PROJECT_DIR$/app/Http/Requests/UserRequest.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/aplicacion/prestamo/prestamo.js" afterPath="$PROJECT_DIR$/public/js/aplicacion/prestamo/prestamo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/modal/anula_abono.js" afterPath="$PROJECT_DIR$/public/js/modal/anula_abono.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/aplicacion/abono/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/aplicacion/abono/create.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/aplicacion/cliente/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/aplicacion/cliente/create.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/aplicacion/cliente/edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/aplicacion/cliente/edit.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/aplicacion/cliente/fragment/detail.blade.php" afterPath="$PROJECT_DIR$/resources/views/aplicacion/cliente/fragment/detail.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/aplicacion/cliente/fragment/detailEdit.blade.php" afterPath="$PROJECT_DIR$/resources/views/aplicacion/cliente/fragment/detailEdit.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/aplicacion/cliente/fragment/form.blade.php" afterPath="$PROJECT_DIR$/resources/views/aplicacion/cliente/fragment/form.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/aplicacion/cliente/informes/general.blade.php" afterPath="$PROJECT_DIR$/resources/views/aplicacion/cliente/informes/general.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/aplicacion/cobrador/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/aplicacion/cobrador/create.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/aplicacion/cobrador/edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/aplicacion/cobrador/edit.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/aplicacion/cobrador/fragment/form.blade.php" afterPath="$PROJECT_DIR$/resources/views/aplicacion/cobrador/fragment/form.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/aplicacion/cobrador/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/aplicacion/cobrador/index.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/aplicacion/cobrador/informes/general.blade.php" afterPath="$PROJECT_DIR$/resources/views/aplicacion/cobrador/informes/general.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/aplicacion/prestamo/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/aplicacion/prestamo/create.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/aplicacion/prestamo/fragment/form.blade.php" afterPath="$PROJECT_DIR$/resources/views/aplicacion/prestamo/fragment/form.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/aplicacion/prestamo/fragment/visorabono.blade.php" afterPath="$PROJECT_DIR$/resources/views/aplicacion/prestamo/fragment/visorabono.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/aplicacion/prestamo/show.blade.php" afterPath="$PROJECT_DIR$/resources/views/aplicacion/prestamo/show.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/aplicacion/user/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/aplicacion/user/create.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/aplicacion/user/edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/aplicacion/user/edit.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/aplicacion/user/procedimientos/cambioClave.blade.php" afterPath="$PROJECT_DIR$/resources/views/aplicacion/user/procedimientos/cambioClave.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/passwords/nuevaClave.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/nuevaClave.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/home.blade.php" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/template/partials/nav.blade.php" afterPath="$PROJECT_DIR$/resources/views/template/partials/nav.blade.php" />
@@ -36,99 +51,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PrestamoController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PrestamoController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2074">
-              <caret line="127" column="5" lean-forward="false" selection-start-line="127" selection-start-column="5" selection-end-line="127" selection-end-column="5" />
-              <folding>
-                <marker date="1503811840872" expanded="true" signature="5487:5584" ph="select clien... prestamos" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="VisorPrestamosController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/VisorPrestamosController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="19" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="utilidad.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/prestamo/informes/utilidad.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1088">
-              <caret line="64" column="30" lean-forward="false" selection-start-line="64" selection-start-column="21" selection-end-line="64" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="nav.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/template/partials/nav.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="73" lean-forward="false" selection-start-line="18" selection-start-column="73" selection-end-line="18" selection-end-column="73" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/routes/web.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="142" column="0" lean-forward="false" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UtilidadPrestamosController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UtilidadPrestamosController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="35" column="89" lean-forward="false" selection-start-line="35" selection-start-column="80" selection-end-line="35" selection-end-column="89" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1547">
-              <caret line="91" column="44" lean-forward="false" selection-start-line="91" selection-start-column="35" selection-end-line="91" selection-end-column="44" />
-              <folding>
-                <marker date="1503796396254" expanded="true" signature="7693:7819" ph="{...}" />
-                <marker date="1503796396254" expanded="true" signature="8037:8165" ph="{...}" />
-                <marker date="1503796396254" expanded="true" signature="8208:8296" ph="..." />
-                <marker date="1503796396254" expanded="true" signature="8325:8412" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="visorabono.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/prestamo/fragment/visorabono.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="38" lean-forward="false" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="39" column="110" lean-forward="false" selection-start-line="37" selection-start-column="25" selection-end-line="39" selection-end-column="110" />
+            <state relative-caret-position="316">
+              <caret line="40" column="49" lean-forward="true" selection-start-line="40" selection-start-column="49" selection-end-line="40" selection-end-column="49" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="form.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/prestamo/fragment/form.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="29" column="174" lean-forward="false" selection-start-line="29" selection-start-column="117" selection-end-line="29" selection-end-column="174" />
+              <folding>
+                <marker date="1504408227023" expanded="true" signature="617:811" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PrestamoController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PrestamoController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="174">
+              <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+              <folding>
+                <marker date="1504487508587" expanded="true" signature="5980:6082" ph="select clien... prestamos" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -136,8 +88,31 @@
       <file leaf-file-name="create.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/prestamo/create.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="39" column="81" lean-forward="false" selection-start-line="39" selection-start-column="81" selection-end-line="39" selection-end-column="81" />
+            <state relative-caret-position="493">
+              <caret line="29" column="59" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="create.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/abono/create.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="52">
+              <caret line="30" column="84" lean-forward="false" selection-start-line="30" selection-start-column="84" selection-end-line="30" selection-end-column="84" />
+              <folding>
+                <marker date="1504489358496" expanded="true" signature="2289:2500" ph="..." />
+                <marker date="1504489358496" expanded="true" signature="2303:2498" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/user/edit.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="135" lean-forward="false" selection-start-line="15" selection-start-column="135" selection-end-line="15" selection-end-column="135" />
               <folding />
             </state>
           </provider>
@@ -147,11 +122,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>glyphicon-</find>
-      <find>icon</find>
-      <find>navbar</find>
-      <find>hover</find>
-      <find>clientes</find>
       <find>user</find>
       <find>send</find>
       <find>inf</find>
@@ -177,6 +147,11 @@
       <find>interes_total</find>
       <find>updateAnulaAbono</find>
       <find>utilidadPrestamos</find>
+      <find>edit</find>
+      <find>fun_save</find>
+      <find>view</find>
+      <find>hidden_view</find>
+      <find>updateAnulaPrestamo</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -185,57 +160,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/vendor/spatie/laravel-backup/config/laravel-backup.php" />
-        <option value="$PROJECT_DIR$/config/database.php" />
-        <option value="$PROJECT_DIR$/public/css/form.css" />
-        <option value="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/aplicacion/user/procedimietos/cambioClave.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" />
-        <option value="$PROJECT_DIR$/resources/views/auth/nuevaClave.blade.php" />
-        <option value="$PROJECT_DIR$/config/mail.php" />
-        <option value="$PROJECT_DIR$/storage/logs/laravel.log" />
-        <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/aplicacion/cliente/informes/general.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/AutocompleteController.php" />
-        <option value="$PROJECT_DIR$/public/js/autocomplete.js" />
-        <option value="$PROJECT_DIR$/public/js/modal/ajaxscript.js" />
-        <option value="$PROJECT_DIR$/resources/views/aplicacion/prestamo/show.blade.php" />
-        <option value="$PROJECT_DIR$/app/Prestamo.php" />
-        <option value="$PROJECT_DIR$/resources/views/aplicacion/prestamo/informes/pdfUtilidad.blade.php" />
-        <option value="$PROJECT_DIR$/public/css/stylePdf.css" />
-        <option value="$PROJECT_DIR$/resources/views/template/form.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/aplicacion/cliente/index.blade.php" />
-        <option value="$PROJECT_DIR$/public/js/modal/confirm_modal.js" />
-        <option value="$PROJECT_DIR$/public/js/modal/anula_prestamo.js" />
         <option value="$PROJECT_DIR$/resources/views/aplicacion/cobrador/procedimientos/AsignaCobradorACliente.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/CobradorController.php" />
-        <option value="$PROJECT_DIR$/resources/views/aplicacion/user/procedimientos/cambioClave.blade.php" />
         <option value="$PROJECT_DIR$/public/js/aplicacion/olvidecontraseña/olvidecontraseña.js" />
-        <option value="$PROJECT_DIR$/resources/views/aplicacion/prestamo/create.blade.php" />
-        <option value="$PROJECT_DIR$/public/js/aplicacion/prestamo/prestamo.js" />
-        <option value="$PROJECT_DIR$/resources/views/aplicacion/prestamo/fragment/form.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/aplicacion/cliente/create.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/aplicacion/user/create.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
         <option value="$PROJECT_DIR$/public/js/aplicacion/olvidecontrasena/olvidecontrasena.js" />
-        <option value="$PROJECT_DIR$/resources/views/auth/passwords/nuevaClave.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/aplicacion/abono/create.blade.php" />
         <option value="$PROJECT_DIR$/app/Abono.php" />
-        <option value="$PROJECT_DIR$/app/Http/Requests/ClienteRequest.php" />
-        <option value="$PROJECT_DIR$/app/Http/Requests/AbonoRequest.php" />
-        <option value="$PROJECT_DIR$/app/Http/Requests/PrestamoRequest.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/public/js/modal/anula_abono.js" />
-        <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/UtilidadPrestamosController.php" />
+        <option value="$PROJECT_DIR$/resources/views/aplicacion/prestamo/informes/utilidad.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/PrestamoRequest.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/AbonoRequest.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/CobradorRequest.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/UserRequest.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/ClienteRequest.php" />
+        <option value="$PROJECT_DIR$/public/js/aplicacion/prestamo/mostrarNumeroCuotas.js" />
+        <option value="$PROJECT_DIR$/public/js/aplicacion/prestamo/prestamo.js" />
+        <option value="$PROJECT_DIR$/resources/views/aplicacion/cliente/fragment/form.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/aplicacion/cobrador/fragment/form.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/aplicacion/cliente/fragment/detailEdit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/aplicacion/cliente/fragment/detail.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/aplicacion/cobrador/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/aplicacion/prestamo/fragment/form.blade.php" />
+        <option value="$PROJECT_DIR$/public/js/aplicacion/prestamo/validaUnicoPrestamoCliente.js" />
+        <option value="$PROJECT_DIR$/resources/views/aplicacion/user/procedimientos/cambioClave.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/aplicacion/cliente/informes/general.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/aplicacion/cobrador/informes/general.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/aplicacion/user/informes/general.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ExcelController.php" />
+        <option value="$PROJECT_DIR$/resources/views/aplicacion/prestamo/show.blade.php" />
+        <option value="$PROJECT_DIR$/public/js/aplicacion/abono/anula_abono.js" />
+        <option value="$PROJECT_DIR$/public/js/aplicacion/prestamo/anula_prestamo.js" />
+        <option value="$PROJECT_DIR$/public/js/aplicacion/general/validarPasswordAdmin.js" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/public/js/aplicacion/general/filtrosVisorPrincipal.js" />
+        <option value="$PROJECT_DIR$/resources/views/template/partials/nav.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/aplicacion/prestamo/fragment/visorabono.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/auth/passwords/nuevaClave.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/aplicacion/prestamo/create.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/aplicacion/cliente/create.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/aplicacion/cliente/edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/aplicacion/cobrador/edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/aplicacion/cobrador/create.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/aplicacion/user/create.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/aplicacion/user/edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/CobradorController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ClienteController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AbonoController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/PrestamoController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/UtilidadPrestamosController.php" />
-        <option value="$PROJECT_DIR$/resources/views/template/partials/nav.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/aplicacion/prestamo/informes/utilidad.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/aplicacion/abono/create.blade.php" />
       </list>
     </option>
   </component>
@@ -361,7 +336,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -374,11 +348,6 @@
               <item name="plantilla_general" type="b2602c69:ProjectViewProjectNode" />
               <item name="plantilla_general" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="plantilla_general" type="b2602c69:ProjectViewProjectNode" />
-              <item name="plantilla_general" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="plantilla_general" type="b2602c69:ProjectViewProjectNode" />
@@ -414,48 +383,31 @@
               <item name="aplicacion" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="prestamo" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
-            <path>
-              <item name="plantilla_general" type="b2602c69:ProjectViewProjectNode" />
-              <item name="plantilla_general" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="aplicacion" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="prestamo" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="fragment" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="plantilla_general" type="b2602c69:ProjectViewProjectNode" />
-              <item name="plantilla_general" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="aplicacion" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="prestamo" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="informes" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="plantilla_general" type="b2602c69:ProjectViewProjectNode" />
-              <item name="plantilla_general" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="routes" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="F:/NetBeansProjects/Gimnasio" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../plantilla_general_20170902" />
     <property name="nodejs_interpreter_path" value="/usr/bin/node" />
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\plantilla_general\resources\views\aplicacion\user\informes" />
+      <recent name="C:\xampp\htdocs\plantilla_general\public\js\aplicacion\prestamo" />
+      <recent name="C:\xampp\htdocs\plantilla_general\public\js\aplicacion" />
       <recent name="C:\xampp\htdocs\plantilla_general\public\js" />
       <recent name="C:\xampp\htdocs\plantilla_general\resources\views\aplicacion\user\procedimietos" />
-      <recent name="$PROJECT_DIR$/public/bootstrap/css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\plantilla_general\public\js\aplicacion\abono" />
+      <recent name="C:\xampp\htdocs\plantilla_general\public\js\aplicacion\prestamo" />
+      <recent name="C:\xampp\htdocs\plantilla_general\public\js\aplicacion\general" />
       <recent name="C:\xampp\htdocs\plantilla_general\resources\views\auth\passwords" />
       <recent name="$PROJECT_DIR$/resources/assets" />
     </key>
@@ -618,27 +570,30 @@
       <workItem from="1503843045619" duration="491000" />
       <workItem from="1503852523816" duration="7000" />
       <workItem from="1503853295592" duration="678000" />
+      <workItem from="1504402845025" duration="7763000" />
+      <workItem from="1504463523848" duration="18971000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="335116000" />
+    <option name="totallyTimeSpent" value="361850000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19912152" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19399707" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -667,216 +622,66 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/prestamo/informes/pdfUtilidad.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/AbonoRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="37" lean-forward="false" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/jquery.confirm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/modal/ajaxscript.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-451">
-          <caret line="1" column="51" lean-forward="false" selection-start-line="1" selection-start-column="51" selection-end-line="1" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/cliente/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/modal/anula_prestamo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="34" lean-forward="true" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CobradorController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1989">
-          <caret line="121" column="42" lean-forward="true" selection-start-line="121" selection-start-column="42" selection-end-line="121" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/cobrador/procedimientos/AsignaCobradorACliente.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="55" column="67" lean-forward="true" selection-start-line="55" selection-start-column="67" selection-end-line="55" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/template/form.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="952">
-          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="58" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/aplicacion/olvidecontraseña.js" />
-    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/cliente/informes/general.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="53" column="43" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/aplicacion/olvidecontraseña/olvidecontraseña.js" />
-    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/cliente/fragment/form.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="34" lean-forward="false" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ExcelController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="89" column="30" lean-forward="false" selection-start-line="89" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/autocomplete.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="34" lean-forward="false" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/modal/confirm_modal.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/cliente/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="81" lean-forward="false" selection-start-line="25" selection-start-column="81" selection-end-line="25" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AutocompleteController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state relative-caret-position="436">
+          <caret line="33" column="47" lean-forward="false" selection-start-line="33" selection-start-column="47" selection-end-line="33" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/user/procedimientos/cambioClave.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/CobradorRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2771">
-          <caret line="169" column="12" lean-forward="false" selection-start-line="169" selection-start-column="12" selection-end-line="169" selection-end-column="12" />
-          <folding>
-            <marker date="1503343050659" expanded="true" signature="5062:5134" ph="select pregu... users" />
-            <marker date="1503343050659" expanded="true" signature="5477:5528" ph="select respu... users" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/user/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-148">
-          <caret line="72" column="48" lean-forward="true" selection-start-line="72" selection-start-column="48" selection-end-line="72" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/aplicacion/cliente/cliente.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/aplicacion/olvidecontrasena/olvidecontrasena.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="1" lean-forward="false" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/auth/passwords/nuevaClave.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="55" lean-forward="false" selection-start-line="3" selection-start-column="55" selection-end-line="3" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/auth/register.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Cliente.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="8" column="23" lean-forward="false" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="23" />
+        <state relative-caret-position="476">
+          <caret line="28" column="62" lean-forward="false" selection-start-line="28" selection-start-column="62" selection-end-line="28" selection-end-column="62" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Abono.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/UserRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="8" lean-forward="true" selection-start-line="10" selection-start-column="8" selection-end-line="17" selection-end-column="23" />
+        <state relative-caret-position="379">
+          <caret line="28" column="65" lean-forward="false" selection-start-line="28" selection-start-column="65" selection-end-line="28" selection-end-column="65" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Requests/ClienteRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Prestamo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="15" column="33" lean-forward="true" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+        <state relative-caret-position="476">
+          <caret line="28" column="69" lean-forward="false" selection-start-line="28" selection-start-column="69" selection-end-line="28" selection-end-column="69" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/PrestamoRequest.php">
+    <entry file="file://$PROJECT_DIR$/public/js/aplicacion/general/limpiarFormulario.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/aplicacion/general/separadormiles.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="1" lean-forward="true" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/aplicacion/prestamo/mostrarNumeroCuotas" />
+    <entry file="file://$PROJECT_DIR$/public/js/aplicacion/prestamo/mostrarNumeroCuotas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/cobrador/fragment/form.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="42" column="194" lean-forward="false" selection-start-line="42" selection-start-column="194" selection-end-line="42" selection-end-column="194" />
         </state>
       </provider>
     </entry>
@@ -887,154 +692,339 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/user/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="-443">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/console.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/cobrador/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="539">
+          <caret line="43" column="105" lean-forward="false" selection-start-line="43" selection-start-column="105" selection-end-line="43" selection-end-column="105" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/abono/create.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/cliente/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="53" column="148" lean-forward="true" selection-start-line="53" selection-start-column="148" selection-end-line="53" selection-end-column="148" />
+        <state relative-caret-position="423">
+          <caret line="49" column="103" lean-forward="false" selection-start-line="49" selection-start-column="97" selection-end-line="49" selection-end-column="103" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/AbonoRequest.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/cliente/fragment/detail.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="33" column="47" lean-forward="false" selection-start-line="33" selection-start-column="47" selection-end-line="33" selection-end-column="47" />
+        <state relative-caret-position="458">
+          <caret line="111" column="215" lean-forward="false" selection-start-line="111" selection-start-column="215" selection-end-line="111" selection-end-column="215" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/prestamo/fragment/form.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/cliente/fragment/detailEdit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="58" column="32" lean-forward="false" selection-start-line="58" selection-start-column="32" selection-end-line="58" selection-end-column="32" />
+        <state relative-caret-position="470">
+          <caret line="108" column="269" lean-forward="false" selection-start-line="108" selection-start-column="269" selection-end-line="108" selection-end-column="269" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/modal/anula_abono.js">
+    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/cliente/fragment/form.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="23" lean-forward="false" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/prestamo/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="81" lean-forward="false" selection-start-line="39" selection-start-column="81" selection-end-line="39" selection-end-column="81" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="39" column="110" lean-forward="false" selection-start-line="37" selection-start-column="25" selection-end-line="39" selection-end-column="110" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/prestamo/show.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="70" lean-forward="false" selection-start-line="6" selection-start-column="63" selection-end-line="6" selection-end-column="70" />
+        <state relative-caret-position="266">
+          <caret line="53" column="189" lean-forward="false" selection-start-line="53" selection-start-column="189" selection-end-line="53" selection-end-column="189" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/aplicacion/prestamo/prestamo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-896">
-          <caret line="75" column="84" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/prestamo/fragment/visorabono.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="38" lean-forward="false" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
+        <state relative-caret-position="244">
+          <caret line="33" column="91" lean-forward="false" selection-start-line="33" selection-start-column="91" selection-end-line="33" selection-end-column="91" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
+    <entry file="file://$PROJECT_DIR$/public/js/aplicacion/prestamo/validaUnicoPrestamoCliente.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1547">
-          <caret line="91" column="44" lean-forward="false" selection-start-line="91" selection-start-column="35" selection-end-line="91" selection-end-column="44" />
+        <state relative-caret-position="51">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding>
-            <marker date="1503796396254" expanded="true" signature="7693:7819" ph="{...}" />
-            <marker date="1503796396254" expanded="true" signature="8037:8165" ph="{...}" />
-            <marker date="1503796396254" expanded="true" signature="8208:8296" ph="..." />
-            <marker date="1503796396254" expanded="true" signature="8325:8412" ph="..." />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AbonoController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="77" column="5" lean-forward="false" selection-start-line="77" selection-start-column="5" selection-end-line="77" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PrestamoController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2074">
-          <caret line="127" column="5" lean-forward="false" selection-start-line="127" selection-start-column="5" selection-end-line="127" selection-end-column="5" />
-          <folding>
-            <marker date="1503811840872" expanded="true" signature="5487:5584" ph="select clien... prestamos" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/template/partials/nav.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="73" lean-forward="false" selection-start-line="18" selection-start-column="73" selection-end-line="18" selection-end-column="73" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/VisorPrestamosController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="19" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UtilidadPrestamosController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="35" column="89" lean-forward="false" selection-start-line="35" selection-start-column="80" selection-end-line="35" selection-end-column="89" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/prestamo/informes/utilidad.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1088">
-          <caret line="64" column="30" lean-forward="false" selection-start-line="64" selection-start-column="21" selection-end-line="64" selection-end-column="30" />
+        <state relative-caret-position="34">
+          <caret line="2" column="34" lean-forward="false" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/template/form.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/user/procedimientos/cambioClave.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="112" lean-forward="false" selection-start-line="12" selection-start-column="112" selection-end-line="12" selection-end-column="112" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ExcelController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="141" column="60" lean-forward="false" selection-start-line="141" selection-start-column="60" selection-end-line="141" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/user/informes/general.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="56" lean-forward="false" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/cobrador/informes/general.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="56" column="62" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/cliente/informes/general.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="55" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/aplicacion/abono/anula_abono.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="9" lean-forward="false" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/aplicacion/prestamo/anula_prestamo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="24" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/aplicacion/general/validarPasswordAdmin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="46" lean-forward="false" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="142" column="0" lean-forward="false" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+        <state relative-caret-position="173">
+          <caret line="114" column="0" lean-forward="true" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/aplicacion/general/filtrosVisorPrincipal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="29" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/template/partials/nav.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="18" column="57" lean-forward="false" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/prestamo/show.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="29" lean-forward="true" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="146" lean-forward="false" selection-start-line="30" selection-start-column="146" selection-end-line="30" selection-end-column="146" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/prestamo/fragment/visorabono.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="21" column="57" lean-forward="false" selection-start-line="21" selection-start-column="57" selection-end-line="21" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/auth/passwords/nuevaClave.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="15" column="173" lean-forward="false" selection-start-line="15" selection-start-column="148" selection-end-line="15" selection-end-column="173" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/cliente/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="25" lean-forward="true" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/cliente/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="13" column="120" lean-forward="false" selection-start-line="13" selection-start-column="120" selection-end-line="13" selection-end-column="120" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/cobrador/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="147" lean-forward="false" selection-start-line="11" selection-start-column="147" selection-end-line="11" selection-end-column="147" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/cobrador/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="125" lean-forward="false" selection-start-line="12" selection-start-column="125" selection-end-line="12" selection-end-column="125" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/user/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="135" lean-forward="false" selection-start-line="15" selection-start-column="135" selection-end-line="15" selection-end-column="135" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/user/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="14" column="117" lean-forward="false" selection-start-line="14" selection-start-column="117" selection-end-line="14" selection-end-column="117" />
+          <folding>
+            <marker date="1504480024390" expanded="true" signature="4005:4292" ph="..." />
+            <marker date="1504480024390" expanded="true" signature="4019:4290" ph="..." />
+            <marker date="1504480024390" expanded="true" signature="4040:4255" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="103" column="76" lean-forward="false" selection-start-line="103" selection-start-column="76" selection-end-line="103" selection-end-column="76" />
+          <folding>
+            <marker date="1504480370747" expanded="true" signature="4574:5407" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CobradorController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="14" column="38" lean-forward="true" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ClienteController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="18" column="40" lean-forward="false" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2448">
+          <caret line="150" column="0" lean-forward="false" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
+          <folding>
+            <marker date="1504402534393" expanded="true" signature="5062:5134" ph="select id as... users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AbonoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="461">
+          <caret line="33" column="105" lean-forward="false" selection-start-line="33" selection-start-column="105" selection-end-line="33" selection-end-column="105" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="40" column="49" lean-forward="true" selection-start-line="40" selection-start-column="49" selection-end-line="40" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/prestamo/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="59" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/prestamo/fragment/form.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="29" column="174" lean-forward="false" selection-start-line="29" selection-start-column="117" selection-end-line="29" selection-end-column="174" />
+          <folding>
+            <marker date="1504408227023" expanded="true" signature="617:811" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PrestamoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding>
+            <marker date="1504487508587" expanded="true" signature="5980:6082" ph="select clien... prestamos" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/aplicacion/abono/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="30" column="84" lean-forward="false" selection-start-line="30" selection-start-column="84" selection-end-line="30" selection-end-column="84" />
+          <folding>
+            <marker date="1504489358496" expanded="true" signature="2289:2500" ph="..." />
+            <marker date="1504489358496" expanded="true" signature="2303:2498" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -12,7 +12,7 @@
         <br>
         <!-- se incluye mensajes de erros -->
     @include('template.partials.error')
-        {!! Form::open(['route' => 'user.store', 'method'   =>  'POST']) !!}
+        {!! Form::open(['route' => 'user.store', 'method'   =>  'POST', 'id' => 'formulario', 'autocomplete' => 'off']) !!}
             <div class="row">
                 <div class="col-md-push-1 col-md-4">
                     <div class="form-group">
@@ -31,7 +31,7 @@
             <div class="col-md-push-1 col-md-3">
                 <div class="form-group">
                     {!! Form::label('documento', 'Número de Documento', ['class' => 'form-required']) !!}
-                    {!! Form::text('documento', null, ['class'=>'form-control','placeholder'  =>  'Documento del usuario']) !!}
+                    {!! Form::text('documento', null, ['class'=>'form-control','placeholder'  =>  'Documento del usuario','onkeyup' => 'camposNumerico(this)', 'onchange' => 'camposNumerico(this)']) !!}
                 </div>
             </div>
             <div class="col-md-push-3 col-md-4">
@@ -45,7 +45,7 @@
             <div class="col-md-push-1 col-md-3">
                 <div class="form-group">
                     {!! Form::label('telefono', 'Teléfono', ['class' => 'form-required']) !!}
-                    {!! Form::text('telefono', null, ['class'=>'form-control','placeholder'  =>  'Teléfono del usuario']) !!}
+                    {!! Form::text('telefono', null, ['class'=>'form-control','placeholder'  =>  'Teléfono del usuario','onkeyup' => 'camposNumerico(this)', 'onchange' => 'camposNumerico(this)']) !!}
                 </div>
             </div>
             <div class="col-md-push-3 col-md-4">
@@ -106,4 +106,8 @@
         <br>
         {!! Form::close() !!}
     </div>
+@endsection
+@section('script')
+    <script src="{{ asset('js/aplicacion/general/limpiarFormulario.js') }}"></script>
+    <script src="{{ asset('js/aplicacion/general/validaCamposNumericos.js') }}"></script>
 @endsection

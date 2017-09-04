@@ -41,7 +41,7 @@
                     <td class="text-center">{{ $cobrador->cobrador_apellido }}</td>
                     <td class="text-center">{{ $cobrador->cobrador_estado }}</td>
                     <td class="text-center">
-                        <a href="{{ route('cobrador.edit', $cobrador->id) }}" class="btn btn-link">editar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="{{ route('cobrador.edit', $cobrador->id) }}" class="btn btn-link">Editar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </td>
                 </tr>
             @endforeach

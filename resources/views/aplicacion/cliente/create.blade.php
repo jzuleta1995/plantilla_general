@@ -11,7 +11,7 @@
         <!-- se incluye mensajes de erros -->
         @include('template.partials.error')
 
-        {!! Form::open(['route' => 'cliente.store', 'method'   =>  'POST']) !!}
+        {!! Form::open(['route' => 'cliente.store', 'method'   =>  'POST', 'id' => 'formulario', 'autocomplete' => 'off']) !!}
             <div class="container panel" id="design">
                 @include('aplicacion.cliente.fragment.form')
             </div>
@@ -22,7 +22,7 @@
             </br>
             <div class="container">
                 <div class="col-md-6">
-                    {!! Form::submit('ENVIAR',  ['class'=>'btn btn-primary confirm', 'id' => 'modalOptions']) !!}
+                   <!-- {!! Form::submit('ENVIAR',  ['class'=>'btn btn-primary confirm', 'id' => 'modalOptions']) !!}-->
                     {!! Form::submit('ENVIAR',  ['class'=>'btn btn-primary']) !!}
 
                 </div>
@@ -32,6 +32,9 @@
     </div>
 @endsection
 @section('script')
+
+    <script src="{{ asset('js/aplicacion/general/limpiarFormulario.js') }}"></script>
+    <script src="{{ asset('js/aplicacion/general/validaCamposNumericos.js') }}"></script>
     <script src="{{ asset('js/aplicacion/cliente/cliente.js') }}"></script>
     <script src="{{ asset('js/autocomplete.js') }}"></script>
     <script>autocompleteClass.autocompleteComponent('#cobrador', '#cobrador_id', 'cobrador');</script>

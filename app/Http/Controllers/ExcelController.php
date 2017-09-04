@@ -11,43 +11,11 @@ use DB;
 
 class ExcelController extends Controller
 {
-   /* public function index(Request $request)
-    {
-
-        dd("kkkk");
-        $users = DB::table('users')
-            ->join('clientes', 'users.id', '=', 'clientes.user_id')
-            ->select('clientes.id', 'clientes.nombre', 'users.nombre', 'users.apellido')
-            ->get();
-
-
-
-        Excel::create('Laravel Excel', function($excel) use ($users) {
-
-
-                $excel->sheet('Users', function($sheet) use ($users) {
-
-                    $data = array();
-                    foreach ($users as $user){
-                        $data = $user;
-                    }
-
-                $sheet->fromArray($data);
-
-            });
-        })->export('xls');
-
-    }*/
 
 
     public function indexInformeCliente(Request $request)
     {
         return view('aplicacion.cliente.informes.general');
-    }
-
-    public function indexInformeCobrador(Request $request)
-    {
-        return view('aplicacion.cobrador.informes.general');
     }
 
     public function informeCliente(Request $request) {
@@ -106,6 +74,10 @@ class ExcelController extends Controller
 
     }
 
+    public function indexInformeCobrador(Request $request)
+    {
+        return view('aplicacion.cobrador.informes.general');
+    }
 
     public function informeCobrador(Request $request) {
 
@@ -155,6 +127,65 @@ class ExcelController extends Controller
             // Build the spreadsheet, passing in the payments array
             $excel->sheet('sheet1', function($sheet) use ($clientesArray) {
                 $sheet->fromArray($clientesArray, null, 'A1', false, false);
+            });
+        })->export('xls');
+
+    }
+    public function indexInformeUSuario(Request $request)
+    {
+        return view('aplicacion.user.informes.general');
+    }
+
+    public function informeUsuario(Request $request) {
+
+
+         $users = User::join('cobradors', 'cobradors.user_id', '=', 'users.id')
+             ->select(
+                'users.id',
+                'users.nombre',
+                'users.apellido',
+                'users.documento',
+                'users.direccion',
+                'users.telefono',
+                'users.email',
+                'users.tipo',
+                'users.estado',
+                'users.created_at');
+
+       // id as codigo, nombre_completo, documento, direccion,telefono,email,tipo as tipousuario,estado,created_at as fechcreacion
+
+       /* if($request->cobrador_id !=''){
+            $clientes->where('cobradors.id', '=', $request->cobrador_id);
+        }*/
+        if($request->fecha_inicial !='' && $request->fecha_final !=''){
+            $users->whereBetween('users.created_at',  array($request->fecha_inicial, $request->fecha_final));
+        }
+        $users=$users->get();
+
+        // Initialize the array which will be passed into the Excel
+        // generator.
+        $usersArray = [];
+
+        // Define the Excel spreadsheet headers
+        $usersArray[] = ['id_usuario', 'nombre','apellido','documento','direccion casa', 'telefono', 'fecha hora creacion'];
+
+        // Convert each member of the returned collection into an array,
+        // and append it to the payments array.
+        foreach ($users as $user) {
+            $usersArray[] = $user->toArray();
+        }
+
+        // Generate and return the spreadsheet
+        Excel::create('Informe Cobradores', function($excel) use ($usersArray) {
+
+            // Set the spreadsheet title, creator, and description
+            $excel->setTitle('Payments');
+            $excel->setCreator('Laravel')->setCompany('WJ Gilmore, LLC');
+            $excel->setDescription('payments file');
+
+            // Build the spreadsheet, passing in the payments array
+            $excel->sheet('sheet1', function($sheet) use ($usersArray) {
+                $sheet->fromArray($usersArray, null, 'A1', false, false);
             });
         })->export('xls');
 

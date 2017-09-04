@@ -102,7 +102,13 @@ Route::group(['prefix'  =>  '/admin', 'middleware'   =>  'auth'], function () {
             ->get('/excel/cobrador', 'ExcelController@indexInformeCobrador');
 
        Route::name('excel.informeCobrador')
-            ->post('/excel', 'ExcelController@informeCobrador');
+            ->post('/excel/cobrador', 'ExcelController@informeCobrador');
+
+       Route::name('excel.indexInformeUsuario')
+            ->get('/excel/user', 'ExcelController@indexInformeUsuario');
+
+        Route::name('excel.informeUsuario')
+        ->post('/excel/user', 'ExcelController@informeUsuario');
 
    //FIN INFORMES EXCEL
 
@@ -114,6 +120,12 @@ Route::group(['prefix'  =>  '/admin', 'middleware'   =>  'auth'], function () {
 
         Route::name('user.cambioClave')
             ->post('/user/procedimientos/cambioclave', 'UserController@cambioClave');
+
+        Route::get('/user/validaPasswordAdmin',
+            array('as' => 'user.validaPasswordAdmin',
+                'uses' => 'UserController@validaPasswordAdmin'
+            )
+        );
     //FIN USUARIOS
 
  // INICIO COBRADOR
@@ -155,6 +167,12 @@ Route::group(['prefix'  =>  '/admin', 'middleware'   =>  'auth'], function () {
         Route::post('/prestamo/updateAnulaPrestamo/{prestamo_id}',
             array('as' => 'prestamo.updateAnulaPrestamo',
                 'uses' => 'PrestamoController@updateAnulaPrestamo'
+            )
+        );
+
+        Route::get('/prestamo/validaUnicoPrestamoCliente/{cliente_id}',
+            array('as' => 'prestamo.validaUnicoPrestamoCliente',
+                'uses' => 'PrestamoController@validaUnicoPrestamoCliente'
             )
         );
 

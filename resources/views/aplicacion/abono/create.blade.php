@@ -4,8 +4,10 @@
 
 @section('content')
     <div class="container panel" id="design">
+        <!-- se incluye mensajes de erros -->
+        @include('template.partials.error')
 
-        {!! Form::open(['route' => 'abono.store', 'method'   =>  'POST']) !!}
+        {!! Form::open(['route' => 'abono.store', 'method'   =>  'POST', 'id' => 'formulario', 'autocomplete' => 'off']) !!}
             <div class="row">
                 <div class="col-md-push-2 col-md-4">
                     <div class="form-group">
@@ -26,13 +28,13 @@
                 <div class="col-md-push-2  col-md-3">
                     <div class="form-group">
                         {!! Form::label('abono_valor', 'Valor Abono') !!}
-                        {!! Form::text('abono_valor', null, ['class'=>'form-control', 'placeholder' =>   'Valor Abono']) !!}
+                        {!! Form::text('abono_valor', null, ['class'=>'form-control', 'placeholder' =>   'Valor Abono', 'onkeyup' => 'format(this)', 'onchange' => 'format(this)']) !!}
                     </div>
                 </div>
                 <div class="col-md-push-4 col-md-3">
                     <div class="form-group">
                         {!! Form::label('abono_tipo_pago', 'Tipo Pago') !!}
-                        {!! Form::select('abono_tipo_pago', ['' => 'SELECCIONE UN TIPO',  'ABONO CAPITAL' => 'ABONO CAPITAL', 'PAGO CUOTA' => 'PAGO CUOTA', 'PAGO TOTAL DEUDA' => 'PAGO TOTAL DEUDA',], null,  ['class'=>'form-control']) !!}
+                        {!! Form::select('abono_tipo_pago', ['' => 'SELECCIONE UN TIPO',  'ABONO A CAPITAL' => 'ABONO A CAPITAL', 'PAGO CUOTA' => 'PAGO CUOTA', 'PAGO TOTAL DEUDA' => 'PAGO TOTAL DEUDA',], null,  ['class'=>'form-control']) !!}
                     </div>
                 </div>
 
@@ -67,6 +69,9 @@
     </div>
 @endsection
 @section('script')
+
+    <script src="{{ asset('js/aplicacion/general/limpiarFormulario.js') }}"></script>
+    <script src="{{ asset('js/aplicacion/general/separadormiles.js') }}"></script>
     <script src="{{ asset('js/autocomplete.js') }}"></script>
     <script>autocompleteClass.autocompleteComponent('#cliente', '#cliente_id', 'cliente');</script>
 @endsection

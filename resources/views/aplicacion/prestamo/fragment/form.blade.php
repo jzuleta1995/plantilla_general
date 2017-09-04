@@ -6,7 +6,7 @@
                 @if(is_object($cliente))
                     {!! Form::text('cliente', $cliente->cliente_nombre_completo, ['class'=>'form-control', 'id' => 'cliente', 'value' => 'id', 'placeholder'  =>  'Nombre de cliente', 'size'    => 'S']) !!}
                 @else
-                    {!! Form::text('cliente', null, ['class'=>'form-control', 'id' => 'cliente', 'value' => 'id', 'placeholder'  =>  'Nombre de cliente', 'size'    => 'S']) !!}
+                    {!! Form::text('cliente', null, ['class'=>'form-control', 'id' => 'cliente', 'value' => 'id', 'placeholder'  =>  'Nombre de cliente', 'size'    => 'S', 'onblur' => 'validaUnicoPrestamoCliente()']) !!}
                 @endif
             </div>
         </div>
@@ -27,7 +27,7 @@
         <div class="col-md-push-5 col-md-3">
             <div class="form-group">
                 {!! Form::label('prestamo_valor', 'Valor ') !!}
-                {!! Form::Number('prestamo_valor', null, ['class'=>'form-control','placeholder'  =>  'valor prestamo']) !!}
+                {!! Form::text('prestamo_valor', null, ['class'=>'form-control','placeholder'  =>  'valor prestamo', 'onkeyup' => 'format(this)', 'onchange' => 'format(this)']) !!}
              </div>
         </div>
     </div>
@@ -35,13 +35,13 @@
         <div class="col-md-push-1 col-md-3">
             <div class="form-group">
                 {!! Form::label('prestamo_tasa', 'Tasa % ') !!}
-                {!! Form::Number('prestamo_tasa', null, ['class'=>'form-control','placeholder'  =>  'Tasa interes']) !!}
+                {!! Form::text('prestamo_tasa', null, ['class'=>'form-control','placeholder'  =>  'Tasa interes']) !!}
             </div>
         </div>
         <div class="col-md-push-4 col-md-2  ">
             <div class="form-group" id="numero_cuota">
                 {!! Form::label('prestamo_numero_cuotas', 'Numero de Cuotas') !!}
-                {!! Form::Number('prestamo_numero_cuotas', 0, ['class'=>'form-control', 'placeholder' =>   'Numero de Cuotas']) !!}
+                {!! Form::text('prestamo_numero_cuotas', null, ['class'=>'form-control', 'placeholder' =>   'Numero de Cuotas']) !!}
             </div>
         </div>
     </div>
@@ -49,15 +49,13 @@
         <div class="col-md-push-1 col-md-3">
             <div class="form-group">
                 {!! Form::label('prestamo_valor_cuota', 'Valor Cuota') !!}
-                {!! Form::Number('prestamo_valor_cuota', null, ['class'=>'form-control', 'placeholder' =>   'Valor Cuota a Pagar', 'readonly' => 'true' ]) !!}
+                {!! Form::text('prestamo_valor_cuota', null, ['class'=>'form-control', 'placeholder' =>   'Valor Cuota a Pagar', 'readonly' => 'true', 'onblur' => 'format(this)' ]) !!}
             </div>
         </div>
         <div class="col-md-push-4 col-md-3">
             <div class="form-group">
                 {!! Form::label('prestamo_valor_total', 'Valor Total') !!}
-                {!! Form::Number('prestamo_valor_total', null, ['class'=>'form-control', 'placeholder' =>   'Valor Total', 'readonly' => 'true']) !!}
-                {!! Form::hidden('interes_total', 0, ['class'=>'form-control', 'readonly' => 'true']) !!}
-
+                {!! Form::text('prestamo_valor_total', null, ['class'=>'form-control', 'placeholder' =>   'Valor Total', 'readonly' => 'true', 'onblur' => 'format(this)']) !!}
             </div>
         </div>
     </div>
@@ -91,19 +89,19 @@
             <div class="col-md-push-1 col-md-2">
                 <div class="form-group">
                     {!! Form::label('prestamo_valor_proxima_cuota', 'Valor cancelar') !!}
-                    {!! Form::Number('prestamo_valor_proxima_cuota', null, ['class'=>'form-control', 'placeholder' =>   'Valor próximo pago', 'readonly' => 'true']) !!}
+                    {!! Form::text('prestamo_valor_proxima_cuota', null, ['class'=>'form-control', 'placeholder' =>   'Valor próximo pago', 'readonly' => 'true',  'onblur' => 'format(this)']) !!}
                 </div>
             </div>
             <div class="col-md-push-2 col-md-2">
                 <div class="form-group">
                     {!! Form::label('prestamo_valor_abonado', 'Valor abono deuda') !!}
-                    {!! Form::Number('prestamo_valor_abonado', null, ['class'=>'form-control', 'placeholder' =>   'Valor abonado', 'readonly' => 'true']) !!}
+                    {!! Form::text('prestamo_valor_abonado', null, ['class'=>'form-control', 'placeholder' =>   'Valor abonado', 'readonly' => 'true',  'onblur' => 'format(this)']) !!}
                 </div>
             </div>
             <div class="col-md-push-3 col-md-2">
                 <div class="form-group">
                     {!! Form::label('prestamo_valor_actual', 'Valor deuda') !!}
-                        {!! Form::Number('prestamo_valor_actual', null, ['class'=>'form-control', 'placeholder' =>   'Valor deuda', 'readonly' => 'true']) !!}
+                        {!! Form::text('prestamo_valor_actual', null, ['class'=>'form-control', 'placeholder' =>   'Valor deuda', 'readonly' => 'true',  'onblur' => 'format(this)']) !!}
                 </div>
             </div>
         </div>

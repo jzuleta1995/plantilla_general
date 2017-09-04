@@ -18,7 +18,7 @@
     <div class="col-md-push-1 col-md-3">
         <div class="form-group">
             {!! Form::label('cobrador_documento', 'Documento', ['class' => 'form-required']) !!}
-            {!! Form::text('cobrador_documento', null, ['class'=>'form-control','placeholder'  =>  'Documento del cobrador']) !!}
+            {!! Form::text('cobrador_documento', null, ['class'=>'form-control','placeholder'  =>  'Documento del cobrador','onkeyup' => 'camposNumerico(this)', 'onchange' => 'camposNumerico(this)']) !!}
         </div>
     </div>
     <div class="col-md-push-3 col-md-4">
@@ -33,14 +33,14 @@
     <div class="col-md-push-1 col-md-3">
         <div class="form-group">
             {!! Form::label('cobrador_telefono', 'Telefono', ['class' => 'form-required']) !!}
-            {!! Form::text('cobrador_telefono', null, ['class'=>'form-control', 'placeholder' =>   'Telefono del cobrador']) !!}
+            {!! Form::text('cobrador_telefono', null, ['class'=>'form-control', 'placeholder' =>   'Telefono del cobrador','onkeyup' => 'camposNumerico(this)', 'onchange' => 'camposNumerico(this)']) !!}
         </div>
     </div>
 
     <div class="col-md-push-3 col-md-3">
         <div class="form-group">
             {!! Form::label('cobrador_celular', 'Celular', ['class' => 'form-required']) !!}
-            {!! Form::text('cobrador_celular', null, ['class'=>'form-control', 'placeholder' =>   'Telefono del cobrador']) !!}
+            {!! Form::text('cobrador_celular', null, ['class'=>'form-control', 'placeholder' =>   'Celular del cobrador','onkeyup' => 'camposNumerico(this)', 'onchange' => 'camposNumerico(this)']) !!}
         </div>
     </div>
 </div>

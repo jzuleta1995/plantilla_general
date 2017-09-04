@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Abono;
 use App\Cliente;
+use App\Http\Requests\AbonoRequest;
 use App\Prestamo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,13 +26,13 @@ class AbonoController extends Controller
             ->with('prestamo', $prestamo);
     }
 
-    public function store(Request $request)
+    public function store(AbonoRequest $request)
     {
         $abono = new Abono();
         $abono->prestamo_id         = $request->prestamo_id;
         $abono->cliente_id          = $request->cliente_id;
-        $abono->abono_valor_cuota   = $request->abono_valor_cuota;
-        $abono->abono_valor         = $request->abono_valor;
+        $abono->abono_valor_cuota   = str_replace(',','',str_replace('.','',$request->abono_valor_cuota));
+        $abono->abono_valor         = str_replace(',','',str_replace('.','',$request->abono_valor));
         $abono->abono_fecha         = $request->abono_fecha;
         $abono->abono_tipo_pago     = $request->abono_tipo_pago;
         $abono->abono_estado        = $request->abono_estado;

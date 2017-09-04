@@ -10,9 +10,13 @@
             <!-- se incluye mensajes de erros -->
              @include('template.partials.error')
 
-            {!! Form::open(['route' => 'cobrador.store', 'method'   =>  'POST']) !!}
+            {!! Form::open(['route' => 'cobrador.store', 'method'   =>  'POST', 'id' => 'formulario', 'autocomplete' => 'off']) !!}
                  @include('aplicacion.cobrador.fragment.form')
             {!! Form::close() !!}
         <br>
     </div>
+@endsection
+@section('script')
+    <script src="{{ asset('js/aplicacion/general/limpiarFormulario.js') }}"></script>
+    <script src="{{ asset('js/aplicacion/general/validaCamposNumericos.js') }}"></script>
 @endsection

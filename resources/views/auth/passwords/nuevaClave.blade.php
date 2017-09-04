@@ -13,7 +13,7 @@
                             <div class="form-group">
                                 {!! Form::label('email', 'Correo Electrónico', ['class' => 'col-md-4 col-md-offset-1']) !!}
                                 <div class="col-md-6">
-                                    {!! Form::email('email', null, ['class'=>'form-control ', 'placeholder' =>   'example@gmail.com', 'onblur' => '']) !!}
+                                    {!! Form::email('email', null, ['class'=>'form-control ', 'placeholder' =>   'example@gmail.com', 'onblur' => '', 'autocomplete' => 'off']) !!}
                                 </div>
                             </div>
                             <div class="form-group">
@@ -31,7 +31,7 @@
                             <div class="form-group">
                                 {!! Form::label('respuesta_secreta', 'Respuesta Secreta', ['class' => 'col-md-4 col-md-offset-1']) !!}
                                 <div class="col-md-6">
-                                    {!! Form::text('respuesta_secreta', null, ['class'=>'form-control', 'placeholder' =>   'Respuesta secreta']) !!}
+                                    {!! Form::text('respuesta_secreta', null, ['class'=>'form-control', 'placeholder' =>   'Respuesta secreta', 'autocomplete' => 'off']) !!}
                                 </div>
                             </div>
                             <div class="form-group">
@@ -57,7 +57,5 @@
         </div>
     </div>
     <script src="{{ asset('js/aplicacion/olvidecontrasena/olvidecontrasena.js') }}"></script>
-</body>
 
-</html>
 @endsection

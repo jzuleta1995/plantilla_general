@@ -1,16 +1,16 @@
 @extends('template.form')
 
-@section('action', 'Informe Clientes')
+@section('action', 'Informe Usuarios')
 
 @section('content')
     <!-- se incluye mensajes de erros -->
     <div class="container panel" id="design">
 
         @include('template.partials.error')
-        {!! Form::open(['route' => 'excel.informeCliente']) !!}
+        {!! Form::open(['route' => 'excel.informeUsuario']) !!}
 
         <br>
-        <div class="row">
+       <!-- <div class="row">
             <div class="col-md-3">
                 <div class="form-group">
                     {!! Form::label('cliente', 'Cliente:') !!}
@@ -18,7 +18,7 @@
                     {!! Form::text('cliente', null, ['class'=>'form-control', 'id' => 'cliente', 'value' => 'id', 'placeholder'  =>  'Nombre de cliente']) !!}
                 </div>
             </div>
-        </div>
+        </div>-->
         <div class="row">
             <div class="col-md-3">
                 <div class="form-group">

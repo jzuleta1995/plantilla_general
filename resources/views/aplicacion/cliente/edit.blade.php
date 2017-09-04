@@ -10,7 +10,7 @@
         <!-- se incluye mensajes de erros -->
         @include('template.partials.error')
 
-        {!! Form::model($cliente, ['route' => ['cliente.update' ,$cliente->id], 'method' => 'PUT']) !!}
+        {!! Form::model($cliente, ['route' => ['cliente.update' ,$cliente->id], 'method' => 'PUT', 'id' => 'formulario', 'autocomplete' => 'off']) !!}
         <div class="container panel" id="design">
             @include('aplicacion.cliente.fragment.form')
         </div>
@@ -33,6 +33,9 @@
     </div>
 @endsection
 @section('script')
+
+    <script src="{{ asset('js/aplicacion/general/limpiarFormulario.js') }}"></script>
+    <script src="{{ asset('js/aplicacion/general/validaCamposNumericos.js') }}"></script>
     <script src="{{ asset('js/aplicacion/cliente/cliente.js') }}"></script>
     <script src="{{ asset('js/autocomplete.js') }}"></script>
     <script>autocompleteClass.autocompleteComponent('#cobrador', '#cobrador_id', 'cobrador');</script>

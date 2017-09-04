@@ -6,7 +6,9 @@
 <div class="container"  >
     <div class="row">
         <p>
-            <input class="btn btn-primary" type="button"  id="filtrar" value="FILTRAR" onclick="mostrar()" >
+            <input class="btn btn-primary" type="button"  id="filtrar" value="FILTRAR" onclick="mostrarOcularFiltros()" >
+            <input type="hidden" name="bandera" id="bandera" value="0">
+
 
         </p>
         <br>
@@ -66,9 +68,6 @@
                     <div class="col-md-6">
                         {!! Form::submit('ENVIAR',  ['class'=>'btn btn-primary']) !!}
                     </div>
-                    <div>
-                        <input class="btn btn-primary" type="button"  id="filtrar" value="OCULTAR FILTROS" onclick="ocultar()" >
-                    </div>
                 </div>
                 <br>
             </div>
@@ -102,14 +101,17 @@
                 @endif
 
                         <td class="text-center" >{{ $prestamo->cliente_nombre_completo }}</td>
-                        <td class="text-center">{{ $prestamo->prestamo_valor_actual }}</td>
+                        <td class="text-center">{{ $prestamo->prestamo_valor }}</td>
                         <td class="text-center">{{ $prestamo->cliente_lugar_trabajo }}</td>
                         <td class="text-center">{{ $prestamo->prestamo_tasa }} %</td>
                         <td class="text-center">{{ $prestamo->prestamo_utilidad_mes }}</td>
                         <td class="text-center">{{ $prestamo->prestamo_fecha_proximo_cobro }}</td>
+
+                  @if( Auth::user()->tipo == 'ADMINISTRADOR')
                         <td class="text-center">
-                           <button class="btn btn-warning" data-toggle="modal" data-target="#editModal" onclick="fun_edit('{{$prestamo -> id}}')">Anular Prestamo</button>
+                           <button class="btn btn-warning" data-toggle="modal" data-target="#editModal" onclick="mostrarModalPrestamo('{{$prestamo -> id}}')">Anular Prestamo</button>
                         </td>
+                  @endif
 
                 </tr>
             @endforeach
@@ -128,7 +130,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Editar</h4>
+                    <h4 class="modal-title">Anular Prestamo</h4>
                 </div>
                 <div class="modal-body">
                     <form action="{{ url('admin/prestamo/updateAnulaPrestamo') }}" method="post">
@@ -146,11 +148,11 @@
 
                         <input type="hidden" id="edit_id" name="edit_id">
 
-                        <button type="button" onclick="fun_save()" class="btn btn-default">Modificar</button>
+                        <button type="button" onclick="AnularPrestamo()" class="btn btn-primary">ANULAR</button>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">CERRAR</button>
                 </div>
 
             </div>
@@ -162,35 +164,15 @@
 </div>
 @endsection
 @section('script')
-    <script src="{{asset('js/modal/anula_prestamo.js')}}"></script>
+    <script src="{{asset('js/aplicacion/prestamo/anula_prestamo.js')}}"></script>
+    <script src="{{asset('js/aplicacion/general/filtrosVisorPrincipal.js')}}"></script>
+    <script src="{{ asset('js/autocomplete.js') }}"></script>
+    <script>autocompleteClass.autocompleteComponent('#cliente', '#cliente_id', 'cliente');</script>
+    <script>autocompleteClass.autocompleteComponent('#cobrador', '#cobrador_id', 'cobrador');</script>
+
 
 
     <script type="text/javascript">
-        $( "#cliente" ).autocomplete({
-            source:'{!! route('autocomplete', ['ruta'   =>  'cliente'])!!}',
-            minlength:1,
-            autoFocus:true,
-            select:function(e,ui)
-            {
-                $('#cliente').val(ui.item.id);
-                $('#cliente_id').val(ui.item.id);
-
-            }
-        });
-
-        $( "#cobrador" ).autocomplete({
-            source:'{!! route('autocomplete', ['ruta'   =>  'cobrador'])!!}',
-            minlength:1,
-            autoFocus:true,
-            select:function(e,ui)
-            {
-                $('#cobrador').val(ui.item.id);
-                $('#cobrador_id').val(ui.item.id);
-
-            }
-        });
-
-
 
         function mostrar(){
             document.getElementById('formulario_uno').style.display = 'block';

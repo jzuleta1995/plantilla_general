@@ -29,9 +29,9 @@ var Prestamo = {
                 }
             }
 
-            valor           = parseInt($('#prestamo_valor').val());
-            tasa            = parseInt($('#prestamo_tasa').val());
-            cuotas          = parseInt($('#prestamo_numero_cuotas').val());
+            valor           = parseInt($('#prestamo_valor').val().replace(/\./g,''));
+            tasa            = parseInt($('#prestamo_tasa').val().replace(/\./g,''));
+            cuotas          = parseInt($('#prestamo_numero_cuotas').val().replace(/\./g,''));
 
             $('#prestamo_valor_abonado').val(0);
 
@@ -90,7 +90,7 @@ var Prestamo = {
             fecha_inicial.setFullFecha($('#prestamo_fecha_inicial').val());
             fecha_actual.setFullFecha($('#prestamo_fecha_inicial').val());
 
-            valor_cuota      = $('#prestamo_valor_cuota').val();
+            valor_cuota      = $('#prestamo_valor_cuota').val().replace(/\./g,'');
             tiempo_prestamo  = $('#prestamo_tiempo_cobro').val();
 
             var dias_diferencia_primer_pagpo = fecha_inicial.getDiferenciaDias(fecha.getTime());

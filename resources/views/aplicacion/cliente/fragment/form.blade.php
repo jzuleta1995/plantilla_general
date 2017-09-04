@@ -16,7 +16,7 @@
     <div class="col-md-push-1 col-md-3">
         <div class="form-group">
             {!! Form::label('cliente_documento', 'Documento', ['class' => 'form-required']) !!}
-            {!! Form::text('cliente_documento', null, ['class'=>'form-control','placeholder'  =>  'Documento del cliente']) !!}
+            {!! Form::text('cliente_documento', null, ['class'=>'form-control','placeholder'  =>  'Documento del cliente','onkeyup' => 'camposNumerico(this)', 'onchange' => 'camposNumerico(this)']) !!}
         </div>
     </div>
     <div class="col-md-push-3 col-md-4">
@@ -45,13 +45,13 @@
     <div class="col-md-push-1 col-md-3">
         <div class="form-group">
             {!! Form::label('cliente_telefono', 'Telefono', ['class' => 'form-required']) !!}
-            {!! Form::text('cliente_telefono', null, ['class'=>'form-control', 'placeholder' =>   'Telefono del cliente']) !!}
+            {!! Form::text('cliente_telefono', null, ['class'=>'form-control', 'placeholder' =>   'Telefono del cliente','onkeyup' => 'camposNumerico(this)', 'onchange' => 'camposNumerico(this)']) !!}
         </div>
     </div>
     <div class="col-md-push-3 col-md-3">
         <div class="form-group">
             {!! Form::label('cliente_celular', 'Celular', ['class' => 'form-required']) !!}
-            {!! Form::text('cliente_celular', null, ['class'=>'form-control', 'placeholder' =>   'Telefono celular']) !!}
+            {!! Form::text('cliente_celular', null, ['class'=>'form-control', 'placeholder' =>   'Telefono celular','onkeyup' => 'camposNumerico(this)', 'onchange' => 'camposNumerico(this)']) !!}
         </div>
     </div>
 </div>

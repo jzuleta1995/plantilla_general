@@ -10,7 +10,7 @@
             <div class="panel panel-default" id="desing">
                 <div class="panel-heading"></div>
                 <div class="panel-body">
-                    {!! Form::open(['route' => 'user.cambioClave', 'method'   =>  'POST', 'role' => 'form']) !!}
+                    {!! Form::open(['route' => 'user.cambioClave', 'method'   =>  'POST', 'class' => 'horizontal', 'role' => 'form']) !!}
 
                     <div class="form-group">
                         {!! Form::label('password', 'Contraseña Actual') !!}

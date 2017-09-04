@@ -21,5 +21,5 @@
     <br>
 @endsection
 @section('script')
-    <script src="{{asset('js/modal/anula_abono.js')}}"></script>
+    <script src="{{asset('js/aplicacion/abono/anula_abono.js')}}"></script>
 @endsection

@@ -36,9 +36,11 @@ class HomeController extends Controller
         $prestamos = DB::table('clientes')
             ->join('prestamos', 'prestamos.cliente_id', '=', 'clientes.id')
             ->selectRaw('clientes.cliente_nombre_completo, clientes.cliente_lugar_trabajo, prestamos.prestamo_fecha_proximo_cobro,
-                          prestamos.prestamo_tasa,prestamos.prestamo_utilidad_mes, prestamos.id,prestamos.prestamo_valor_actual,
-                          fc_calcula_utilidad_mes(prestamos.id),fc_estado_del_prestamo(prestamos.id) as color');
-        $prestamos->where('prestamo_estado', '=', 'ACTIVO');
+                          prestamos.prestamo_tasa,prestamos.prestamo_utilidad_mes, prestamos.id,prestamos.prestamo_valor,
+                          fc_calcula_utilidad_mes(prestamos.id),fc_estado_del_prestamo(prestamos.id) as color')
+        ->where('prestamo_estado', '=', 'ACTIVO')
+        ->orderBy('prestamos.created_at', 'desc');
+
 
         if($request->cliente_id !=''){
             $prestamos->where('clientes.id', '=', $request->cliente_id);

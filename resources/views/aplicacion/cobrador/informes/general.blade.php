@@ -4,7 +4,7 @@
 
 @section('content')
     <!-- se incluye mensajes de erros -->
-    <div class="container panel">
+    <div class="container panel" id="design">
 
         @include('template.partials.error')
         {!! Form::open(['route' => 'excel.informeCobrador']) !!}
@@ -53,18 +53,7 @@
 @endsection
 
 @section('script')
-
-    <script type="text/javascript">
-        $( "#cobrador" ).autocomplete({
-            source:'{!! route('autocomplete', ['ruta'   =>  'cobrador'])!!}',
-            minlength:1,
-            autoFocus:true,
-            select:function(e,ui)
-            {
-                $('#cobrador').val(ui.item.id);
-                $('#cobrador_id').val(ui.item.id);
-            }
-        });
-    </script>
+    <script src="{{ asset('js/autocomplete.js') }}"></script>
+    <script>autocompleteClass.autocompleteComponent('#cobrador', '#cobrador_id', 'cobrador');</script>
 @endsection
 

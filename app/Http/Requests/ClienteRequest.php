@@ -26,7 +26,7 @@ class ClienteRequest extends FormRequest
         return [
             'cliente_nombre'             => 'required',
             'cliente_apellido'           => 'required',
-            'cliente_documento'          => 'required',
+            'cliente_documento'          => 'required|unique:clientes',
             'cliente_direccion_casa'     => 'required',
             'cliente_direccion_trabajo'  => 'required',
             'cliente_telefono'           => 'required',
