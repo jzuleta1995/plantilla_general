@@ -26,6 +26,8 @@
                         <li><a class="nav-link" href="{{ route('excel.indexInformeCliente') }}">Informe Clientes</a></li>
                         <li><a class="nav-link" href="{{ route('excel.indexInformeCobrador') }}">Informe Cobradores</a></li>
                         <li><a class="nav-link" href="{{ route('excel.indexInformeUsuario') }}">Informe Usuario</a></li>
+                        <li><a class="nav-link" href="{{ route('excel.indexInformePrestamo') }}">Informe Prestamos</a></li>
+                        <li><a class="nav-link" href="{{ route('excel.indexInformeRutaCobro') }}">Informe Ruta De Cobro</a></li>
 
                     </ul>
                 </li>
@@ -54,12 +56,12 @@
                         <span class="glyphicon glyphicon-user"></span> {{ Auth::user()->nombre }}
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a class="nav-link" href="{{ route('user.indexcambioClave') }}">Cambio Clave</a></li>
+                        <li><a class="nav-link" href="{{ route('user.indexcambioClave') }}"><span class="glyphicon glyphicon-transfer"></span>&nbsp;&nbsp;Cambio Clave</a></li>
                         <li role="separator" class="divider"></li>
                         <li>
                             <a href="{{ route('logout') }}" class="nav-link"
                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                Cerrar Sesión
+                                <span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;Cerrar Sesión
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

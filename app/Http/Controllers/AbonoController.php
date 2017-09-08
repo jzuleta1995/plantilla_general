@@ -82,15 +82,21 @@ class AbonoController extends Controller
     */
     public function updateAnulaAbono(Request $request, $id)
     {
-        //dd($request -> input('observacion_abono'));
-        $data = Abono::find($id);
-        $data -> abono_observacion = $request -> input('observacion_abono');
-        $data -> abono_estado      = 'INACTIVO';
 
-        $data -> save();
-        //return response()->json($data);
+        if ($request->input('observacion_abono') == '') {
+            return response()->view('errors.500', [], 500);
 
-        return back()
-            ->with('success','Abono Anulado.');
+        } else {
+            // dd("id".$id);
+            $data = Abono::find($id);
+            $data->abono_observacion = $request->input('observacion_abono');
+            $data->abono_estado = 'INACTIVO';
+
+            $data->save();
+            //return response()->json($data);
+
+            return back()
+                ->with('success', 'Prestamo Anulado.');
+        }
     }
 }

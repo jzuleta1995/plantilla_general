@@ -1,13 +1,13 @@
 @extends('template.form')
 
-@section('action', 'Informe Cobradores')
+@section('action', 'Informe Prestamos')
 
 @section('content')
     <!-- se incluye mensajes de erros -->
     <div class="container panel" id="design">
 
         @include('template.partials.error')
-        {!! Form::open(['route' => 'excel.informeCobrador']) !!}
+        {!! Form::open(['route' => 'excel.informeRutaCobro']) !!}
 
         <br>
         <div class="row">
@@ -18,9 +18,9 @@
                     {!! Form::text('cobrador', null, ['class'=>'form-control', 'id' => 'cobrador', 'value' => 'id', 'placeholder'  =>  'Nombre de cobrador']) !!}
                 </div>
             </div>
-
-
         </div>
+
+
         <div class="row">
             <div class="col-md-3">
                 <div class="form-group">
@@ -55,5 +55,7 @@
 @section('script')
     <script src="{{ asset('js/autocomplete.js') }}"></script>
     <script>autocompleteClass.autocompleteComponent('#cobrador', '#cobrador_id', 'cobrador');</script>
+    <script>autocompleteClass.autocompleteComponent('#cliente', '#cliente_id', 'cliente');</script>
+
 @endsection
 

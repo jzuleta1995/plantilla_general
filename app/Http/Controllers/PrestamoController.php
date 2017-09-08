@@ -130,7 +130,9 @@ class PrestamoController extends Controller
 
     public function utilidad(Request $request)
     {
-        return view('aplicacion.prestamo.informes.utilidad', 'prestamos');
+        return view('aplicacion.prestamo.informes.utilidad');
+        //return redirect('admin/prestamo/informes/utilidad');
+
     }
 
     public function view(Request $request, $id)
@@ -157,17 +159,21 @@ class PrestamoController extends Controller
     */
     public function updateAnulaPrestamo(Request $request, $id)
     {
+        if($request -> input('observacion_prestamo') ==''){
+            return response()->view('errors.500', [], 500);
 
-       // dd("id".$id);
-        $data = Prestamo::find($id);
-        $data -> prestamo_observacion = $request -> input('observacion_prestamo');
-        $data -> prestamo_estado      = 'INACTIVO';
+        }else {
+            // dd("id".$id);
+            $data = Prestamo::find($id);
+            $data->prestamo_observacion = $request->input('observacion_prestamo');
+            $data->prestamo_estado = 'INACTIVO';
 
-        $data -> save();
-        //return response()->json($data);
+            $data->save();
+            //return response()->json($data);
 
-        return back()
-            ->with('success','Prestamo Anulado.');
+            return back()
+                ->with('success', 'Prestamo Anulado.');
+        }
     }
 
     public function validaUnicoPrestamoCliente(Request $request, $cliente_id)

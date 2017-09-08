@@ -97,20 +97,46 @@ Route::group(['prefix'  =>  '/admin', 'middleware'   =>  'auth'], function () {
 
         Route::name('excel.informeCliente')
              ->post('/excel/cliente', 'ExcelController@informeCliente');
+    /*++++++++++++++++++++++++++++++++++++++++++++++++*/
 
         Route::name('excel.indexInformeCobrador')
             ->get('/excel/cobrador', 'ExcelController@indexInformeCobrador');
 
        Route::name('excel.informeCobrador')
             ->post('/excel/cobrador', 'ExcelController@informeCobrador');
+       /*++++++++++++++++++++++++++++++++++++++++++++++++*/
 
        Route::name('excel.indexInformeUsuario')
             ->get('/excel/user', 'ExcelController@indexInformeUsuario');
 
         Route::name('excel.informeUsuario')
         ->post('/excel/user', 'ExcelController@informeUsuario');
+    /*++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-   //FIN INFORMES EXCEL
+
+    Route::name('excel.indexInformePrestamo')
+        ->get('/excel/prestamo', 'ExcelController@indexInformePrestamo');
+
+       Route::name('excel.informePrestamo')
+        ->post('/excel/prestamo', 'ExcelController@informePrestamo');
+    /*++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+       Route::name('excel.indexInformePrestamo')
+        ->get('/excel/prestamo', 'ExcelController@indexInformePrestamo');
+
+       Route::name('excel.informePrestamo')
+        ->post('/excel/prestamo', 'ExcelController@informePrestamo');
+    /*++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+        Route::name('excel.indexInformeRutaCobro')
+        ->get('/excel/RutaCobro', 'ExcelController@indexInformeRutaCobro');
+
+        Route::name('excel.informeRutaCobro')
+        ->post('/excel/RutaCobro', 'ExcelController@informeRutaCobro');
+
+
+    //FIN INFORMES EXCEL
 
 
     //INICIO USUARIOS

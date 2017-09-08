@@ -20,15 +20,23 @@ function mostrarModalPrestamo(id)
 function AnularPrestamo()
 {
     var url = '/admin/prestamo/updateAnulaPrestamo';
+    var id = $("#edit_id").val();
+
     $.ajax({
-        url: url+'/'+$("#edit_id").val(),
+        url: url+'/'+id,
         type:"POST",
-        data: {"observacion_prestamo":$("#edit_observacion").val(), '_token': $("input[name=_token]").val()},
+        data: {"id":$("#edit_id").val(), "observacion_prestamo":$("#edit_observacion").val(), '_token': $("input[name=_token]").val()},
+
         success: function(result){
             alert ("Prestamo Anulado Satisfactoriamente");
 
             $("#editModal").modal('hide');
-            console.log(result);
-        }
-    });
+            //console.log(result);
+            //recarga lapagina despues de anular un registro
+            location.reload(true);
+        },
+         error: function(data){
+             alert("Debe Ingresar El Campo Observacion");
+         }
+});
 }

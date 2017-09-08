@@ -38,12 +38,25 @@
                 {!! Form::text('prestamo_tasa', null, ['class'=>'form-control','placeholder'  =>  'Tasa interes']) !!}
             </div>
         </div>
-        <div class="col-md-push-4 col-md-2  ">
-            <div class="form-group" id="numero_cuota">
-                {!! Form::label('prestamo_numero_cuotas', 'Numero de Cuotas') !!}
-                {!! Form::text('prestamo_numero_cuotas', null, ['class'=>'form-control', 'placeholder' =>   'Numero de Cuotas']) !!}
+
+    @if(is_object($cliente))
+
+        @if($prestamo->prestamo_tipo!='ABIERTO')
+            <div class="col-md-push-4 col-md-2  ">
+                <div class="form-group" id="numero_cuota">
+                    {!! Form::label('prestamo_numero_cuotas', 'Numero de Cuotas') !!}
+                    {!! Form::text('prestamo_numero_cuotas', null, ['class'=>'form-control', 'placeholder' =>   'Numero de Cuotas']) !!}
+                </div>
             </div>
-        </div>
+         @endif
+            @else
+            <div class="col-md-push-4 col-md-2  ">
+                <div class="form-group" id="numero_cuota">
+                    {!! Form::label('prestamo_numero_cuotas', 'Numero de Cuotas') !!}
+                    {!! Form::text('prestamo_numero_cuotas', null, ['class'=>'form-control', 'placeholder' =>   'Numero de Cuotas']) !!}
+                </div>
+            </div>
+            @endif
     </div>
     <div class="row">
         <div class="col-md-push-1 col-md-3">

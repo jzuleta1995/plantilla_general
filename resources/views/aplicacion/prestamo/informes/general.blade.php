@@ -1,13 +1,13 @@
 @extends('template.form')
 
-@section('action', 'Informe Cobradores')
+@section('action', 'Informe Prestamos')
 
 @section('content')
     <!-- se incluye mensajes de erros -->
     <div class="container panel" id="design">
 
         @include('template.partials.error')
-        {!! Form::open(['route' => 'excel.informeCobrador']) !!}
+        {!! Form::open(['route' => 'excel.informePrestamo']) !!}
 
         <br>
         <div class="row">
@@ -18,8 +18,39 @@
                     {!! Form::text('cobrador', null, ['class'=>'form-control', 'id' => 'cobrador', 'value' => 'id', 'placeholder'  =>  'Nombre de cobrador']) !!}
                 </div>
             </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('cliente', 'Cliente:') !!}
+                    {!! Form::hidden('cliente_id', null, ['class'=>'form-control', 'id' => 'cliente_id', 'value' => 'id', 'placeholder'  =>  'Nombre de cliente']) !!}
+                    {!! Form::text('cliente', null, ['class'=>'form-control', 'id' => 'cliente', 'value' => 'id', 'placeholder'  =>  'Nombre de cliente']) !!}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('prestamo_estado', 'Tiempo Prestamo') !!}
+                    {!! Form::select('prestamo_estado', ['' => 'SELECCIONE UN ESTADO', 'ACTIVO' => 'ACTIVO', 'INACTIVO' => 'INACTIVO', 'PAGADO' => 'PAGADO'], null,  ['class'=>'form-control']) !!}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('prestamo_fecha', 'Fecha Creacion Prestamo Desde:') !!}
+                    {!! Form::date('prestamo_fecha', null, ['class'=>'form-control']) !!}
 
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    {!! Form::label('prestamo_fecha1', 'Hasta:') !!}
+                    {!! Form::date('prestamo_fecha1', null, ['class'=>'form-control']) !!}
 
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-md-3">
@@ -55,5 +86,7 @@
 @section('script')
     <script src="{{ asset('js/autocomplete.js') }}"></script>
     <script>autocompleteClass.autocompleteComponent('#cobrador', '#cobrador_id', 'cobrador');</script>
+    <script>autocompleteClass.autocompleteComponent('#cliente', '#cliente_id', 'cliente');</script>
+
 @endsection
 

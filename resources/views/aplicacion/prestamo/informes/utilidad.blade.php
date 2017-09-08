@@ -72,7 +72,7 @@
                     <td class="text-center">{{ $prestamo->valor_pagado_a_interes }} %</td>
                 </tr>
             @endforeach
-                <tr>
+                <!--<tr>
                     <td class="text-center">TOTAL</td>
                     <td class="text-center"></td>
                     <td class="text-center">{{ $prestamo->valor_total_pagado }}</td>
@@ -80,7 +80,7 @@
                     <td class="text-center">{{ $prestamo->valor_total_interes }}</td>
 
 
-                </tr>
+                </tr>-->
 
 
             </tbody>
@@ -89,30 +89,7 @@
     </div>
 @endsection
 @section('script')
-
-    <script type="text/javascript">
-        $( "#cliente" ).autocomplete({
-            source:'{!! route('autocomplete', ['ruta'   =>  'cliente'])!!}',
-            minlength:1,
-            autoFocus:true,
-            select:function(e,ui)
-            {
-                $('#cliente').val(ui.item.id);
-                $('#cliente_id').val(ui.item.id);
-
-            }
-        });
-
-        $( "#cobrador" ).autocomplete({
-            source:'{!! route('autocomplete', ['ruta'   =>  'cobrador'])!!}',
-            minlength:1,
-            autoFocus:true,
-            select:function(e,ui)
-            {
-                $('#cobrador').val(ui.item.id);
-                $('#cobrador_id').val(ui.item.id);
-
-            }
-        });
-    </script>
+    <script src="{{ asset('js/autocomplete.js') }}"></script>
+    <script>autocompleteClass.autocompleteComponent('#cobrador', '#cobrador_id', 'cobrador');</script>
+    <script>autocompleteClass.autocompleteComponent('#cliente', '#cliente_id', 'cliente');</script>
 @endsection

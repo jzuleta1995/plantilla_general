@@ -1,16 +1,24 @@
-function validaPasswordAdmin(id)
+function validaPasswordAdmin()
 {
-
     var url = '/admin/user/validaPasswordAdmin';
 
     $.ajax({
-        url: view_url+'/'+id,
+        url: url,
         type:"GET",
-        //data: {"id":id},
+        data: {"psw":$("#password").val(),'_token': $("input[name=_token]").val()},
         success: function(result){
-            //console.log(result);
-            $("#edit_id").val(result.id);
-            $("#edit_valor_abono").val(result.abono_valor_cuota);
-        }
+            console.log(result);
+            $("#edit_observacion").removeAttr("readonly");
+            $("#edit_observacion").val('');
+
+        },
+         error: function(data){
+             alert("El Password Validado es Incorrecto");
+             $("#edit_observacion").addClass("readonly");
+             $("#edit_observacion").val('');
+             $("#password").val('');
+
+
+         }
     });
 }

@@ -10,16 +10,11 @@
         {!! Form::model($prestamo, ['route' => ['prestamo.show' ,$prestamo->id], 'method' => 'GET']) !!}
             @include('aplicacion.prestamo.fragment.form')
         {!! Form::close() !!}
-        <br>
-
-
     </div>
-    <h3 class="text-center">Visor Abonos</h3>
-    <br>
     @include('aplicacion.prestamo.fragment.visorabono')
-
     <br>
 @endsection
 @section('script')
     <script src="{{asset('js/aplicacion/abono/anula_abono.js')}}"></script>
+    <script src="{{asset('js/aplicacion/general/validarPasswordAdmin.js')}}"></script>
 @endsection

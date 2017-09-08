@@ -13,7 +13,7 @@
         </p>
         <br>
         <div class="col-md-12 panel" id="formulario_uno" style="display:none">
-            {!! Form::open(['route' => 'home', 'method'   =>  'GET']) !!}
+            {!! Form::open(['route' => 'home', 'method'   =>  'GET', 'id' => 'formulario_general']) !!}
 
 
                 <div class="row " id="principal">
@@ -77,7 +77,7 @@
 </div>
 
 <div class="container" id="design">
-    <table class="table table-hover table-striped table-condensed" >
+    <table class="table table-hover  table-condensed" >
         <thead>
         <th class="text-center">Cliente</th>
         <th class="text-center">Deuda</th>
@@ -90,9 +90,9 @@
         <tbody>
             @foreach($prestamos as $prestamo)
 
-                @if(trim($prestamo->color) =='AZUL')
+                @if($prestamo->color =='AZUL')
                     <tr bgcolor="#0DB3F1">
-                @elseif(trim($prestamo->color) =='ROSADO')
+                @elseif($prestamo->color =='ROSADO')
                     <tr bgcolor="#F87595">
                 @elseif(trim($prestamo->color) =='MORADO')
                     <tr bgcolor="#CE6BFC">
@@ -109,7 +109,8 @@
 
                   @if( Auth::user()->tipo == 'ADMINISTRADOR')
                         <td class="text-center">
-                           <button class="btn btn-warning" data-toggle="modal" data-target="#editModal" onclick="mostrarModalPrestamo('{{$prestamo -> id}}')">Anular Prestamo</button>
+                           <!--<button class="btn btn-warning" data-toggle="modal" data-target="#editModal" onclick="mostrarModalPrestamo('{{$prestamo -> id}}')">Anular Prestamo</button>-->
+                        <a class="btn btn-danger"   data-toggle="modal" data-target="#editModal" onclick="mostrarModalPrestamo('{{$prestamo -> id}}')"> <span class="glyphicon glyphicon-remove"></span></a>
                         </td>
                   @endif
 
@@ -137,12 +138,16 @@
                         {{ csrf_field() }}
                         <div class="form-group">
                             <div class="form-group">
-                                <label for="edit_cliente">cliente:</label>
+                                <label for="edit_cliente">Cliente:</label>
                                 <input type="text" class="form-control" id="edit_cliente" name="edit_cliente" readonly="true">
                             </div>
                             <div class="form-group">
+                                <label for="password">Password:</label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="***********" onblur="validaPasswordAdmin()" >
+                            </div>
+                            <div class="form-group">
                                 <label for="edit_observacion">Observacion:</label>
-                                <input type="text" class="form-control" id="edit_observacion" name="edit_observacion">
+                                <input type="text" class="form-control" id="edit_observacion" name="edit_observacion"  readonly="true">
                             </div>
                         </div>
 
@@ -166,6 +171,7 @@
 @section('script')
     <script src="{{asset('js/aplicacion/prestamo/anula_prestamo.js')}}"></script>
     <script src="{{asset('js/aplicacion/general/filtrosVisorPrincipal.js')}}"></script>
+    <script src="{{asset('js/aplicacion/general/validarPasswordAdmin.js')}}"></script>
     <script src="{{ asset('js/autocomplete.js') }}"></script>
     <script>autocompleteClass.autocompleteComponent('#cliente', '#cliente_id', 'cliente');</script>
     <script>autocompleteClass.autocompleteComponent('#cobrador', '#cobrador_id', 'cobrador');</script>
