@@ -5,13 +5,16 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-12 panel">
-                {!! Form::open(['route' => 'utilidadPrestamos.index']) !!}
+            <p>
+                <input class="btn btn-primary" type="button"  id="filtrar" value="FILTRAR" onclick="mostrarOcularFiltros()" >
+                <input type="hidden" name="bandera" id="bandera" value="0">
+            </p>
+            <br>
+            <div class="col-md-12 panel" id="formulario_uno" style="display:none">
+                {!! Form::open(['route' => 'prestamo.utilidad', 'method'   =>  'GET', 'id' => 'formulario_general']) !!}
 
-                <div class="container">
                     <br>
                     <div class="row">
-
                         <div class="col-md-3">
                             <div class="form-group">
                                 {{ Form::Label('cobrador', 'Cobrador') }}
@@ -19,10 +22,7 @@
                                 {!! Form::text('cobrador', null, ['class'=>'form-control', 'id' => 'cobrador', 'value' => 'id', 'placeholder'  =>  'Nombre de cliente', 'size'    => 'S']) !!}
                             </div>
                         </div>
-
-
                     </div>
-                </div>
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
@@ -54,7 +54,7 @@
     <div class="container" id="design">
         <table class="table table-hover table-striped" >
             <thead>
-            <th class="text-center">Vendedor</th>
+            <th class="text-center">Cobrador</th>
             <th class="text-center">Cliente</th>
             <th class="text-center">Couta Pagada</th>
             <th class="text-center">Capital Pagado</th>
@@ -62,7 +62,7 @@
             </thead>
 
             <tbody>
-            @foreach($utilidad as $prestamo)
+            @foreach($prestamos as $prestamo)
 
                 <tr>
                     <td class="text-center">{{ $prestamo->cobrador }}</td>
@@ -72,15 +72,6 @@
                     <td class="text-center">{{ $prestamo->valor_pagado_a_interes }} %</td>
                 </tr>
             @endforeach
-                <!--<tr>
-                    <td class="text-center">TOTAL</td>
-                    <td class="text-center"></td>
-                    <td class="text-center">{{ $prestamo->valor_total_pagado }}</td>
-                    <td class="text-center">{{ $prestamo->valor_total_capital }}</td>
-                    <td class="text-center">{{ $prestamo->valor_total_interes }}</td>
-
-
-                </tr>-->
 
 
             </tbody>
@@ -89,6 +80,7 @@
     </div>
 @endsection
 @section('script')
+    <script src="{{asset('js/aplicacion/general/filtrosVisorPrincipal.js')}}"></script>
     <script src="{{ asset('js/autocomplete.js') }}"></script>
     <script>autocompleteClass.autocompleteComponent('#cobrador', '#cobrador_id', 'cobrador');</script>
     <script>autocompleteClass.autocompleteComponent('#cliente', '#cliente_id', 'cliente');</script>

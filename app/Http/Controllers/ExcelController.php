@@ -14,6 +14,9 @@ use DB;
 class ExcelController extends Controller
 {
 
+    /*************************************************/
+    /**********************CLIENTE ********************/
+    /************************************************/
 
     public function indexInformeCliente(Request $request)
     {
@@ -75,6 +78,9 @@ class ExcelController extends Controller
         })->export('xls');
 
     }
+    /*************************************************/
+    /**********************COBRADOR ********************/
+    /************************************************/
 
     public function indexInformeCobrador(Request $request)
     {
@@ -133,6 +139,10 @@ class ExcelController extends Controller
         })->export('xls');
 
     }
+    /*************************************************/
+    /**********************USUARIO ********************/
+    /************************************************/
+
     public function indexInformeUSuario(Request $request)
     {
         return view('aplicacion.user.informes.general');
@@ -154,25 +164,17 @@ class ExcelController extends Controller
                 'users.tipo',
                 'users.estado',
                 'users.created_at');
-       // id as codigo, nombre_completo, documento, direccion,telefono,email,tipo as tipousuario,estado,created_at as fechcreacion
 
-       /* if($request->cobrador_id !=''){
-            $clientes->where('cobradors.id', '=', $request->cobrador_id);
-        }*/
         if($request->fecha_inicial !='' && $request->fecha_final !=''){
             $users->whereBetween('users.created_at',  array($request->fecha_inicial, $request->fecha_final));
         }
         $users = $users->get();
 
-        // Initialize the array which will be passed into the Excel
-        // generator.
         $usersArray = [];
 
         // Define the Excel spreadsheet headers
         $usersArray[] = ['id_usuario', 'nombre','apellido','documento','direccion casa', 'telefono', 'fecha hora creacion'];
 
-        // Convert each member of the returned collection into an array,
-        // and append it to the payments array.
         foreach ($users as $user) {
             $usersArray[] = (Array) $user;
         }
@@ -192,7 +194,9 @@ class ExcelController extends Controller
         })->export('xls');
 
     }
-
+    /*************************************************/
+    /**********************PRESTAMO ********************/
+    /************************************************/
 
     public function indexInformePrestamo(Request $request)
     {
@@ -245,15 +249,11 @@ class ExcelController extends Controller
         }
         $clientes=$clientes->get();
 
-        // Initialize the array which will be passed into the Excel
-        // generator.
         $clientesArray = [];
 
         // Define the Excel spreadsheet headers
         $clientesArray[] = ['nombre cobrador', 'nombre cliente','codigo_prestamo','prestamo_valor','prestamo_tasa','prestamo_tipo', 'prestamo_tiempo_cobro', 'prestamo_numero_cuotas', 'prestamo_fecha', 'prestamo_fecha_inicial', 'prestamo_fecha_proximo_cobro','prestamo_valor_abono', 'prestamo_valor_actual', 'prestamo_valor_proxima_cuota', 'usuario creador', 'fecha hora creacion'];
 
-        // Convert each member of the returned collection into an array,
-        // and append it to the payments array.
         foreach ($clientes as $cliente) {
             $clientesArray[] = $cliente->toArray();
         }
@@ -275,7 +275,9 @@ class ExcelController extends Controller
     }
 
 
-
+    /*************************************************/
+    /**********************RUTA COBRO ********************/
+    /************************************************/
 
     public function indexInformeRutaCobro(Request $request)
     {
@@ -294,11 +296,15 @@ class ExcelController extends Controller
                 'prestamos.prestamo_valor_abonado',
                 'prestamos.prestamo_valor_actual',
                 'prestamos.prestamo_valor_proxima_cuota',
-                'prestamos.prestamo_fecha_proximo_cobro');
+                'prestamos.prestamo_fecha_proximo_cobro',
+                'users.nombre_completo');
 
 
         if($request->cobrador_id !=''){
             $clientes->where('clientes.cobrador_id', '=', $request->cobrador_id);
+        }
+        if($request->cliente_id !=''){
+            $clientes->where('prestamos.cliente_id', '=', $request->cliente_id);
         }
 
         if($request->fecha_proximo_cobro !='' && $request->fecha_proximo_cobro1 !=''){
@@ -311,7 +317,7 @@ class ExcelController extends Controller
         $clientesArray = [];
 
         // Define the Excel spreadsheet headers
-        $clientesArray[] = ['nombre cobrador', 'nombre cliente', 'Valor abonado','Valor deuada Actual','Valor Cuota A Pagar', 'fecha cobro'];
+        $clientesArray[] = ['nombre cobrador', 'nombre cliente', 'Valor abonado','Valor deuada Actual','Valor Cuota A Pagar', 'fecha cobro', 'usuario creador prestamo'];
 
         // Convert each member of the returned collection into an array,
         // and append it to the payments array.
@@ -330,6 +336,137 @@ class ExcelController extends Controller
             // Build the spreadsheet, passing in the payments array
             $excel->sheet('sheet1', function($sheet) use ($clientesArray) {
                 $sheet->fromArray($clientesArray, null, 'A1', false, false);
+            });
+        })->export('xls');
+
+    }
+     /*************************************************/
+     /**********************ABONO ********************/
+     /************************************************/
+
+
+    public function indexInformeAbono(Request $request)
+    {
+        return view('aplicacion.abono.informes.general');
+    }
+
+    public function informeAbono(Request $request) {
+
+       /* if($request->cobrador_id ==''){
+            return Redirect()->route('admin.excel.Abono')
+                ->with('error', 'aplicacion.abono.informes.general');
+        }*/
+
+        $clientes = Prestamo::join('clientes', 'clientes.id', '=', 'prestamos.cliente_id')
+            ->join('cobradors', 'clientes.cobrador_id', '=', 'cobradors.id')
+            ->join('abonos', 'abonos.prestamo_id', '=', 'prestamos.id')
+            ->join('users', 'users.id', '=', 'abonos.user_id')
+
+            ->select(
+                'cobradors.cobrador_nombre_completo',
+                'clientes.cliente_nombre_completo',
+                'prestamos.id',
+                'abonos.id',
+                'abonos.abono_tipo_pago',
+                'abonos.abono_valor_cuota',
+                'abonos.abono_valor',
+                'abonos.abono_observacion',
+                'abonos.abono_estado',
+                'abonos.abono_fecha',
+                'users.nombre_completo');
+
+
+        if($request->cobrador_id !=''){
+            $clientes->where('clientes.cobrador_id', '=', $request->cobrador_id);
+        }
+        if($request->cliente_id !=''){
+            $clientes->where('prestamos.cliente_id', '=', $request->cliente_id);
+        }
+
+        if($request->abono_fecha !='' && $request->abono_fecha1 !=''){
+            $clientes->whereBetween('abonos.abono_fecha',  array($request->abono_fecha, $request->abono_fecha1));
+        }
+        $clientes=$clientes->get();
+
+        $clientesArray = [];
+
+        // Define the Excel spreadsheet headers
+        $clientesArray[] = ['nombre cobrador', 'nombre cliente', 'Codigo Prestamo','Codigo Abono','Tipo Pago', 'Valor Couta A Pagar', 'Valor Cuota Pagada', 'Observacion Abono', 'Estado Abono', 'Fech Abono', 'Usuario Creador Abono'];
+
+        foreach ($clientes as $cliente) {
+            $clientesArray[] = $cliente->toArray();
+        }
+
+        // Generate and return the spreadsheet
+        Excel::create('Informe Ruta De Cobro', function($excel) use ($clientesArray) {
+
+            // Set the spreadsheet title, creator, and description
+            $excel->setTitle('Payments');
+            $excel->setCreator('Laravel')->setCompany('WJ Gilmore, LLC');
+            $excel->setDescription('payments file');
+
+            // Build the spreadsheet, passing in the payments array
+            $excel->sheet('sheet1', function($sheet) use ($clientesArray) {
+                $sheet->fromArray($clientesArray, null, 'A1', false, false);
+            });
+        })->export('xls');
+
+    }
+
+    /*************************************************/
+    /**********************VISOR UTILIDAD ********************/
+    /************************************************/
+
+
+    public function indexInformeVisorUtilidad(Request $request)
+    {
+        return view('aplicacion.prestamo.informes.visorutilidad');
+    }
+
+     public function informeVisorUtilidad(Request $request) {
+
+
+        //$users = User::join('cobradors', 'cobradors.user_id', '=', 'users.id')
+         $users = DB::table('view_utilidaprestamos')
+            ->select(
+                    'cobrador',
+                    'cliente',
+                    'valor_real_pagado',
+                    'valor_pagado_a_capital',
+                    'valor_pagado_a_interes',
+                    'fecha_cobroprestamo');
+
+
+         if($request->cobrador_id !=''){
+             $users->where('view_utilidaprestamos.cobrador_id', '=', $request->cobrador_id);
+         }
+
+         if($request->fecha_inicial !='' && $request->fecha_final !=''){
+             $users->whereBetween('view_utilidaprestamos.fecha_cobroprestamo',  array($request->fecha_inicial, $request->fecha_final));
+         }
+
+        $users = $users->get();
+
+        $usersArray = [];
+
+        // Define the Excel spreadsheet headers
+        $usersArray[] = ['cobrador', 'cliente','valor pagado','valor pagado a capital','valor pagado a interes', 'fecha fecha pago cuota'];
+
+        foreach ($users as $user) {
+            $usersArray[] = (Array) $user;
+        }
+
+        // Generate and return the spreadsheet
+        Excel::create('Informe Usuarios', function($excel) use ($usersArray) {
+
+            // Set the spreadsheet title, creator, and description
+            $excel->setTitle('Payments');
+            $excel->setCreator('Laravel')->setCompany('WJ Gilmore, LLC');
+            $excel->setDescription('payments file');
+
+            // Build the spreadsheet, passing in the payments array
+            $excel->sheet('sheet1', function($sheet) use ($usersArray) {
+                $sheet->fromArray($usersArray);
             });
         })->export('xls');
 

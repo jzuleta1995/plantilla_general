@@ -27,7 +27,10 @@
                         <li><a class="nav-link" href="{{ route('excel.indexInformeCobrador') }}">Informe Cobradores</a></li>
                         <li><a class="nav-link" href="{{ route('excel.indexInformeUsuario') }}">Informe Usuario</a></li>
                         <li><a class="nav-link" href="{{ route('excel.indexInformePrestamo') }}">Informe Prestamos</a></li>
+                        <li><a class="nav-link" href="{{ route('excel.indexInformeAbono') }}">Informe Abonos A Prestamos</a></li>
                         <li><a class="nav-link" href="{{ route('excel.indexInformeRutaCobro') }}">Informe Ruta De Cobro</a></li>
+                        <li><a class="nav-link" href="{{ route('excel.indexInformeVisorUtilidad') }}">Informe Visor Utilidad</a></li>
+
 
                     </ul>
                 </li>

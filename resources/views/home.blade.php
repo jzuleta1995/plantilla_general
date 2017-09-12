@@ -8,8 +8,6 @@
         <p>
             <input class="btn btn-primary" type="button"  id="filtrar" value="FILTRAR" onclick="mostrarOcularFiltros()" >
             <input type="hidden" name="bandera" id="bandera" value="0">
-
-
         </p>
         <br>
         <div class="col-md-12 panel" id="formulario_uno" style="display:none">

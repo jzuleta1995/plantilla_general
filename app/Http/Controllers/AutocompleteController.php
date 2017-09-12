@@ -10,9 +10,6 @@ class AutocompleteController extends Controller
 {
     public function autocomplete(Request $request)
     {
-        //$results = "";
-        $term = str_replace(';', '',$request->term);
-
         //dd($term);
         //se valida si la cadena es el numero de documento o el nombre del cliente
         $cantidad_caracteres = substr_count($request->term,';');

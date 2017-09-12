@@ -114,7 +114,7 @@ Route::group(['prefix'  =>  '/admin', 'middleware'   =>  'auth'], function () {
     /*++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 
-    Route::name('excel.indexInformePrestamo')
+       Route::name('excel.indexInformePrestamo')
         ->get('/excel/prestamo', 'ExcelController@indexInformePrestamo');
 
        Route::name('excel.informePrestamo')
@@ -134,6 +134,22 @@ Route::group(['prefix'  =>  '/admin', 'middleware'   =>  'auth'], function () {
 
         Route::name('excel.informeRutaCobro')
         ->post('/excel/RutaCobro', 'ExcelController@informeRutaCobro');
+    /*++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+        Route::name('excel.indexInformeAbono')
+            ->get('/excel/Abono', 'ExcelController@indexInformeAbono');
+
+        Route::name('excel.informeAbono')
+        ->post('/excel/Abono', 'ExcelController@informeAbono');
+    /*++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+        Route::name('excel.indexInformeVisorUtilidad')
+            ->get('/excel/VisorUtilidad', 'ExcelController@indexInformeVisorUtilidad');
+
+        Route::name('excel.informeVisorUtilidad')
+        ->post('/excel/VisorUtilidad', 'ExcelController@informeVisorUtilidad');
 
 
     //FIN INFORMES EXCEL
@@ -176,13 +192,17 @@ Route::group(['prefix'  =>  '/admin', 'middleware'   =>  'auth'], function () {
             'except' => ['edit', 'update', 'destroy']
         ]);
 
-       Route::name('prestamo.utilidad')
-        ->get('prestamo/informes/utilidad', 'PrestamoController@utilidad');
+    Route::resource('utilidadPrestamos', 'UtilidadPrestamosController');
 
-       /* Route::name('prestamo.utilidad2')
-            ->get('/prestamo/informes/utilidad', 'UtilidadPrestamosController@cargarUtilidad');*/
+    /* Route::name('prestamo.utilidad')
+      ->get('prestamo/informes/utilidad', 'PrestamoController@utilidad');
 
-        Route::resource('utilidadPrestamos', 'UtilidadPrestamosController');
+      Route::name('prestamo.utilidad2')
+          ->get('/prestamo/informes/utilidad', 'UtilidadPrestamosController@cargarUtilidad');*/
+
+    Route::name('prestamo.utilidad')
+        ->get('//prestamo/informes/utilidad', 'UtilidadPrestamosController@cargarUtilidad');
+
 
         Route::get('/prestamo/view/{prestamo_id}',
             array('as' => 'prestamo.view',
