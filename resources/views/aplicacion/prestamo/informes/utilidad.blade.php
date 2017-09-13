@@ -62,6 +62,10 @@
             </thead>
 
             <tbody>
+            <?php $totalValorRealPagado = 0;
+                  $totalValorCapital    = 0 ;
+                  $totalValorInteres    = 0;?>
+
             @foreach($prestamos as $prestamo)
 
                 <tr>
@@ -70,8 +74,20 @@
                     <td class="text-center">{{ $prestamo->valor_real_pagado }}</td>
                     <td class="text-center">{{ $prestamo->valor_pagado_a_capital }}</td>
                     <td class="text-center">{{ $prestamo->valor_pagado_a_interes }} %</td>
+
+                    <?php $totalValorRealPagado = $totalValorRealPagado + $prestamo->valor_real_pagado;
+                          $totalValorCapital    = $totalValorCapital + $prestamo->valor_pagado_a_capital ;
+                          $totalValorInteres    = $totalValorInteres + $prestamo->valor_pagado_a_interes;?>
                 </tr>
             @endforeach
+            <tr>
+                <td></td>
+                <th class="text-center">Total Utilidad</th>
+                <th class="text-center"><?php echo $totalValorRealPagado;?></th>
+                <th class="text-center"><?php echo $totalValorCapital;?></th>
+                <th class="text-center"> <?php echo $totalValorInteres;?> %</th>
+
+            </tr>
 
 
             </tbody>

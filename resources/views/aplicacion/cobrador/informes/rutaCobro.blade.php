@@ -6,7 +6,7 @@
     <!-- se incluye mensajes de erros -->
     <div class="container panel" id="design">
 
-        @include('template.partials.error')
+        @include('template.partials.info')
         {!! Form::open(['route' => 'excel.informeRutaCobro']) !!}
 
         <br>
@@ -25,14 +25,14 @@
             <div class="col-md-3">
                 <div class="form-group">
                     {!! Form::label('fecha_proximo_cobro', 'Fecha proximo cobro Desde:') !!}
-                    {!! Form::date('fecha_proximo_cobro', null, ['class'=>'form-control']) !!}
+                    {!! Form::date('fecha_proximo_cobro', \Carbon\Carbon::now(), ['class'=>'form-control']) !!}
 
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
                     {!! Form::label('fecha_proximo_cobro1', 'Hasta:') !!}
-                    {!! Form::date('fecha_proximo_cobro1', null, ['class'=>'form-control']) !!}
+                    {!! Form::date('fecha_proximo_cobro1', \Carbon\Carbon::now(), ['class'=>'form-control']) !!}
 
                 </div>
             </div>

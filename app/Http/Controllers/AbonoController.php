@@ -8,7 +8,7 @@ use App\Http\Requests\AbonoRequest;
 use App\Prestamo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use DB;
 class AbonoController extends Controller
 {
     public function index()
@@ -28,7 +28,19 @@ class AbonoController extends Controller
 
     public function store(AbonoRequest $request)
     {
+       $codigoAbonos = DB::table('abonos')
+            ->select(DB::raw('count(*) as item'))
+            ->where('prestamo_id', '=', $request->prestamo_id)
+            ->first();
+
+        if( $codigoAbonos == ''){
+            $cod_abono = 1;
+        }else{
+            $cod_abono = $codigoAbonos ->item + 1;
+        }
+
         $abono = new Abono();
+        $abono->id                  = $cod_abono;
         $abono->prestamo_id         = $request->prestamo_id;
         $abono->cliente_id          = $request->cliente_id;
         $abono->abono_valor_cuota   = str_replace(',','',str_replace('.','',$request->abono_valor_cuota));

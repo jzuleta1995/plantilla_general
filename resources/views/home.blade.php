@@ -86,6 +86,8 @@
         </thead>
 
         <tbody>
+
+        <?php $valorTotal = 0;?>
             @foreach($prestamos as $prestamo)
 
                 @if($prestamo->color =='AZUL')
@@ -105,7 +107,10 @@
                         <td class="text-center">{{ $prestamo->prestamo_utilidad_mes }}</td>
                         <td class="text-center">{{ $prestamo->prestamo_fecha_proximo_cobro }}</td>
 
-                  @if( Auth::user()->tipo == 'ADMINISTRADOR')
+                        <?php $valorTotal = $valorTotal + $prestamo->prestamo_utilidad_mes ;?>
+
+
+                    @if( Auth::user()->tipo == 'ADMINISTRADOR')
                         <td class="text-center">
                            <!--<button class="btn btn-warning" data-toggle="modal" data-target="#editModal" onclick="mostrarModalPrestamo('{{$prestamo -> id}}')">Anular Prestamo</button>-->
                         <a class="btn btn-danger"   data-toggle="modal" data-target="#editModal" onclick="mostrarModalPrestamo('{{$prestamo -> id}}')"> <span class="glyphicon glyphicon-remove"></span></a>
@@ -114,6 +119,15 @@
 
                 </tr>
             @endforeach
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <th class="text-center">Total Prestamo</th>
+                        <th class="text-center"> <?php echo $valorTotal;?></th>
+                        <td></td>
+
+                    </tr>
 
         </tbody>
 

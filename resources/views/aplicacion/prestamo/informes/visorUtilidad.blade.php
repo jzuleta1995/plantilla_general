@@ -6,7 +6,7 @@
     <!-- se incluye mensajes de erros -->
     <div class="container panel" id="design">
 
-        @include('template.partials.error')
+        @include('template.partials.info')
         {!! Form::open(['route' => 'excel.informeVisorUtilidad']) !!}
 
         <br>
@@ -23,14 +23,14 @@
             <div class="col-md-3">
                 <div class="form-group">
                     {!! Form::label('abono_fecha', 'Fecha Creacion Abono Desde:') !!}
-                    {!! Form::date('abono_fecha', null, ['class'=>'form-control']) !!}
+                    {!! Form::date('abono_fecha', \Carbon\Carbon::now(), ['class'=>'form-control']) !!}
 
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
                     {!! Form::label('abono_fecha1', 'Hasta:') !!}
-                    {!! Form::date('abono_fecha1', null, ['class'=>'form-control']) !!}
+                    {!! Form::date('abono_fecha1', \Carbon\Carbon::now(), ['class'=>'form-control']) !!}
 
                 </div>
             </div>
