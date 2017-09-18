@@ -122,7 +122,6 @@ class ClienteController extends Controller
     {
         $cliente = Cliente::find($id);
         $cobrador =  $cliente->cobrador;
-
         $fiadors = $cliente->fiadors;
 
         $aplica_fiador = true;
@@ -143,6 +142,7 @@ class ClienteController extends Controller
                     ->with('aplica_fiador', $aplica_fiador)
                     ->with('fiador1', $fiador1)
                     ->with('fiador2', $fiador2);
+
     }
 
     public function update(ClienteRequest $request, $id)

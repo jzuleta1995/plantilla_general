@@ -22,7 +22,7 @@
                     <br>
                     <div class="col-md-push-1 col-md-3">
                         <div class="form-group">
-                            {!! Form::label('fiador1_nombre', ['class' => 'form-required'], 'Nombre') !!}
+                            {!! Form::label('fiador1_nombre', 'Nombre', ['class' => 'form-required'], 'Nombre') !!}
                             {!! Form::text('fiador1_nombre', !$fiador1->isEmpty() ? $fiador1[0]->fiador_nombre : null, ['class'=>'form-control not-empty', 'placeholder' =>   'Nombre del fiador']) !!}
                         </div>
                     </div>

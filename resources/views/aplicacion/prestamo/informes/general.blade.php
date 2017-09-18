@@ -11,25 +11,21 @@
 
         <br>
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="form-group">
                     {!! Form::label('cobrador', 'Cobrador:') !!}
                     {!! Form::hidden('cobrador_id', null, ['class'=>'form-control', 'id' => 'cobrador_id', 'value' => 'id', 'placeholder'  =>  'Nombre de cobrador']) !!}
                     {!! Form::text('cobrador', null, ['class'=>'form-control', 'id' => 'cobrador', 'value' => 'id', 'placeholder'  =>  'Nombre de cobrador']) !!}
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="form-group">
                     {!! Form::label('cliente', 'Cliente:') !!}
                     {!! Form::hidden('cliente_id', null, ['class'=>'form-control', 'id' => 'cliente_id', 'value' => 'id', 'placeholder'  =>  'Nombre de cliente']) !!}
                     {!! Form::text('cliente', null, ['class'=>'form-control', 'id' => 'cliente', 'value' => 'id', 'placeholder'  =>  'Nombre de cliente']) !!}
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="form-group">
                     {!! Form::label('prestamo_estado', 'Tiempo Prestamo') !!}
                     {!! Form::select('prestamo_estado', ['' => 'SELECCIONE UN ESTADO', 'ACTIVO' => 'ACTIVO', 'INACTIVO' => 'INACTIVO', 'PAGADO' => 'PAGADO'], null,  ['class'=>'form-control']) !!}
@@ -44,7 +40,7 @@
 
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 col-md-offset-1">
                 <div class="form-group">
                     {!! Form::label('prestamo_fecha1', 'Hasta:') !!}
                     {!! Form::date('prestamo_fecha1', \Carbon\Carbon::now(), ['class'=>'form-control']) !!}
@@ -60,7 +56,7 @@
 
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 col-md-offset-1">
                 <div class="form-group">
                     {!! Form::label('fecha_proximo_cobro1', 'Hasta:') !!}
                     {!! Form::date('fecha_proximo_cobro1', \Carbon\Carbon::now(), ['class'=>'form-control']) !!}

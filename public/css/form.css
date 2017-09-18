@@ -1,12 +1,11 @@
 #design{
-    border-radius: 1em;
     box-sizing: border-box;
     color: #222222;
     margin: 0 auto;
     padding:2em;
     font-family: Verdana,Arial,sans-serif;
-    /**box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);*/
-    border: 1px solid #a4aaae;
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.20);
+    border: 0px solid #a4aaae;
 }
 
 #btn-list{

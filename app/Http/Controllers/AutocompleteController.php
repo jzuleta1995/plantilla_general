@@ -10,9 +10,9 @@ class AutocompleteController extends Controller
 {
     public function autocomplete(Request $request)
     {
-        //dd($term);
         //se valida si la cadena es el numero de documento o el nombre del cliente
         $cantidad_caracteres = substr_count($request->term,';');
+
         if($cantidad_caracteres == 0) {
             $nombre_completo1 = 'cliente_documento';
         }elseif($cantidad_caracteres == 1) {
@@ -22,6 +22,7 @@ class AutocompleteController extends Controller
         if($request->ajax()){
             $path = $request->ruta;
             $term = str_replace(';', '',$request->term);
+            $results[] = array();
 
             if($path == 'cliente'){
                 $queries = DB::table('clientes')
@@ -35,11 +36,10 @@ class AutocompleteController extends Controller
                 }
 
             }else if($path == 'cobrador'){
-
                 $queries = DB::table('cobradors')
                     ->where('cobrador_nombre_completo', 'ilike', $term.'%')
                     ->take(3)->get();
-
+                dd($queries);
                 foreach ($queries as $query)
                 {
                     $results[] = ['id' => $query->id, 'value' => $query->cobrador_nombre_completo ]; //you can take custom values as you want

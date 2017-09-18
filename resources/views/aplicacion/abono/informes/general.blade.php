@@ -11,16 +11,14 @@
 
         <br>
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="form-group">
                     {!! Form::label('cobrador', 'Cobrador:') !!}
                     {!! Form::hidden('cobrador_id', null, ['class'=>'form-control', 'id' => 'cobrador_id', 'value' => 'id', 'placeholder'  =>  'Nombre de cobrador']) !!}
                     {!! Form::text('cobrador', null, ['class'=>'form-control', 'id' => 'cobrador', 'value' => 'id', 'placeholder'  =>  'Nombre de cobrador']) !!}
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="form-group">
                     {!! Form::label('cliente', 'Cliente:') !!}
                     {!! Form::hidden('cliente_id', null, ['class'=>'form-control', 'id' => 'cliente_id', 'value' => 'id', 'placeholder'  =>  'Nombre de cliente']) !!}
@@ -36,7 +34,7 @@
 
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3  col-md-offset-1">
                 <div class="form-group">
                     {!! Form::label('abono_fecha1', 'Hasta:') !!}
                     {!! Form::date('abono_fecha1', \Carbon\Carbon::now(), ['class'=>'form-control']) !!}

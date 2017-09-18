@@ -11,32 +11,26 @@
 
         <br>
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="form-group">
                     {!! Form::label('cliente', 'Cliente:') !!}
                     {!! Form::hidden('cliente_id', null, ['class'=>'form-control', 'id' => 'cliente_id', 'value' => 'id', 'placeholder'  =>  'Nombre de cliente']) !!}
                     {!! Form::text('cliente', null, ['class'=>'form-control', 'id' => 'cliente', 'value' => 'id', 'placeholder'  =>  'Nombre de cliente']) !!}
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3 col-md-offset-1">
                 <div class="form-group">
                     {!! Form::label('fecha_proximo_cobro', 'Fecha proximo cobro Desde:') !!}
                     {!! Form::date('fecha_proximo_cobro', \Carbon\Carbon::now(), ['class'=>'form-control']) !!}
-
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
                     {!! Form::label('fecha_proximo_cobro1', 'Hasta:') !!}
                     {!! Form::date('fecha_proximo_cobro1', \Carbon\Carbon::now(), ['class'=>'form-control']) !!}
-
                 </div>
             </div>
         </div>
-
-
         <div class="row">
             <br>
             <div class="col-md-6">
