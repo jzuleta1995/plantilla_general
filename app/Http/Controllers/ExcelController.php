@@ -29,16 +29,16 @@ class ExcelController extends Controller
         /*********validaciones ***************************/
 
             if ($request->cliente_id =='' && $request->fecha_inicial == '' && $request->fecha_final == '') {
-                return Redirect()->route('excel.informeAbono')
+                return Redirect()->route('excel.informeCliente')
                     ->with('info', 'Debe Ingresar Como Minimo Un Campo Para general el Informe');
             }
             if (($request->fecha_inicial != '' && $request->fecha_final == '') || ($request->fecha_inicial == '' && $request->fecha_final != '')) {
-                return Redirect()->route('excel.informeAbono')
+                return Redirect()->route('excel.informeCliente')
                     ->with('info', 'Debe Ingresar Los Dos Campos De Fecha Para general el Informe');
             }
 
             if ($request->fecha_inicial > $request->fecha_final) {
-                return Redirect()->route('excel.informeAbono')
+                return Redirect()->route('excel.informeCliente')
                     ->with('info', 'La Fecha Desde No Puede ser Mayor Que LA Fecha Hasta ');
             }
         /*********fin validaciones ***************************/
@@ -113,16 +113,16 @@ class ExcelController extends Controller
         /*********validaciones ***************************/
 
             if ($request->cobrador_id =='' && $request->fecha_inicial == '' && $request->fecha_final == '') {
-                return Redirect()->route('excel.informeAbono')
+                return Redirect()->route('excel.informeCobrador')
                     ->with('info', 'Debe Ingresar Como Minimo Un Campo Para general el Informe');
             }
             if (($request->fecha_inicial != '' && $request->fecha_final == '') || ($request->fecha_inicial == '' && $request->fecha_final != '')) {
-                return Redirect()->route('excel.informeAbono')
+                return Redirect()->route('excel.informeCobrador')
                     ->with('info', 'Debe Ingresar Los Dos Campos De Fecha Para general el Informe');
             }
 
             if ($request->fecha_inicial > $request->fecha_final) {
-                return Redirect()->route('excel.informeAbono')
+                return Redirect()->route('excel.informeCobrador')
                     ->with('info', 'La Fecha Desde No Puede ser Mayor Que LA Fecha Hasta ');
             }
         /*********fin validaciones ***************************/
@@ -194,16 +194,16 @@ class ExcelController extends Controller
         /*********validaciones ***************************/
 
             if ($request->fecha_inicial == '' && $request->fecha_final == '') {
-                return Redirect()->route('excel.informeAbono')
+                return Redirect()->route('excel.informeUsuario')
                     ->with('info', 'Debe Ingresar Como Minimo Un Campo Para general el Informe');
             }
             if (($request->fecha_inicial != '' && $request->fecha_final == '') || ($request->fecha_inicial == '' && $request->fecha_final != '')) {
-                return Redirect()->route('excel.informeAbono')
+                return Redirect()->route('excel.informeUsuario')
                     ->with('info', 'Debe Ingresar Los Dos Campos De Fecha Para general el Informe');
             }
 
             if ($request->fecha_inicial > $request->fecha_final) {
-                return Redirect()->route('excel.informeAbono')
+                return Redirect()->route('excel.informeUsuario')
                     ->with('info', 'La Fecha Desde No Puede ser Mayor Que LA Fecha Hasta ');
             }
         /*********fin validaciones ***************************/

@@ -8,6 +8,8 @@ use App\Http\Requests\ClienteRequest;
 use App\Fiador;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
+use Validator;
 use DB;
 
 class ClienteController extends Controller
@@ -17,7 +19,7 @@ class ClienteController extends Controller
     {
         $clientes = Cliente::nombre($request->get('nombre'))
                     ->orderBy('id', 'ASC')
-                    ->paginate(3);
+                    ->paginate(30);
 
         return view('aplicacion.cliente.index')->with('clientes', $clientes);
     }
@@ -149,17 +151,27 @@ class ClienteController extends Controller
     {
         $cliente = Cliente::find($id);
 
+        $validator = Validator::make($request->all(), [
+            'cliente_documento' => [Rule::unique('clientes')->ignore($id)]
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('cliente.edit', $id)
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $cliente->cliente_nombre                = trim(strtoupper($request->cliente_nombre));
         $cliente->cliente_apellido              = trim(strtoupper($request->cliente_apellido));
         $cliente->cliente_nombre_completo       = trim(strtoupper($request->cliente_nombre . " " . $request->cliente_apellido));
-        $cliente->cliente_documento             = $request->cliente_documento;
+        $cliente->cliente_documento             = trim($request->cliente_documento);
         $cliente->cliente_direccion_casa        = trim(strtoupper($request->cliente_direccion_casa));
         $cliente->cliente_direccion_trabajo     = trim(strtoupper($request->cliente_direccion_trabajo));
-        $cliente->cliente_telefono              = $request->cliente_telefono;
-        $cliente->cliente_celular               = $request->cliente_celular;
-        $cliente->cobrador_id                   = $request->cobrador_id;
-        $cliente->cliente_ciudad                = $request->cliente_ciudad;
-        $cliente->cliente_estado                = $request->cliente_estado;
+        $cliente->cliente_telefono              = trim($request->cliente_telefono);
+        $cliente->cliente_celular               = trim($request->cliente_celular);
+        $cliente->cobrador_id                   = trim($request->cobrador_id);
+        $cliente->cliente_ciudad                = trim($request->cliente_ciudad);
+        $cliente->cliente_estado                = trim($request->cliente_estado);
         $cliente->user_id                       = Auth::id();
         $cliente->save();
 

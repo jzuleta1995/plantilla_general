@@ -18,7 +18,7 @@ class UserController extends Controller
     {
         $users = User::nombre($request->get('nombre'))
                  ->orderBy('id', 'ASC')
-                 ->paginate(3);
+                 ->paginate(30);
 
         return view('aplicacion.user.index')
                ->with('users', $users);

@@ -106,7 +106,7 @@
                     <div class="col-md-push-1 col-md-3">
                         <div class="form-group">
                             {!! Form::label('fiador2_telefono', 'Telefono', ['class' => 'form-required']) !!}
-                            {!! Form::text('fiador2_telefono', !$fiador2->isEmpty() ? $fiador2[0]->fiador_telefono : null, ['class'=>'form-control not-empty', 'placeholder' =>   'Telefono fiador','onkeyup' => 'camposNumerico(this)', 'onchange' => 'camposNumerico(this)']) !!}
+                            {!! Form::text('fiador2_telefono', !$fiador2->isEmpty() ? $fiador2[0]->fiador_telefono : null, ['class'=>'form-control not-empty', 'placeholder' =>   'Telefono del fiador','onkeyup' => 'camposNumerico(this)', 'onchange' => 'camposNumerico(this)']) !!}
                         </div>
                     </div>
                 </div>

@@ -13,18 +13,18 @@ class AutocompleteController extends Controller
         //se valida si la cadena es el numero de documento o el nombre del cliente
         $cantidad_caracteres = substr_count($request->term,';');
 
-        if($cantidad_caracteres == 0) {
-            $nombre_completo1 = 'cliente_documento';
-        }elseif($cantidad_caracteres == 1) {
-            $nombre_completo1 = 'cliente_nombre_completo';
-        }
-
         if($request->ajax()){
             $path = $request->ruta;
             $term = str_replace(';', '',$request->term);
             $results[] = array();
 
             if($path == 'cliente'){
+                if($cantidad_caracteres == 0) {
+                    $nombre_completo1 = 'cliente_documento';
+                }elseif($cantidad_caracteres == 1) {
+                    $nombre_completo1 = 'cliente_nombre_completo';
+                }
+
                 $queries = DB::table('clientes')
                     ->where($nombre_completo1, 'ilike', $term.'%')
                     ->take(5)->get();
@@ -36,13 +36,22 @@ class AutocompleteController extends Controller
                 }
 
             }else if($path == 'cobrador'){
+
+                if($cantidad_caracteres == 0) {
+                    $nombre_completo1 = 'cobrador_documento';
+                }elseif($cantidad_caracteres == 1) {
+                    $nombre_completo1 = 'cobrador_nombre_completo';
+                }
+
+
                 $queries = DB::table('cobradors')
-                    ->where('cobrador_nombre_completo', 'ilike', $term.'%')
-                    ->take(3)->get();
-                dd($queries);
+                    ->where($nombre_completo1, 'ilike', $term.'%')
+                    ->take(5)->get();
+
                 foreach ($queries as $query)
                 {
-                    $results[] = ['id' => $query->id, 'value' => $query->cobrador_nombre_completo ]; //you can take custom values as you want
+                    $nombre_completo = $query->cobrador_documento.' - '.$query->cobrador_nombre_completo;
+                    $results[] = ['id' => $query->id, 'value' => $nombre_completo ]; //you can take custom values as you want
                 }
             }
         }

@@ -12,6 +12,7 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
         "maatwebsite/excel": "~2.1.0",
+        "nesbot/carbon": "^1.22",
         "spatie/laravel-backup": "^4.18",
         "twbs/bootstrap": "4.0.0-alpha.6"
     },

@@ -48,9 +48,11 @@
                             </div>
                             <div class="col-md-8 col-md-offset-5">
                                 <button type="submit" class="btn btn-primary">Enviar</button>
+                                <a class="btn btn-primary" href="{{ route('login') }}">
+                                    regresar
+                                </a>
                             </div>
                         {!! Form::close() !!}
-
                     </div>
                 </div>
             </div>

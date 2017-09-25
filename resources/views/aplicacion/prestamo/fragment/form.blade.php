@@ -18,13 +18,13 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-push-1 col-md-2">
+        <div class="col-md-push-1 col-md-3">
             <div class="form-group">
                 {!! Form::label('prestamo_tiempo_cobro', 'Tiempo Prestamo') !!}
                 {!! Form::select('prestamo_tiempo_cobro', ['' => 'SELECCIONE UN ESTADO', 'SEMANAL' => 'SEMANAL', 'QUINCENAL' => 'QUINCENAL', 'MENSUAL' => 'MENSUAL'], null,  ['class'=>'form-control']) !!}
             </div>
         </div>
-        <div class="col-md-push-5 col-md-3">
+        <div class="col-md-push-4 col-md-2">
             <div class="form-group">
                 {!! Form::label('prestamo_valor', 'Valor ') !!}
                 {!! Form::text('prestamo_valor', null, ['class'=>'form-control','placeholder'  =>  'valor prestamo', 'onkeyup' => 'format(this)', 'onchange' => 'format(this)']) !!}
@@ -32,17 +32,17 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-push-1 col-md-3">
+        <div class="col-md-push-1 col-md-1">
             <div class="form-group">
                 {!! Form::label('prestamo_tasa', 'Tasa % ') !!}
-                {!! Form::text('prestamo_tasa', null, ['class'=>'form-control','placeholder'  =>  'Tasa interes']) !!}
+                {!! Form::text('prestamo_tasa', null, ['class'=>'form-control','placeholder'  =>  'Tasa']) !!}
             </div>
         </div>
 
     @if(is_object($cliente))
 
         @if($prestamo->prestamo_tipo!='ABIERTO')
-            <div class="col-md-push-4 col-md-2  ">
+            <div class="col-md-push-6 col-md-2  ">
                 <div class="form-group" id="numero_cuota">
                     {!! Form::label('prestamo_numero_cuotas', 'Numero de Cuotas') !!}
                     {!! Form::text('prestamo_numero_cuotas', null, ['class'=>'form-control', 'placeholder' =>   'Numero de Cuotas']) !!}
@@ -50,7 +50,7 @@
             </div>
          @endif
             @else
-            <div class="col-md-push-4 col-md-2  ">
+            <div class="col-md-push-6 col-md-2  ">
                 <div class="form-group" id="numero_cuota">
                     {!! Form::label('prestamo_numero_cuotas', 'Numero de Cuotas') !!}
                     {!! Form::text('prestamo_numero_cuotas', null, ['class'=>'form-control', 'placeholder' =>   'Numero de Cuotas']) !!}
@@ -59,13 +59,13 @@
             @endif
     </div>
     <div class="row">
-        <div class="col-md-push-1 col-md-3">
+        <div class="col-md-push-1 col-md-2">
             <div class="form-group">
                 {!! Form::label('prestamo_valor_cuota', 'Valor Cuota') !!}
                 {!! Form::text('prestamo_valor_cuota', null, ['class'=>'form-control', 'placeholder' =>   'Valor Cuota a Pagar', 'readonly' => 'true', 'onblur' => 'format(this)' ]) !!}
             </div>
         </div>
-        <div class="col-md-push-4 col-md-3">
+        <div class="col-md-push-5 col-md-2">
             <div class="form-group">
                 {!! Form::label('prestamo_valor_total', 'Valor Total') !!}
                 {!! Form::text('prestamo_valor_total', null, ['class'=>'form-control', 'placeholder' =>   'Valor Total', 'readonly' => 'true', 'onblur' => 'format(this)']) !!}

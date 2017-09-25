@@ -20,7 +20,7 @@
             </div>
             <div class="col-md-3  col-md-offset-1">
                 <div class="form-group">
-                    {!! Form::label('fecha_proximo_cobro', 'Fecha proximo cobro Desde:') !!}
+                    {!! Form::label('fecha_proximo_cobro', 'Desde:') !!}
                     {!! Form::date('fecha_proximo_cobro', \Carbon\Carbon::now(), ['class'=>'form-control']) !!}
 
                 </div>

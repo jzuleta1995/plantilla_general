@@ -25,7 +25,7 @@
                             {!! Form::password('confirmacion_password',  ['class'=>'form-control', 'placeholder' =>   '***********']) !!}
                         </div>
 
-                        <button type="submit" class="btn btn-default">Submit</button>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
                         {!! Form::close() !!}
 
                     </div>

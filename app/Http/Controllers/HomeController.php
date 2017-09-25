@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Pagination\Paginator;
+use App\Http\Controllers\FechaController;
 
 class HomeController extends Controller
 {
@@ -26,10 +27,10 @@ class HomeController extends Controller
     public function index()
     {
         $query = 'select fc_color(1) ';
-      $colors =DB::select($query);
+        $colors = DB::select($query);
 
-      return view('home')->with('colors', $colors);
-  }
+        return view('home')->with('colors', $colors);
+    }
 
     public function cargarVisor(Request $request){
 
@@ -38,37 +39,46 @@ class HomeController extends Controller
             ->selectRaw('clientes.cliente_nombre_completo, clientes.cliente_lugar_trabajo, prestamos.prestamo_fecha_proximo_cobro,
                           prestamos.prestamo_tasa,prestamos.prestamo_utilidad_mes, prestamos.id,prestamos.prestamo_valor,
                           fc_calcula_utilidad_mes(prestamos.id),fc_estado_del_prestamo(prestamos.id) as color')
-        ->where('prestamo_estado', '=', 'ACTIVO')
-        ->orderBy('prestamos.created_at', 'desc');
+            ->where('prestamo_estado', '=', 'ACTIVO')
+            ->orderBy('prestamos.created_at', 'desc');
 
 
         if($request->cliente_id !=''){
             $prestamos->where('clientes.id', '=', $request->cliente_id);
         }
+
         if($request->cobrador_id !=''){
             $prestamos->where('clientes.cobrador_id', '=', $request->cobrador_id);
         }
+
         if($request->lugar_trabajo !=''){
             $prestamos->where('clientes.cliente_lugar_trabajo', 'like', '%'.$request->lugar_trabajo.'%');
         }
+
         if($request->tasa !=''){
             $prestamos->where('prestamos.prestamo_tasa', '=', $request->tasa);
         }
+
         if($request->fecha_inicial !='' && $request->fecha_final !=''){
+            if($request->fecha_inicial > $request->fecha_final){
+                $prestamos = "";
+                return Redirect()->route('home')->with('info', 'La Fecha inicial no puede ser mayor a la Fecha final!!')
+                                    ->with('prestamos', $prestamos);
+            }
+
             $prestamos->whereBetween('prestamos.prestamo_fecha_proximo_cobro',  array($request->fecha_inicial, $request->fecha_final));
+        }else{
+           $fecha = new FechaController();
+           $fecha_inicial = $fecha->fechaPrimerDiaMesActual();
+            $fecha_final = $fecha->fechaUltimoDiaMesActual();
+
+            $prestamos->whereBetween('prestamos.prestamo_fecha_proximo_cobro',  array($fecha_inicial, $fecha_final));
         }
 
-
-        //dd($prestamos);
-        $prestamos = $prestamos->paginate(30);
-
-        //return view('aplicacion.prestamo.index', compact('prestamo'));
+        $prestamos = $prestamos->paginate(50);
 
         return view('/home')->with('prestamos', $prestamos);
-
-
     }
-
 
 
 }

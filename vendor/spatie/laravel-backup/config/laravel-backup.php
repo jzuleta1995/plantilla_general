@@ -42,7 +42,7 @@ return [
              * MySQL, PostgreSQL, SQLite and Mongo databases are supported.
              */
             'databases' => [
-                'pgsql',
+                'mysql',
             ],
         ],
 
@@ -92,7 +92,7 @@ return [
         'notifiable' => \Spatie\Backup\Notifications\Notifiable::class,
 
         'mail' => [
-            'to' => '',
+            'to' => 'your@example.com',
         ],
 
         'slack' => [

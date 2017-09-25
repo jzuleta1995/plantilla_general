@@ -74,7 +74,7 @@ class PrestamoController extends Controller
                            'abonos.abono_observacion', 'abonos.abono_fecha', 'abono_estado')
                   ->where('prestamos.id','=', $id)
                   ->orderBy('abonos.id', 'desc')
-            ->paginate(10);
+            ->paginate(20);
 
         return view('aplicacion.prestamo.show', compact('prestamo', 'cliente', 'abonos'));
     }
@@ -117,7 +117,7 @@ class PrestamoController extends Controller
     public function destroy(Request $request, $id)
     {
         if($request->ajax()){
-            $prestamos =Prestamo::find($id);
+            $prestamos = Prestamo::find($id);
             $prestamos->delete();
             $prestamos_total = Prestamo::all()->count();
 

@@ -26,7 +26,7 @@ class CobradorRequest extends FormRequest
         return [
             'cobrador_nombre'    => 'required',
             'cobrador_apellido'  => 'required',
-            'cobrador_documento' => 'required|unique:cobradors',
+            'cobrador_documento' => 'required',
             'cobrador_direccion' => 'required',
             'cobrador_telefono'  => 'required',
             'cobrador_celular'   => 'required',

@@ -29,30 +29,15 @@
                         <li><a class="nav-link" href="{{ route('excel.indexInformePrestamo') }}">Informe Prestamos</a></li>
                         <li><a class="nav-link" href="{{ route('excel.indexInformeAbono') }}">Informe Abonos A Prestamos</a></li>
                         <li><a class="nav-link" href="{{ route('excel.indexInformeRutaCobro') }}">Informe Ruta De Cobro</a></li>
-                        <li><a class="nav-link" href="{{ route('excel.indexInformeVisorUtilidad') }}">Informe Visor Utilidad</a></li>
-
-
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Procedimientos <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a class="nav-link" href="{{ route('cobrador.indexAsignaCobradorACliente') }}">Asignar Clientes a Cobrador</a></li>
-                        <li><a class="nav-link" href="{{ route('excel.indexInformeCobrador') }}">Informe Cobradores</a></li>
-
-                        <!--<li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li role="separator" class="divider"></li>-->
                     </ul>
                 </li>
-
-               <!-- <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-home"></span> Sign Up</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                </ul>-->
             @if (Auth::guest())
-                <!-- <li><a href="{{ route('login') }}">Ingresar</a></li>
-                            <li><a href="{{ route('register') }}">Registrar</a></li> -->
              @else
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-expanded="false">

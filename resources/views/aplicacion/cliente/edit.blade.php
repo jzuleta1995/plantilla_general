@@ -10,7 +10,7 @@
         <!-- se incluye mensajes de erros -->
         @include('template.partials.error')
 
-        {!! Form::model($cliente, ['route' => ['cliente.update' ,$cliente->id], 'method' => 'PUT', 'id' => 'formulario', 'autocomplete' => 'off']) !!}
+        {!! Form::model($cliente, ['route' => ['cliente.update' ,$cliente->id], 'method' => 'PUT', 'id' => 'formulario']) !!}
         <div class="container panel" id="design">
             @include('aplicacion.cliente.fragment.form')
         </div>

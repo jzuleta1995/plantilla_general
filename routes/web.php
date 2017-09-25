@@ -12,11 +12,13 @@ use Barryvdh\DomPDF\Facade AS PDF;
 |
 */
 
+
+
 Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::name('pepito')
+Route::name('olvidastecontrasena')
  ->get('/olvidastecontrasena', function () {
     return view('auth.passwords.nuevaClave');
 });
@@ -37,13 +39,13 @@ Route::get('/user/retornarRespuestaSecreta/{user_correo}',
     )
 );
 
-/*Route::name('pepito2')
-    ->post('/olvidastecontrasena', 'UserController@nuevaClave');*/
 
+Route::group(['prefix'  =>  '/', 'middleware'   =>  'auth'], function () {
+    Route::name('/admin/home')
+        ->get('/home', 'HomeController@cargarVisor');
+});
 
 Route::group(['prefix'  =>  '/admin', 'middleware'   =>  'auth'], function () {
-
-
 
     Route::name('home')
           ->get('/home', 'HomeController@cargarVisor');
@@ -192,15 +194,9 @@ Route::group(['prefix'  =>  '/admin', 'middleware'   =>  'auth'], function () {
             'except' => ['edit', 'update', 'destroy']
         ]);
 
-    Route::resource('utilidadPrestamos', 'UtilidadPrestamosController');
+        Route::resource('utilidadPrestamos', 'UtilidadPrestamosController');
 
-    /* Route::name('prestamo.utilidad')
-      ->get('prestamo/informes/utilidad', 'PrestamoController@utilidad');
-
-      Route::name('prestamo.utilidad2')
-          ->get('/prestamo/informes/utilidad', 'UtilidadPrestamosController@cargarUtilidad');*/
-
-    Route::name('prestamo.utilidad')
+        Route::name('prestamo.utilidad')
         ->get('//prestamo/informes/utilidad', 'UtilidadPrestamosController@cargarUtilidad');
 
 
@@ -229,7 +225,7 @@ Route::group(['prefix'  =>  '/admin', 'middleware'   =>  'auth'], function () {
             ->get('/home/color', 'HomeController@index');
     //FIN OTRAS RUTAS
 
-    Route::get('pdf', function () {
+        Route::get('pdf', function () {
         $users = App\User::all();
 
        // dd($users);

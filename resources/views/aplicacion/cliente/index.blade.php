@@ -17,10 +17,6 @@
         <!-- fin campo buscar-->
             <p>
                 <a href="{{ route('cliente.create') }}" class="btn btn-primary ">Registrar nuevo cliente</a>
-               <!-- <button class="btn btn-primary" id="modalOptions">Click me</button>
-                <a href="home" class="confirm">Go to home</a>-->
-
-
             </p>
             <p>
                 <span id="clientes-total"> {{ $clientes->total() }} </span>registros |
@@ -39,20 +35,20 @@
                 <th class="text-center">Acción</th>
             </thead>
             <tbody>
-            @foreach($clientes as $cliente)
-                <tr>
-                    <td class="text-center">{{ $cliente->id }}</td>
-                    <td class="text-center">{{ $cliente->cliente_nombre }}</td>
-                    <td class="text-center">{{ $cliente->cliente_apellido }}</td>
-                    <td class="text-center">{{ $cliente->cliente_estado }}</td>
+            @if(is_object($clientes))
+                @foreach($clientes as $cliente)
+                    <tr>
+                        <td class="text-center">{{ $cliente->id }}</td>
+                        <td class="text-center">{{ $cliente->cliente_nombre }}</td>
+                        <td class="text-center">{{ $cliente->cliente_apellido }}</td>
+                        <td class="text-center">{{ $cliente->cliente_estado }}</td>
 
-                    <td class="text-center">
-                        <a href="{{ route('cliente.edit', $cliente->id) }}" class="btn btn-link">Editar</a>
-                    </td>
-
-                </tr>
-            @endforeach
-
+                        <td class="text-center">
+                            <a href="{{ route('cliente.edit', $cliente->id) }}" class="btn btn-link">Editar</a>
+                        </td>
+                    </tr>
+                @endforeach
+            @endif
             </tbody>
         </table>
             {!! $clientes->render() !!}
