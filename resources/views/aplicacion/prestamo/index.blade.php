@@ -7,7 +7,7 @@
         <div class="panel-body">
 
             <!-- inicio campo buscar -->
-            {!! Form::open(['route' => 'cobrador.index', 'method' => 'GET', 'class' => 'navbar-form navbar-left pull-right', 'role' => 'search'] ) !!}
+            {!! Form::open(['route' => 'prestamo.index', 'method' => 'GET', 'class' => 'navbar-form navbar-left pull-right', 'role' => 'search'] ) !!}
             <div class="form-group">
                 {!! Form::text('nombre', null, ['class' => 'form-control', 'placeholder' => 'Nombre de Cliente']) !!}
             </div>
@@ -39,7 +39,7 @@
                 @foreach($prestamos as $prestamo)
                     <tr>
                         <td class="text-center">{{ $prestamo->id }}</td>
-                        <td class="text-center">{{ $prestamo->cliente_nombre_completo }}</td>
+                        <td class="text-center">{{ $prestamo->prestamo_nombrecliente }}</td>
                         <td class="text-center"> {{ $prestamo->prestamo_valor}}</td>
                         <td class="text-center">{{ $prestamo->prestamo_tasa }} %</td>
                         <td class="text-center">

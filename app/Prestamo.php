@@ -25,6 +25,13 @@ class Prestamo extends Model
         'prestamo_estado',
     ];
 
+    public function scopeNombre($query, $nombre)
+    {
+        if(trim($nombre) != ''){
+            $query->where(\DB::raw("prestamo_nombrecliente"), "ILIKE", "%$nombre%");
+        }
+    }
+
     public function user()
     {
         return $this->belongsTo('App\User');

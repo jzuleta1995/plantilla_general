@@ -60,13 +60,13 @@ class ExcelController extends Controller
                 'clientes.cliente_estado',
                 'cobradors.cobrador_nombre',
                 'users.nombre',
-                'clientes.created_at');
+                'clientes.cliente_fechacreacion');
 
         if ($request->cliente_id != '') {
             $clientes->where('clientes.id', '=', $request->cliente_id);
         }
         if ($request->fecha_inicial != '' && $request->fecha_final != '') {
-            $clientes->whereBetween('clientes.created_at', array($request->fecha_inicial, $request->fecha_final));
+            $clientes->whereBetween('clientes.cliente_fechacreacion', array($request->fecha_inicial, $request->fecha_final));
         }
         $clientes = $clientes->get();
 
@@ -140,13 +140,13 @@ class ExcelController extends Controller
                 'cobradors.cobrador_ciudad',
                 'cobradors.cobrador_estado',
                 'users.nombre',
-                'cobradors.created_at');
+                'cobradors.cobrador_fechacreacion');
 
         if ($request->cobrador_id != '') {
             $clientes->where('cobradors.id', '=', $request->cobrador_id);
         }
         if ($request->fecha_inicial != '' && $request->fecha_final != '') {
-            $clientes->whereBetween('cobradors.created_at', array($request->fecha_inicial, $request->fecha_final));
+            $clientes->whereBetween('cobradors.cobrador_fechacreacion', array($request->fecha_inicial, $request->fecha_final));
         }
         $clientes = $clientes->get();
 
@@ -221,10 +221,10 @@ class ExcelController extends Controller
                 'users.email',
                 'users.tipo',
                 'users.estado',
-                'users.created_at');
+                'users.user_fechacreacion');
 
         if ($request->fecha_inicial != '' && $request->fecha_final != '') {
-            $users->whereBetween('users.created_at', array($request->fecha_inicial, $request->fecha_final));
+            $users->whereBetween('users.user_fechacreacion', array($request->fecha_inicial, $request->fecha_final));
         }
         $users = $users->get();
 
@@ -285,7 +285,7 @@ class ExcelController extends Controller
                 'prestamos.prestamo_estado',
                 'prestamos.prestamo_utilidad_mes',
                 'users.nombre_completo',
-                'prestamos.created_at');
+                'prestamos.prestamo_fechacreacion');
 
 
         if ($request->cobrador_id != '') {
@@ -300,7 +300,7 @@ class ExcelController extends Controller
 
 
         if ($request->prestamo_fecha != '' && $request->prestamo_fecha1 != '') {
-            $clientes->whereBetween('prestamos.created_at', array($request->prestamo_fecha, $request->prestamo_fecha1));
+            $clientes->whereBetween('prestamos.prestamo_fechacreacion', array($request->prestamo_fecha, $request->prestamo_fecha1));
         }
         if ($request->fecha_proximo_cobro != '' && $request->fecha_proximo_cobro1 != '') {
             $clientes->whereBetween('prestamos.prestamo_fecha_proximo_cobro', array($request->fecha_proximo_cobro, $request->fecha_proximo_cobro1));
@@ -455,7 +455,7 @@ class ExcelController extends Controller
             ->select(
                 'cobradors.cobrador_nombre_completo',
                 'clientes.cliente_nombre_completo',
-                'prestamos.id',
+                'prestamos.id as codigo_prestamo',
                 'abonos.id',
                 'abonos.abono_tipo_pago',
                 'abonos.abono_valor_cuota',

@@ -44,6 +44,7 @@ class UserController extends Controller
         $user->respuesta_secreta    = $request->respuesta_secreta;
         $user->tipo                 = $request->tipo;
         $user->estado               = $request->estado;
+        $user->user_fechacreacion   = date("Y-m-d");
 
         //dd($user->password);
 

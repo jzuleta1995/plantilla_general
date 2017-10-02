@@ -50,6 +50,8 @@ class AbonoController extends Controller
         $abono->abono_estado        = $request->abono_estado;
         $abono->abono_observacion   = trim(strtoupper($request->abono_observacion));
         $abono->user_id             = Auth::id();
+        $abono->abono_fechacreacion = date("Y-m-d");
+
         $abono->save();
 
         return Redirect()->route('prestamo.show', $request->prestamo_id)
@@ -103,6 +105,8 @@ class AbonoController extends Controller
             $data = Abono::find($id);
             $data->abono_observacion = $request->input('observacion_abono');
             $data->abono_estado = 'INACTIVO';
+            $data->user_anulacion           = Auth::id();
+            $data->abono_fecha_anulacion    = date("Y-m-d");
 
             $data->save();
             //return response()->json($data);

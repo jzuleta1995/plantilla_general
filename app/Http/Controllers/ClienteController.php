@@ -50,6 +50,8 @@ class ClienteController extends Controller
         $cliente->cliente_ciudad            = $request->cliente_ciudad;
         $cliente->cliente_estado            = $request->cliente_estado;
         $cliente->user_id                   = Auth::id();
+        $cliente->cliente_fechacreacion     = date("Y-m-d");
+
         $cliente->save();
 
         if ($request->aplica_fiador == "on" && $request->fiador1_nombre && $request->fiador1_apellido

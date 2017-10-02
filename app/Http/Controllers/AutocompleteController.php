@@ -16,6 +16,8 @@ class AutocompleteController extends Controller
         if($request->ajax()){
             $path = $request->ruta;
             $term = str_replace(';', '',$request->term);
+
+
             $results[] = array();
 
             if($path == 'cliente'){
@@ -28,6 +30,7 @@ class AutocompleteController extends Controller
                 $queries = DB::table('clientes')
                     ->where($nombre_completo1, 'ilike', $term.'%')
                     ->take(5)->get();
+             $results[] = ['id' => 'codigo', 'value' => 'CEDULA     -  CLIENTE']; //you can take custom values as you want
 
                 foreach ($queries as $query)
                 {
@@ -47,6 +50,9 @@ class AutocompleteController extends Controller
                 $queries = DB::table('cobradors')
                     ->where($nombre_completo1, 'ilike', $term.'%')
                     ->take(5)->get();
+
+                 $results[] = ['id' => 'codigo', 'value' => 'CEDULA     -  COBRADOR']; //you can take custom values as you want
+
 
                 foreach ($queries as $query)
                 {

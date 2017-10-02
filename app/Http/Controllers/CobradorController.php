@@ -40,6 +40,8 @@ class CobradorController extends Controller
         $cobrador->cobrador_ciudad          = $request->cobrador_ciudad;
         $cobrador->cobrador_estado          = $request->cobrador_estado;
         $cobrador->user_id                  = Auth::id();
+        $cobrador->cobrador_fechacreacion   = date("Y-m-d");
+
         $cobrador->save();
 
         return Redirect()->route('cobrador.index')

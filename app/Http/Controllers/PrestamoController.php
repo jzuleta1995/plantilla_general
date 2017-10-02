@@ -12,16 +12,27 @@ use DB;
 
 class PrestamoController extends Controller
 {
-    public function index()
-    {
-        $prestamos = DB::table('prestamos')
+    public function index(Request $request)
+    { 
+        //dd($request->get('nombre'));
+        /*$prestamos = DB::table('prestamos')
                     ->join('clientes', 'prestamos.cliente_id', '=', 'clientes.id')
-                    ->select('prestamos.id', 'clientes.cliente_nombre_completo', 'prestamos.prestamo_tasa', 'prestamos.prestamo_valor')
-                    ->where('prestamo_estado', '=', 'ACTIVO')
-                    ->orderBy('prestamos.created_at', 'desc');
+                    ->select('prestamos.id', 'clientes.cliente_nombre_completo', 'prestamos.prestamo_tasa', 'prestamos.prestamo_valor');
 
+            if ($request->get('nombre') != '') {
+                $prestamos->where('prestamos.prestamo_nombrecliente', '=', $request->get('nombre'));
+            }else{
+                ->where('prestamo_estado', '=', 'ACTIVO')
+                ->orderBy('prestamos.created_at', 'desc');
+            } */
 
-        $prestamos = $prestamos->paginate(30);
+            $prestamos = Prestamo::nombre($request->get('nombre'))
+                    ->select('prestamos.id', 'prestamos.prestamo_nombrecliente', 'prestamos.prestamo_tasa', 'prestamos.prestamo_valor')
+                 ->orderBy('id', 'ASC')
+                 ->paginate(30);
+                 //dd($prestamos);
+
+        //$prestamos = $prestamos->paginate(30);
 
         return view('aplicacion.prestamo.index')->with('prestamos', $prestamos);
     }
@@ -35,7 +46,8 @@ class PrestamoController extends Controller
     }
 
     public function store(PrestamoRequest $request)
-    {
+    { 
+        $cliente = Cliente::find($request->cliente_id);
         $prestamo = new Prestamo($request->all());
 
         $prestamo->cliente_id                    = $request->cliente_id;
@@ -55,6 +67,9 @@ class PrestamoController extends Controller
         $prestamo->prestamo_valor_actual         = str_replace(',','',str_replace('.','',$request->prestamo_valor_actual));
         $prestamo->prestamo_estado               = 'ACTIVO';
         $prestamo->user_id                       = Auth::id();
+        $prestamo->prestamo_fechacreacion        = date("Y-m-d");
+        $prestamo->prestamo_nombrecliente        = $cliente->cliente_nombre_completo;
+
         $prestamo->save();
 
 
@@ -167,7 +182,8 @@ class PrestamoController extends Controller
             $data = Prestamo::find($id);
             $data->prestamo_observacion = $request->input('observacion_prestamo');
             $data->prestamo_estado = 'INACTIVO';
-
+            $data->user_anulacion           = Auth::id();
+            $data->prestamo_fecha_anulacion = date("Y-m-d");
             $data->save();
             //return response()->json($data);
 
