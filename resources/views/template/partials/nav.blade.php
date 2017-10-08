@@ -46,7 +46,6 @@
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a class="nav-link" href="{{ route('user.indexcambioClave') }}"><span class="glyphicon glyphicon-transfer"></span>&nbsp;&nbsp;Cambio Clave</a></li>
-                        <li role="separator" class="divider"></li>
                         <li>
                             <a class="nav-link" href="{{ route('backup.index') }}">
                                 <span class="glyphicon glyphicon-floppy-saved"></span>  Copia De Seguridad</a></li>
