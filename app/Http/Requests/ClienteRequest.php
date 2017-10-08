@@ -33,6 +33,8 @@ class ClienteRequest extends FormRequest
             'cliente_telefono'           => 'required',
             'cliente_celular'            => 'required',
             'cliente_estado'             => 'required',
+            'cobrador_id'                => 'required',
+
         ];
     }
 }

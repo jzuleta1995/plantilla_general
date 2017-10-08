@@ -28,8 +28,9 @@ class PrestamoController extends Controller
 
             $prestamos = Prestamo::nombre($request->get('nombre'))
                     ->select('prestamos.id', 'prestamos.prestamo_nombrecliente', 'prestamos.prestamo_tasa', 'prestamos.prestamo_valor')
-                 ->orderBy('id', 'ASC')
-                 ->paginate(30);
+                    ->where('prestamo_estado', '=', 'ACTIVO')
+                    ->orderBy('id', 'ASC')
+                    ->paginate(30);
                  //dd($prestamos);
 
         //$prestamos = $prestamos->paginate(30);

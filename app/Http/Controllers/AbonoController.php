@@ -101,7 +101,7 @@ class AbonoController extends Controller
             return response()->view('errors.500', [], 500);
 
         } else {
-            // dd("id".$id);
+             dd("id".$id);
             $data = Abono::find($id);
             $data->abono_observacion = $request->input('observacion_abono');
             $data->abono_estado = 'INACTIVO';
@@ -112,7 +112,7 @@ class AbonoController extends Controller
             //return response()->json($data);
 
             return back()
-                ->with('success', 'Prestamo Anulado.');
+                ->with('success', 'Abono Anulado.');
         }
     }
 }

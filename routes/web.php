@@ -223,6 +223,12 @@ Route::group(['prefix'  =>  '/admin', 'middleware'   =>  'auth'], function () {
     //OTRAS RUTAS
         Route::name('color')
             ->get('/home/color', 'HomeController@index');
+
+    Route::name('backup.index')
+        ->get('/backup/index', 'BackupController@index');
+
+    /*Route::name('excel.indexInformeVisorUtilidad')
+        ->get('/excel/VisorUtilidad', 'ExcelController@indexInformeVisorUtilidad');*/
     //FIN OTRAS RUTAS
 
         Route::get('pdf', function () {

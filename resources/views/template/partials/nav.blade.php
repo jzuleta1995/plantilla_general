@@ -35,6 +35,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Procedimientos <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a class="nav-link" href="{{ route('cobrador.indexAsignaCobradorACliente') }}">Asignar Clientes a Cobrador</a></li>
+
                     </ul>
                 </li>
             @if (Auth::guest())
@@ -47,10 +48,14 @@
                         <li><a class="nav-link" href="{{ route('user.indexcambioClave') }}"><span class="glyphicon glyphicon-transfer"></span>&nbsp;&nbsp;Cambio Clave</a></li>
                         <li role="separator" class="divider"></li>
                         <li>
+                            <a class="nav-link" href="{{ route('backup.index') }}">
+                                <span class="glyphicon glyphicon-floppy-saved"></span>  Copia De Seguridad</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li>
                             <a href="{{ route('logout') }}" class="nav-link"
                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;Cerrar Sesión
-                            </a>
+                            </a></li>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 {{ csrf_field() }}

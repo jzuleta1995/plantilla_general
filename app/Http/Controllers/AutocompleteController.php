@@ -30,7 +30,7 @@ class AutocompleteController extends Controller
                 $queries = DB::table('clientes')
                     ->where($nombre_completo1, 'ilike', $term.'%')
                     ->take(5)->get();
-             $results[] = ['id' => 'codigo', 'value' => 'CEDULA     -  CLIENTE']; //you can take custom values as you want
+             $results[] = ['id' => '', 'value' => 'CEDULA     -  CLIENTE']; //you can take custom values as you want
 
                 foreach ($queries as $query)
                 {
@@ -51,7 +51,7 @@ class AutocompleteController extends Controller
                     ->where($nombre_completo1, 'ilike', $term.'%')
                     ->take(5)->get();
 
-                 $results[] = ['id' => 'codigo', 'value' => 'CEDULA     -  COBRADOR']; //you can take custom values as you want
+                 $results[] = ['id' => '', 'value' => 'CEDULA     -  COBRADOR']; //you can take custom values as you want
 
 
                 foreach ($queries as $query)
