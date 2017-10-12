@@ -15,9 +15,9 @@ function Fecha() {
     },
 
     this.setFullFecha = function (fecha){
-        year = parseInt(fecha.substr(0,4));
-        month = parseInt(fecha.substr(5,2)) -1;
-        date = parseInt(fecha.substr(8,2));
+        var year = parseInt(fecha.substr(0,4));
+        var month = parseInt(fecha.substr(5,2)) -1;
+        var date = parseInt(fecha.substr(8,2));
 
         this.fechaPrestamo = new Date(year, month, date);
     },
@@ -48,13 +48,13 @@ function Fecha() {
     },
 
      this.getDate = function(){
-        date =  this.getFormatoDia(fechaPrestamo.getDate());
+        var date =  this.getFormatoDia(fechaPrestamo.getDate());
         return date;
     },
 
     this.getMonth = function(){
-        month = fechaPrestamo.getMonth() + 1;
-        monthFormat =  this.getFormatoMes(month);
+        var month = this.fechaPrestamo.getMonth() + 1;
+        var monthFormat =  this.getFormatoMes(month);
         return monthFormat;
     },
 
@@ -63,11 +63,11 @@ function Fecha() {
     },
 
      this.getFormatoFecha = function () {
-        anio =  this.fechaPrestamo.getFullYear();
-        month =  this.fechaPrestamo.getMonth() + 1;
-        monthFormat =  this.getFormatoMes(month);
-        date =  this.fechaPrestamo.getDate();
-        dateFormat =  this.getFormatoDia(date);
+        var anio =  this.fechaPrestamo.getFullYear();
+        var month =  this.fechaPrestamo.getMonth() + 1;
+        var monthFormat =  this.getFormatoMes(month);
+        var date =  this.fechaPrestamo.getDate();
+        var dateFormat =  this.getFormatoDia(date);
 
         return anio + "-" + monthFormat + "-" + dateFormat;
     },
@@ -113,6 +113,34 @@ function Fecha() {
         }
 
         return false;
+    }
+
+    this.ultimoDiaMes = function(mes, anio){
+        var dia = 31;
+
+        if(mes <= 7){
+            if(mes == 2){
+                if((anio % 4 == 0 && anio % 100 != 0) || (anio % 400 == 0)){
+                    dia = 29;
+                }else{
+                    dia = 28;
+                }
+            }else{
+                if(mes % 2 == 0){
+                    dia = 30;
+                }else{
+                    dia = 31;
+                }
+            }
+        }else{
+            if(mes % 2 == 0){
+                dia = 31;
+            }else{
+                dia = 30;
+            }
+        }
+
+        return dia;
     }
 
 }

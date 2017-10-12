@@ -133,11 +133,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="password">Password:</label>
-                                <input type="password" class="form-control" id="password" name="password" placeholder="***********" onblur="validaPasswordAdmin()" >
+                                <input type="password" class="form-control" id="password" name="password" placeholder="***********" >
                             </div>
                             <div class="form-group">
                                 <label for="edit_observacion">Observacion:</label>
-                                <input type="text" class="form-control" id="edit_observacion" name="edit_observacion"  readonly="true">
+                                <input type="text" class="form-control" id="edit_observacion" name="edit_observacion" >
                             </div>
                         </div>
 
@@ -147,7 +147,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">CERRAR</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="limpiarCampos()">CERRAR</button>
                 </div>
             </div>
         </div>
@@ -158,7 +158,6 @@
 @section('script')
     <script src="{{asset('js/aplicacion/prestamo/anula_prestamo.js')}}"></script>
     <script src="{{asset('js/aplicacion/general/filtrosVisorPrincipal.js')}}"></script>
-    <script src="{{asset('js/aplicacion/general/validarPasswordAdmin.js')}}"></script>
     <script src="{{ asset('js/autocomplete.js') }}"></script>
     <script>autocompleteClass.autocompleteComponent('#cliente', '#cliente_id', 'cliente');</script>
     <script>autocompleteClass.autocompleteComponent('#cobrador', '#cobrador_id', 'cobrador');</script>

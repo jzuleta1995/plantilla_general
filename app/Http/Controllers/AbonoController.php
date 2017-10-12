@@ -6,9 +6,12 @@ use App\Abono;
 use App\Cliente;
 use App\Http\Requests\AbonoRequest;
 use App\Prestamo;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use Illuminate\Support\Facades\Hash;
+
 class AbonoController extends Controller
 {
     public function index()
@@ -97,22 +100,28 @@ class AbonoController extends Controller
     public function updateAnulaAbono(Request $request, $id)
     {
 
-        if ($request->input('observacion_abono') == '') {
-            return response()->view('errors.500', [], 500);
+        $usuarios = User::find(Auth::id());
+        $clave_encriptada = $usuarios->password;
+        $clave_sin_encriptadar = $request->input('password');
 
-        } else {
-             dd("id".$id);
-            $data = Abono::find($id);
-            $data->abono_observacion = $request->input('observacion_abono');
-            $data->abono_estado = 'INACTIVO';
-            $data->user_anulacion           = Auth::id();
-            $data->abono_fecha_anulacion    = date("Y-m-d");
+        if ($request->ajax()) {
+            if (Hash::check($clave_sin_encriptadar, $clave_encriptada)) {
+                $data = Abono::find($id);
+                $data->abono_observacion = $request->input('observacion_abono');
+                $data->abono_estado = 'INACTIVO';
+                $data->user_anulacion = Auth::id();
+                $data->abono_fecha_anulacion = date("Y-m-d");
 
-            $data->save();
-            //return response()->json($data);
+                $data->save();
 
-            return back()
-                ->with('success', 'Abono Anulado.');
+                return response()
+                    ->json(["message" => "El Abono ha sido anulado exitosamente!!"],
+                        200);
+            } else {
+                return response()
+                    ->json(["message" => "La Contrasena es incorrecta por favor intente de nuevo!!"],
+                        500);
+            }
         }
     }
 }

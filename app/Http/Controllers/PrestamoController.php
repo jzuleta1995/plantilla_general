@@ -6,26 +6,16 @@ use App\Abono;
 use App\Http\Requests\PrestamoRequest;
 use App\Prestamo;
 use App\Cliente;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use Illuminate\Support\Facades\Hash;
 
 class PrestamoController extends Controller
 {
     public function index(Request $request)
     { 
-        //dd($request->get('nombre'));
-        /*$prestamos = DB::table('prestamos')
-                    ->join('clientes', 'prestamos.cliente_id', '=', 'clientes.id')
-                    ->select('prestamos.id', 'clientes.cliente_nombre_completo', 'prestamos.prestamo_tasa', 'prestamos.prestamo_valor');
-
-            if ($request->get('nombre') != '') {
-                $prestamos->where('prestamos.prestamo_nombrecliente', '=', $request->get('nombre'));
-            }else{
-                ->where('prestamo_estado', '=', 'ACTIVO')
-                ->orderBy('prestamos.created_at', 'desc');
-            } */
-
             $prestamos = Prestamo::nombre($request->get('nombre'))
                     ->select('prestamos.id', 'prestamos.prestamo_nombrecliente', 'prestamos.prestamo_tasa', 'prestamos.prestamo_valor')
                     ->where('prestamo_estado', '=', 'ACTIVO')
@@ -53,7 +43,7 @@ class PrestamoController extends Controller
 
         $prestamo->cliente_id                    = $request->cliente_id;
         $prestamo->prestamo_valor                = str_replace(',','',str_replace('.','',$request->prestamo_valor));
-        $prestamo->prestamo_tasa                 = str_replace(',','',str_replace('.','',$request->prestamo_tasa));
+        $prestamo->prestamo_tasa                 = str_replace(',','', $request->prestamo_tasa);
         $prestamo->prestamo_tipo                 = $request->prestamo_tipo;
         $prestamo->prestamo_tiempo_cobro         = $request->prestamo_tiempo_cobro;
         $prestamo->prestamo_numero_cuotas        = str_replace(',','',str_replace('.','',$request->prestamo_numero_cuotas));
@@ -147,18 +137,14 @@ class PrestamoController extends Controller
     public function utilidad(Request $request)
     {
         return view('aplicacion.prestamo.informes.utilidad');
-        //return redirect('admin/prestamo/informes/utilidad');
-
     }
 
     public function view(Request $request, $id)
     {
 
         $prestamos = DB::select('select p.id,cliente_nombre_completo from prestamos p, clientes c where c.id= p.cliente_id and p.id = ?', [$id]);
-        //$prestamos = $prestamos->get();
-        //dd($prestamos);
+
         if($request->ajax()){
-           //$results =Prestamo::find($id);
 
             foreach ($prestamos as $prestamo)
             {
@@ -175,22 +161,30 @@ class PrestamoController extends Controller
     */
     public function updateAnulaPrestamo(Request $request, $id)
     {
-        if($request -> input('observacion_prestamo') ==''){
-            return response()->view('errors.500', [], 500);
 
-        }else {
-            // dd("id".$id);
-            $data = Prestamo::find($id);
-            $data->prestamo_observacion = $request->input('observacion_prestamo');
-            $data->prestamo_estado = 'INACTIVO';
-            $data->user_anulacion           = Auth::id();
-            $data->prestamo_fecha_anulacion = date("Y-m-d");
-            $data->save();
-            //return response()->json($data);
+        $usuarios = User::find(Auth::id());
+        $clave_encriptada = $usuarios->password;
+        $clave_sin_encriptadar = $request->input('password');
 
-            return back()
-                ->with('success', 'Prestamo Anulado.');
-        }
+       if ($request->ajax()) {
+            if (Hash::check($clave_sin_encriptadar, $clave_encriptada)) {
+
+                $data = Prestamo::find($id);
+                $data->prestamo_observacion = $request->input('observacion_prestamo');
+                $data->prestamo_estado = 'INACTIVO';
+                $data->user_anulacion = Auth::id();
+                $data->prestamo_fecha_anulacion = date("Y-m-d");
+                $data->save();
+
+                return response()
+                    ->json(["message" => "El prestamo ha sido anulado exitosamente!!"],
+                        200);
+            }   else {
+                return response()
+                        ->json(["message" => "La Contrasena es incorrecta por favor intente de nuevo!!"],
+                            500);
+            }
+       }
     }
 
     public function validaUnicoPrestamoCliente(Request $request, $cliente_id)

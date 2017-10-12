@@ -18,8 +18,5 @@ function validaUnicoPrestamoCliente()
             alert("El cliente Ya Posee Un Prestamo Activo");
 
         },
-       /* error: function(data){
-            alert("fail");
-        }*/
     });
 }

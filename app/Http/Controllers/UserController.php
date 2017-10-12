@@ -187,23 +187,18 @@ class UserController extends Controller
 
     public function validaPasswordAdmin(Request $request)
     {
-        $usuarios = User::find( Auth::id());
+        $usuarios = User::find(Auth::id());
 
         $clave_encriptada     = $usuarios->password;
         $clave_sin_encriptadar = $request->input('psw');
 
-        //se valida que la clave actual sin encriptar, sea igual a la clave encritada
-        if(Hash::check($clave_sin_encriptadar, $clave_encriptada)) {
-
-            if($request->ajax()){
-                return response()->json($usuarios[0]);
-            }
-        }else{
-
-            if($request->ajax()){
+        //se valida que la clave actual sin encriptar, sea igual a la clave encriptada
+        if($request->ajax()) {
+            if (Hash::check($clave_sin_encriptadar, $clave_encriptada)) {
+                return response()->json($usuarios);
+            } else {
                 return response()->view('errors.500', [], 500);
             }
         }
-
     }
 }

@@ -1,18 +1,14 @@
 function mostrarModalPrestamo(id)
 {
-
     var view_url = $("#hidden_view").val();
-    console.log(view_url);
 
     $.ajax({
         url: view_url+'/'+id,
         type:"GET",
-        //data: {"id":id},
         success: function(result){
-            //console.log(result);
             $("#edit_id").val(result.id);
             $("#edit_cliente").val(result.cliente_nombre_completo);
-           }
+        }
     });
 }
 
@@ -25,18 +21,22 @@ function AnularPrestamo()
     $.ajax({
         url: url+'/'+id,
         type:"POST",
-        data: {"id":$("#edit_id").val(), "observacion_prestamo":$("#edit_observacion").val(), '_token': $("input[name=_token]").val()},
+        data: {"id":$("#edit_id").val(), "observacion_prestamo":$("#edit_observacion").val(), "password":$("#password").val(), '_token': $("input[name=_token]").val()},
 
         success: function(result){
-            alert ("Prestamo Anulado Satisfactoriamente");
-
+            alert(result.message);
             $("#editModal").modal('hide');
-            //console.log(result);
             //recarga lapagina despues de anular un registro
             location.reload(true);
         },
          error: function(data){
-             alert("Debe Ingresar El Campo Observacion");
+             alert(data.responseJSON.message);
+             $('#password').val("").focus();
          }
-});
+    });
+}
+
+function limpiarCampos() {
+    $("#edit_observacion").val("");
+    $("#password").val("");
 }

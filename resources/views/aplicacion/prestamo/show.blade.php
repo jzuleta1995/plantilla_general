@@ -16,5 +16,4 @@
 @endsection
 @section('script')
     <script src="{{asset('js/aplicacion/abono/anula_abono.js')}}"></script>
-    <script src="{{asset('js/aplicacion/general/validarPasswordAdmin.js')}}"></script>
 @endsection

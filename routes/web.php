@@ -165,7 +165,7 @@ Route::group(['prefix'  =>  '/admin', 'middleware'   =>  'auth'], function () {
         Route::name('user.cambioClave')
             ->post('/user/procedimientos/cambioclave', 'UserController@cambioClave');
 
-        Route::get('/user/validaPasswordAdmin',
+        Route::post('/user/validaPasswordAdmin',
             array('as' => 'user.validaPasswordAdmin',
                 'uses' => 'UserController@validaPasswordAdmin'
             )

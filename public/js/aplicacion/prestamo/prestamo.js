@@ -29,9 +29,9 @@ var Prestamo = {
                 }
             }
 
-            valor           = parseInt($('#prestamo_valor').val().replace(/\./g,''));
-            tasa            = parseInt($('#prestamo_tasa').val().replace(/\./g,''));
-            cuotas          = parseInt($('#prestamo_numero_cuotas').val().replace(/\./g,''));
+            valor           = $('#prestamo_valor').val().replace(/\./g,'');
+            tasa            = $('#prestamo_tasa').val();
+            cuotas          = $('#prestamo_numero_cuotas').val().replace(/\./g,'');
 
             $('#prestamo_valor_abonado').val(0);
 
@@ -70,12 +70,13 @@ var Prestamo = {
     },
     
     calculoFecha: function () {
-        $('#prestamo_fecha, #prestamo_fecha_inicial, #prestamo_tiempo_cobro').blur(function (){
+        $('#prestamo_fecha, #prestamo_fecha_inicial, #prestamo_tiempo_cobro, ' +
+            '#prestamo_valor,  #prestamo_tasa, #prestamo_numero_cuotas').focusout(function (){
 
 
             var cantidad_dias                = 0;
             var tiempo_prestamo              = '';
-            var fecha                        = new Fecha;
+            var fecha                        = new Fecha();
             var fecha_inicial                = new Fecha();
             var fecha_actual                 = new Fecha();
             var fecha_pago                   = new Fecha();
@@ -95,21 +96,9 @@ var Prestamo = {
 
             var dias_diferencia_primer_pagpo = fecha_inicial.getDiferenciaDias(fecha.getTime());
 
-            if(tiempo_prestamo =='SEMANAL'){
+            ultimoDiaMes = fecha.ultimoDiaMes(fecha.getMonth(), fecha.getFullYear());
 
-                /* 1-el valor de la cuota se multiplica por 4 ya que es semanal asi se obtendra el valor delinteres mensual
-                   2- ya que el prestamo es semanal se divide por 28 dias para obtener el valor del dia
-                   3- despues de obtener el valor del dia, se multiplica por los dias faltantes antes del pago de
-                      la primera cuota,para que se pague el valor excedente */
-
-                valor_primera_cuota = Math.round(((valor_cuota * 4) / 28) * dias_diferencia_primer_pagpo);
-
-            }else if(tiempo_prestamo =='QUINCENAL'){
-                valor_primera_cuota  = Math.round(((valor_cuota * 2) / 30) * dias_diferencia_primer_pagpo);
-
-            }else if(tiempo_prestamo =='MENSUAL'){
-                valor_primera_cuota = Math.round((valor_cuota /30) * dias_diferencia_primer_pagpo);
-            }
+            valor_primera_cuota = Math.round((valor_cuota /ultimoDiaMes) * dias_diferencia_primer_pagpo);
 
             fecha_pago.setFullFecha(fecha_actual.getFormatoFecha());
 
@@ -125,6 +114,8 @@ var Prestamo = {
                     $('#prestamo_valor_actual').val($('#prestamo_valor_total').val());
                 }
             }
+
+            $('#prestamo_valor_abonado').val(0);
 
             Prestamo.validaFecha();
         });
@@ -142,6 +133,9 @@ var Prestamo = {
                 $('#prestamo_fecha_inicial').val("");
                 $('#prestamo_fecha').val("");
                 $('#prestamo_fecha_proximo_cobro').val("");
+                $('#prestamo_valor_proxima_cuota').val("");
+                $('#prestamo_valor_abonado').val("");
+                $('#prestamo_valor_actual').val("");
             }
         }
     }
