@@ -42,6 +42,7 @@ class AbonoController extends Controller
             $cod_abono = $codigoAbonos ->item + 1;
         }
 
+
         $abono = new Abono();
         $abono->id                  = $cod_abono;
         $abono->prestamo_id         = $request->prestamo_id;
@@ -89,11 +90,21 @@ class AbonoController extends Controller
         */
     public function view(Request $request, $id)
     {
+
         if($request->ajax()){
-            $info = Abono::find($id);
+
+            $info = DB::table('abonos')
+                ->select(DB::raw('id, abono_item, prestamo_id, abono_valor_cuota'))
+                ->where('prestamo_id', '=', $request->prestamo_id)
+                ->where('id', '=', $id)
+                ->where('abono_item', '=', $request->abono_item)->first();
+
+
+            //$info = Abono::find($id);
             return response()->json($info);
         }
     }
+
     /*
     *   Update data
     */
@@ -104,9 +115,20 @@ class AbonoController extends Controller
         $clave_encriptada = $usuarios->password;
         $clave_sin_encriptadar = $request->input('password');
 
+
         if ($request->ajax()) {
             if (Hash::check($clave_sin_encriptadar, $clave_encriptada)) {
-                $data = Abono::find($id);
+                //$data = Abono::find($id);
+                //$data = Abono::where('id', '=', $id)
+                //->where('prestamo_id', '=', $request->prestamo_id)->first();
+
+                $data = Abono::where('id', '=', $id)
+                    ->where('abono_item', '=', $request->abono_item)
+                    ->where('prestamo_id', '=', $request->prestamo_id)->first();
+
+
+                //dd($data);
+
                 $data->abono_observacion = $request->input('observacion_abono');
                 $data->abono_estado = 'INACTIVO';
                 $data->user_anulacion = Auth::id();

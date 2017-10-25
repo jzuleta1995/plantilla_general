@@ -16,9 +16,19 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
-        $users = User::nombre($request->get('nombre'))
-                 ->orderBy('id', 'ASC')
-                 ->paginate(30);
+        if(Auth::id() != 1 ){
+            $users = DB::table('users')
+                ->whereNotIn('id', [1])
+                ->paginate(30);
+
+        }else{
+            $users = User::nombre($request->get('nombre'))
+                ->orderBy('id', 'ASC')
+                ->paginate(30);
+        }
+
+
+
 
         return view('aplicacion.user.index')
                ->with('users', $users);

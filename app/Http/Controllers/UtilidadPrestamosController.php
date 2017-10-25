@@ -25,7 +25,6 @@ class UtilidadPrestamosController extends Controller
         if($request->fecha_inicial !='' && $request->fecha_final !=''){
             $utilidad->whereBetween('view_utilidaprestamos.fecha_cobroprestamo',  array($request->fecha_inicial, $request->fecha_final));
         }
-
         $utilidad = $utilidad->paginate(15);
 
         //return view('aplicacion.prestamo.index', compact('prestamo'));

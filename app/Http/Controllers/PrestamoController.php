@@ -77,7 +77,7 @@ class PrestamoController extends Controller
         $abonos = DB::table('abonos')
                   ->join('prestamos', 'abonos.prestamo_id', '=', 'prestamos.id')
                   ->select('abonos.id','abonos.abono_valor_cuota', 'abonos.abono_valor', 'abonos.abono_tipo_pago',
-                           'abonos.abono_observacion', 'abonos.abono_fecha', 'abono_estado')
+                           'abonos.abono_observacion', 'abonos.abono_fecha', 'abono_estado', 'abono_item','prestamos.id as prestamo_id')
                   ->where('prestamos.id','=', $id)
                   ->orderBy('abonos.id', 'desc')
             ->paginate(20);

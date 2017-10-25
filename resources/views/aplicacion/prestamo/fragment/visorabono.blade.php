@@ -24,7 +24,8 @@
                       <td class="text-center">{{ $abono->abono_fecha }}</td>
                       <td class="text-center">{{ $abono->abono_estado }}</td>
                       <td class="text-center">{{ $abono->abono_observacion }}</td>
-                      @if($abono->abono_estado=='INACTIVO')
+
+                  @if($abono->abono_estado=='INACTIVO')
                           <!-- se iguala a cero para que en la proxima iteracion la variable empiece en 1-->
                           <?php if($a==1){$a = 0;} ?>
                       @endif
@@ -32,7 +33,7 @@
                    <?php if ($a ==1){ ?>
                           @if( Auth::user()->tipo == 'ADMINISTRADOR' && $abono->abono_estado=='ACTIVO' )
                               <td class="text-center">
-                                  <a class="btn btn-danger" data-toggle="modal" data-target="#editModal" onclick="mostrarModalAbono('{{$abono -> id}}')"><span class="glyphicon glyphicon-remove"></span></a>
+                                  <a class="btn btn-danger" data-toggle="modal" data-target="#editModal" onclick="mostrarModalAbono('{{$abono -> id}}','{{$abono -> abono_item}}','{{$abono -> prestamo_id}}')"><span class="glyphicon glyphicon-remove"></span></a>
                               </td>
                           @endif
                       <td class="text-center">
@@ -77,7 +78,9 @@
                                 </div>
                             </div>
 
-                            <input type="hidden" id="edit_id" name="edit_id">
+                            <input type="text" id="edit_id" name="edit_id">abono
+                            <input type="text" id="edit_abono_item" name="edit_abono_item">item
+                            <input type="text" id="edit_prestamo_id" name="edit_prestamo_id">prestamo
 
                             <button type="button" onclick="AnularAbono()" class="btn btn-primary">Anular</button>
                         </form>

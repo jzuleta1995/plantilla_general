@@ -6,8 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Abono extends Model
 {
+   /* protected $primaryKey = null;
+    public $incrementing = false;*/
+
+
     protected $fillable =
     [
+
         'cliente_id',
         'prestamo_id',
         'abono_valor_cuota',

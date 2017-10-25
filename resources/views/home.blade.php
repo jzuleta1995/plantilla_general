@@ -73,6 +73,7 @@
         <th class="text-center">Lugar de Trabajo</th>
         <th class="text-center">Tasa %</th>
         <th class="text-center">Cuota del Mes</th>
+        <th class="text-center">Valor Estimado Mes</th>
         <th class="text-center">Fecha de Cobro</th>
         </thead>
         <tbody>
@@ -93,6 +94,7 @@
                             <td class="text-center">{{ $prestamo->cliente_lugar_trabajo }}</td>
                             <td class="text-center">{{ $prestamo->prestamo_tasa }} %</td>
                             <td class="text-center">{{ $prestamo->prestamo_utilidad_mes }}</td>
+                            <td class="text-center">$</td>
                             <td class="text-center">{{ $prestamo->prestamo_fecha_proximo_cobro }}</td>
                             <?php $valorTotal = $valorTotal + $prestamo->prestamo_utilidad_mes ;?>
                         @if( Auth::user()->tipo == 'ADMINISTRADOR')
@@ -109,6 +111,14 @@
                     <td></td>
                     <th class="text-center">Total Prestamo</th>
                     <th class="text-center"> <?php echo $valorTotal;?></th>
+                    @if(is_object($utilidad_total))
+                        @foreach($utilidad_total as $utilidad)
+
+                        <th class="text-center"> {{$utilidad->valor_total}}</th>
+                     @endforeach
+
+                    @endif
+
                     <td></td>
                 </tr>
         </tbody>

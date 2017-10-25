@@ -41,13 +41,13 @@
 
             </div>
             <div class="row">
-                <div class="col-md-push-2 col-md-2">
+                <div class="col-md-push-2 col-md-3">
                     <div class="form-group">
                         {!! Form::label('abono_fecha', 'Fecha abono') !!}
-                        {!! Form::date('abono_fecha', null, ['class'=>'form-control']) !!}
+                        {!! Form::date('abono_fecha', \Carbon\Carbon::now(), ['class'=>'form-control']) !!}
                     </div>
                 </div>
-                <div class="col-md-push-5 col-md-3">
+                <div class="col-md-push-4 col-md-3">
                     <div class="form-group">
                         {!! Form::hidden('abono_estado', 'ACTIVO', ['class'=>'form-control']) !!}
                         {!! Form::hidden('abono_observacion', '.', ['class'=>'form-control']) !!}

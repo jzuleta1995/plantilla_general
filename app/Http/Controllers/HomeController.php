@@ -59,6 +59,12 @@ class HomeController extends Controller
             $prestamos->where('prestamos.prestamo_tasa', '=', $request->tasa);
         }
 
+        /* consulta de valor total en rango de fechas*/
+        $utilidad_total = DB::table('utilidad_total_prestamo_mes')
+            ->selectRaw('sum(utilidad_total_prestamo_mes.utilidad_valor_prestamo) as valor_total');
+        /* fin consulta*/
+
+
         if($request->fecha_inicial !='' && $request->fecha_final !=''){
             if($request->fecha_inicial > $request->fecha_final){
                 $prestamos = "";
@@ -67,17 +73,25 @@ class HomeController extends Controller
             }
 
             $prestamos->whereBetween('prestamos.prestamo_fecha_proximo_cobro',  array($request->fecha_inicial, $request->fecha_final));
+            $utilidad_total->whereBetween('utilidad_total_prestamo_mes.utilidad_fecha_mes',  array($request->fecha_inicial, $request->fecha_final));
+
         }else{
            $fecha = new FechaController();
            $fecha_inicial = $fecha->fechaPrimerDiaMesActual();
             $fecha_final = $fecha->fechaUltimoDiaMesActual();
 
             $prestamos->whereBetween('prestamos.prestamo_fecha_proximo_cobro',  array($fecha_inicial, $fecha_final));
+            $utilidad_total->whereBetween('utilidad_total_prestamo_mes.utilidad_fecha_mes',   array($fecha_inicial, $fecha_final));
+
         }
 
-        $prestamos = $prestamos->paginate(50);
+        $prestamos      = $prestamos->paginate(50);
+        $utilidad_total = $utilidad_total->get();
 
-        return view('/home')->with('prestamos', $prestamos);
+
+
+        return view('/home')->with('prestamos', $prestamos)
+                                 ->with('utilidad_total', $utilidad_total);
     }
 
 

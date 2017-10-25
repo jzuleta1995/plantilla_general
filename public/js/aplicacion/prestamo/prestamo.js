@@ -29,17 +29,17 @@ var Prestamo = {
                 }
             }
 
-            valor           = $('#prestamo_valor').val().replace(/\./g,'');
-            tasa            = $('#prestamo_tasa').val();
-            cuotas          = $('#prestamo_numero_cuotas').val().replace(/\./g,'');
+            valor           = parseFloat($('#prestamo_valor').val().replace(/\./g,''));
+            tasa            = parseFloat($('#prestamo_tasa').val());
+            cuotas          = parseFloat($('#prestamo_numero_cuotas').val().replace(/\./g,''));
 
             $('#prestamo_valor_abonado').val(0);
 
             if(valor >0 && tasa >0 && cuotas >0){
-                interes           = Math.round(valor * tasa) / 100;
+                interes           = parseFloat(Math.round(valor * tasa) / 100);
                 interes_cabierto  = Math.round(interes / cuotas);
-                total             = valor + interes;
-                valor_cuota       = Math.round(total / cuotas);
+                total             = parseFloat(valor + interes) ;
+                valor_cuota       = parseFloat(Math.round(total / cuotas));
 
                 if (tipoPrestamo == 'ABIERTO') {
 
@@ -60,7 +60,7 @@ var Prestamo = {
 
                     if ($.isNumeric(valor_cuota)) {
                         $('#prestamo_valor_cuota').val(valor_cuota);
-                        $('#interes_total').val(interes);
+                        //$('#interes_total').val(interes);
                     }
                 }
 
@@ -96,7 +96,15 @@ var Prestamo = {
 
             var dias_diferencia_primer_pagpo = fecha_inicial.getDiferenciaDias(fecha.getTime());
 
-            ultimoDiaMes = fecha.ultimoDiaMes(fecha.getMonth(), fecha.getFullYear());
+            if(tiempo_prestamo=="MENSUAL"){
+                ultimoDiaMes = fecha.ultimoDiaMes(fecha.getMonth(), fecha.getFullYear());
+                //ultimoDiaMes = 30;
+            }else if(tiempo_prestamo=="QUINCENAL"){
+                ultimoDiaMes = 15;
+            }else{
+                ultimoDiaMes = 7;
+            }
+
 
             valor_primera_cuota = Math.round((valor_cuota /ultimoDiaMes) * dias_diferencia_primer_pagpo);
 
