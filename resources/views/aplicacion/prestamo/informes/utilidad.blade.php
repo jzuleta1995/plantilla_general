@@ -10,6 +10,7 @@
                 <input type="hidden" name="bandera" id="bandera" value="0">
             </p>
             <br>
+            @include('template.partials.info')
             <div class="col-md-12 panel" id="formulario_uno" style="display:none">
                 {!! Form::open(['route' => 'prestamo.utilidad', 'method'   =>  'GET', 'id' => 'formulario_general']) !!}
 
@@ -56,6 +57,7 @@
             <thead>
             <th class="text-center">Cobrador</th>
             <th class="text-center">Cliente</th>
+            <th class="text-center">Fecha Abono</th>
             <th class="text-center">Couta Pagada</th>
             <th class="text-center">Capital Pagado</th>
             <th class="text-center">Interes Pagado %</th>
@@ -71,6 +73,7 @@
                 <tr>
                     <td class="text-center">{{ $prestamo->cobrador }}</td>
                     <td class="text-center">{{ $prestamo->cliente }}</td>
+                    <td class="text-center">{{ $prestamo->fecha_cobroprestamo }}</td>
                     <td class="text-center">{{ $prestamo->valor_real_pagado }}</td>
                     <td class="text-center">{{ $prestamo->valor_pagado_a_capital }}</td>
                     <td class="text-center">{{ $prestamo->valor_pagado_a_interes }} %</td>
@@ -81,6 +84,7 @@
                 </tr>
             @endforeach
             <tr>
+                <td></td>
                 <td></td>
                 <th class="text-center">Total Utilidad</th>
                 <th class="text-center"><?php echo $totalValorRealPagado;?></th>

@@ -36,6 +36,7 @@ class AbonoController extends Controller
             ->where('prestamo_id', '=', $request->prestamo_id)
             ->first();
 
+
         if( $codigoAbonos == ''){
             $cod_abono = 1;
         }else{
@@ -44,7 +45,7 @@ class AbonoController extends Controller
 
 
         $abono = new Abono();
-        $abono->id                  = $cod_abono;
+        $abono->abono_item                  = $cod_abono;
         $abono->prestamo_id         = $request->prestamo_id;
         $abono->cliente_id          = $request->cliente_id;
         $abono->abono_valor_cuota   = str_replace(',','',str_replace('.','',$request->abono_valor_cuota));

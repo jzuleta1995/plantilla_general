@@ -77,19 +77,19 @@
 <br>
 <div class="container panel" id="design">
     <div class="row">
-        <div class="col-md-push-1 col-md-2">
+        <div class="col-md-push-1 col-md-3">
             <div class="form-group">
                 {!! Form::label('prestamo_fecha', 'Fecha Prestamo') !!}
                 {!! Form::date('prestamo_fecha', null, ['class'=>'form-control']) !!}
             </div>
         </div>
-        <div class="col-md-push-2 col-md-2">
+        <div class="col-md-push-2 col-md-3">
             <div class="form-group">
                 {!! Form::label('prestamo_fecha_inicial', 'Fecha inicio prestamo') !!}
                 {!! Form::date('prestamo_fecha_inicial', null, ['class'=>'form-control']) !!}
             </div>
         </div>
-        <div class="col-md-push-3 col-md-2">
+        <div class="col-md-push-3 col-md-3">
             <div class="form-group">
                 {!! Form::label('prestamo_fecha_proximo_cobro', 'Fecha proximo cobro') !!}
                 {!! Form::text('prestamo_fecha_proximo_cobro', null, ['class'=>'form-control', 'readOnly' => 'true']) !!}
@@ -99,19 +99,19 @@
 
     <div class="content">
         <div class="row">
-            <div class="col-md-push-1 col-md-2">
+            <div class="col-md-push-1 col-md-3">
                 <div class="form-group">
                     {!! Form::label('prestamo_valor_proxima_cuota', 'Valor cancelar') !!}
                     {!! Form::text('prestamo_valor_proxima_cuota', null, ['class'=>'form-control', 'placeholder' =>   'Valor próximo pago', 'readonly' => 'true',  'onblur' => 'format(this)']) !!}
                 </div>
             </div>
-            <div class="col-md-push-2 col-md-2">
+            <div class="col-md-push-2 col-md-3">
                 <div class="form-group">
                     {!! Form::label('prestamo_valor_abonado', 'Valor abono deuda') !!}
                     {!! Form::text('prestamo_valor_abonado', null, ['class'=>'form-control', 'placeholder' =>   'Valor abonado', 'readonly' => 'true',  'onblur' => 'format(this)']) !!}
                 </div>
             </div>
-            <div class="col-md-push-3 col-md-2">
+            <div class="col-md-push-3 col-md-3">
                 <div class="form-group">
                     {!! Form::label('prestamo_valor_actual', 'Valor deuda') !!}
                         {!! Form::text('prestamo_valor_actual', null, ['class'=>'form-control', 'placeholder' =>   'Valor deuda', 'readonly' => 'true',  'onblur' => 'format(this)']) !!}

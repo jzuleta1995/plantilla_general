@@ -23,9 +23,24 @@ class UtilidadPrestamosController extends Controller
         }
 
         if($request->fecha_inicial !='' && $request->fecha_final !=''){
+
+            if($request->fecha_inicial > $request->fecha_final){
+                $utilidad = "";
+                return Redirect()->route('prestamo.utilidad')->with('info', 'La Fecha inicial no puede ser mayor a la Fecha final!!')
+                    ->with('prestamos', $utilidad);
+            }
+
             $utilidad->whereBetween('view_utilidaprestamos.fecha_cobroprestamo',  array($request->fecha_inicial, $request->fecha_final));
+
+        }else{
+            $fecha = new FechaController();
+            $fecha_inicial = $fecha->fechaPrimerDiaMesActual();
+            $fecha_final = $fecha->fechaUltimoDiaMesActual();
+
+            $utilidad->whereBetween('view_utilidaprestamos.fecha_cobroprestamo',  array($fecha_inicial, $fecha_final));
+
         }
-        $utilidad = $utilidad->paginate(15);
+        $utilidad = $utilidad->paginate(50);
 
         //return view('aplicacion.prestamo.index', compact('prestamo'));
         return view('aplicacion.prestamo.informes.utilidad')->with('prestamos', $utilidad);
