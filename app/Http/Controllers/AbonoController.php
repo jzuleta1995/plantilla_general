@@ -118,6 +118,13 @@ class AbonoController extends Controller
 
 
         if ($request->ajax()) {
+
+            if ($request->input('observacion_abono') == '') {
+                return response()
+                    ->json(["message" => "Debe Ingresar Una Observacion!!"],
+                        500);
+            }
+
             if (Hash::check($clave_sin_encriptadar, $clave_encriptada)) {
                 //$data = Abono::find($id);
                 //$data = Abono::where('id', '=', $id)

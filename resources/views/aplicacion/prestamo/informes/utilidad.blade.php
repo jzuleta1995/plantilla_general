@@ -61,6 +61,8 @@
             <th class="text-center">Couta Pagada</th>
             <th class="text-center">Capital Pagado</th>
             <th class="text-center">Interes Pagado %</th>
+            <th class="text-center">Valor Estimado Mes En PagoInteres %</th>
+
             </thead>
 
             <tbody>
@@ -90,6 +92,13 @@
                 <th class="text-center"><?php echo $totalValorRealPagado;?></th>
                 <th class="text-center"><?php echo $totalValorCapital;?></th>
                 <th class="text-center"> <?php echo $totalValorInteres;?> %</th>
+                @if(is_object($utilidad_total))
+                    @foreach($utilidad_total as $utilidad)
+
+                        <th class="text-center"> {{$utilidad->valor_total}}</th>
+                    @endforeach
+
+                @endif
 
             </tr>
 

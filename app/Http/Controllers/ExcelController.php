@@ -372,8 +372,7 @@ class ExcelController extends Controller
                 'prestamos.prestamo_valor_abonado',
                 'prestamos.prestamo_valor_actual',
                 'prestamos.prestamo_valor_proxima_cuota',
-                'prestamos.prestamo_fecha_proximo_cobro',
-                'users.nombre_completo');
+                'prestamos.prestamo_fecha_proximo_cobro');
 
 
         if ($request->cobrador_id != '') {
@@ -393,7 +392,7 @@ class ExcelController extends Controller
         $clientesArray = [];
 
         // Define the Excel spreadsheet headers
-        $clientesArray[] = ['nombre cobrador', 'nombre cliente', 'Valor abonado', 'Valor deuada Actual', 'Valor Cuota A Pagar', 'fecha cobro', 'usuario creador prestamo'];
+        $clientesArray[] = ['nombre cobrador', 'nombre cliente', 'Valor abonado', 'Valor deuada Actual', 'Valor Cuota A Pagar', 'fecha cobro'];
 
         // Convert each member of the returned collection into an array,
         // and append it to the payments array.
@@ -456,7 +455,7 @@ class ExcelController extends Controller
                 'cobradors.cobrador_nombre_completo',
                 'clientes.cliente_nombre_completo',
                 'prestamos.id as codigo_prestamo',
-                'abonos.id',
+                'abonos.abono_item',
                 'abonos.abono_tipo_pago',
                 'abonos.abono_valor_cuota',
                 'abonos.abono_valor',

@@ -34,7 +34,7 @@
                 <div class="col-md-push-4 col-md-3">
                     <div class="form-group">
                         {!! Form::label('abono_tipo_pago', 'Tipo Pago') !!}
-                        {!! Form::select('abono_tipo_pago', ['' => 'SELECCIONE UN TIPO',  'ABONO A CAPITAL' => 'ABONO A CAPITAL', 'PAGO CUOTA' => 'PAGO CUOTA', 'PAGO TOTAL DEUDA' => 'PAGO TOTAL DEUDA',], null,  ['class'=>'form-control']) !!}
+                        {!! Form::select('abono_tipo_pago', ['' => 'SELECCIONE UN TIPO',  'ABONO A CAPITAL' => 'ABONO A CAPITAL', 'PAGO CUOTA' => 'PAGO CUOTA'], null,  ['class'=>'form-control']) !!}
                     </div>
                 </div>
 

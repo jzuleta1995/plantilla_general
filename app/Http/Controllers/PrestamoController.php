@@ -166,6 +166,12 @@ class PrestamoController extends Controller
         $clave_encriptada = $usuarios->password;
         $clave_sin_encriptadar = $request->input('password');
 
+        if ($request->input('observacion_prestamo') == '') {
+            return response()
+                ->json(["message" => "Debe Ingresar Una Observacion!!"],
+                    500);
+        }
+
        if ($request->ajax()) {
             if (Hash::check($clave_sin_encriptadar, $clave_encriptada)) {
 

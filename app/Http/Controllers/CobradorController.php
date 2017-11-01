@@ -15,7 +15,7 @@ class CobradorController extends Controller
     {
       $cobradors = Cobrador::nombre($request->get('nombre'))
                    ->orderBy('id', 'ASC')
-                   ->paginate(30    );
+                   ->paginate(30);
 
         return view('aplicacion.cobrador.index')->with('cobradors', $cobradors);
     }

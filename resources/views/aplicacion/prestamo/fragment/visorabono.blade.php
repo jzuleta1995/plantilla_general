@@ -78,9 +78,9 @@
                                 </div>
                             </div>
 
-                            <input type="text" id="edit_id" name="edit_id">abono
-                            <input type="text" id="edit_abono_item" name="edit_abono_item">item
-                            <input type="text" id="edit_prestamo_id" name="edit_prestamo_id">prestamo
+                            <input type="hidden" id="edit_id" name="edit_id">
+                            <input type="hidden" id="edit_abono_item" name="edit_abono_item">
+                            <input type="hidden" id="edit_prestamo_id" name="edit_prestamo_id">
 
                             <button type="button" onclick="AnularAbono()" class="btn btn-primary">Anular</button>
                         </form>

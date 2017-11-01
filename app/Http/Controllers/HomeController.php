@@ -78,16 +78,15 @@ class HomeController extends Controller
         }else{
            $fecha = new FechaController();
            $fecha_inicial = $fecha->fechaPrimerDiaMesActual();
-            $fecha_final = $fecha->fechaUltimoDiaMesActual();
+            $fecha_final  = $fecha->fechaUltimoDiaMesActual();
 
             $prestamos->whereBetween('prestamos.prestamo_fecha_proximo_cobro',  array($fecha_inicial, $fecha_final));
             $utilidad_total->whereBetween('utilidad_total_prestamo_mes.utilidad_fecha_mes',   array($fecha_inicial, $fecha_final));
 
         }
 
-        $prestamos      = $prestamos->paginate(50);
+        $prestamos      = $prestamos->paginate(60);
         $utilidad_total = $utilidad_total->get();
-
 
 
         return view('/home')->with('prestamos', $prestamos)
