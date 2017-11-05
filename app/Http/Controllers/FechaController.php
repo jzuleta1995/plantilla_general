@@ -37,6 +37,20 @@ class FechaController extends Controller
         return $fecha_final->toDateString();
     }
 
+    public function fechaPrimerDiaMesIngresado($fecha_parametro){
+
+        $fecha_primerdia = new Carbon($fecha_parametro);
+        $fecha = $fecha_primerdia->startOfMonth()->toDateString();
+        return $fecha;
+    }
+
+    public function fechaUltimoDiaMesIngresado($fecha_parametro){
+
+        $fecha_ultimodia = new Carbon($fecha_parametro);
+        $fecha = $fecha_ultimodia ->lastOfMonth()->toDateString();
+        return $fecha;
+    }
+
     public function getUltimoDiaMes($mes, $anio){
         $dia = 31;
 

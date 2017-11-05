@@ -65,18 +65,22 @@ class HomeController extends Controller
         /* fin consulta*/
 
 
+        $fecha = new FechaController();
+
         if($request->fecha_inicial !='' && $request->fecha_final !=''){
             if($request->fecha_inicial > $request->fecha_final){
                 $prestamos = "";
                 return Redirect()->route('home')->with('info', 'La Fecha inicial no puede ser mayor a la Fecha final!!')
                                     ->with('prestamos', $prestamos);
             }
+            /* se calculan estas fechas para traer el valor estimado total de la utilidad*/
+            $fecha_inicial_ingresada = $fecha->fechaPrimerDiaMesIngresado($request->fecha_inicial);
+            $fecha_final_ingresada = $fecha->fechaUltimoDiaMesIngresado($request->fecha_final);
 
             $prestamos->whereBetween('prestamos.prestamo_fecha_proximo_cobro',  array($request->fecha_inicial, $request->fecha_final));
-            $utilidad_total->whereBetween('utilidad_total_prestamo_mes.utilidad_fecha_mes',  array($request->fecha_inicial, $request->fecha_final));
+            $utilidad_total->whereBetween('utilidad_total_prestamo_mes.utilidad_fecha_mes',  array($fecha_inicial_ingresada, $fecha_final_ingresada));
 
         }else{
-           $fecha = new FechaController();
            $fecha_inicial = $fecha->fechaPrimerDiaMesActual();
             $fecha_final  = $fecha->fechaUltimoDiaMesActual();
 
@@ -87,6 +91,7 @@ class HomeController extends Controller
 
         $prestamos      = $prestamos->paginate(60);
         $utilidad_total = $utilidad_total->get();
+
 
 
         return view('/home')->with('prestamos', $prestamos)

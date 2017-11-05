@@ -28,6 +28,8 @@ class UtilidadPrestamosController extends Controller
             ->selectRaw('sum(utilidad_total_prestamo_mes.utilidad_valor_prestamo) as valor_total');
         /* fin consulta*/
 
+        $fecha = new FechaController();
+
         if($request->fecha_inicial !='' && $request->fecha_final !=''){
 
             if($request->fecha_inicial > $request->fecha_final){
@@ -35,12 +37,15 @@ class UtilidadPrestamosController extends Controller
                 return Redirect()->route('prestamo.utilidad')->with('info', 'La Fecha inicial no puede ser mayor a la Fecha final!!')
                     ->with('prestamos', $utilidad);
             }
+            /* se calculan estas fechas para traer el valor estimado total de la utilidad*/
+            $fecha_inicial_ingresada = $fecha->fechaPrimerDiaMesIngresado($request->fecha_inicial);
+            $fecha_final_ingresada = $fecha->fechaUltimoDiaMesIngresado($request->fecha_final);
+
 
             $utilidad->whereBetween('view_utilidaprestamos.fecha_cobroprestamo',  array($request->fecha_inicial, $request->fecha_final));
-            $utilidad_total->whereBetween('utilidad_total_prestamo_mes.utilidad_fecha_mes',  array($request->fecha_inicial, $request->fecha_final));
+            $utilidad_total->whereBetween('utilidad_total_prestamo_mes.utilidad_fecha_mes',  array($fecha_inicial_ingresada, $fecha_final_ingresada));
 
         }else{
-            $fecha = new FechaController();
             $fecha_inicial = $fecha->fechaPrimerDiaMesActual();
             $fecha_final = $fecha->fechaUltimoDiaMesActual();
 
