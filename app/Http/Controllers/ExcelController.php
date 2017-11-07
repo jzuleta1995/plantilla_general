@@ -58,7 +58,7 @@ class ExcelController extends Controller
                 'clientes.cliente_celular',
                 'clientes.cliente_ciudad',
                 'clientes.cliente_estado',
-                'cobradors.cobrador_nombre',
+                'cobradors.cobrador_nombre_completo',
                 'users.nombre',
                 'clientes.cliente_fechacreacion');
 
@@ -75,7 +75,7 @@ class ExcelController extends Controller
         $clientesArray = [];
 
         // Define the Excel spreadsheet headers
-        $clientesArray[] = ['id_cliente', 'nombre cliente', 'apellido', 'documento', 'direccion casa', 'direccion trabajo', 'lugar trabajo', 'telefono', 'celular', 'ciudad', 'estado', 'cobrador', 'usuario creador', 'fecha hora creacion'];
+        $clientesArray[] = ['id', 'nombre', 'apellido', 'documento', 'direccion casa', 'direccion trabajo', 'lugar trabajo', 'telefono', 'celular', 'ciudad', 'estado', 'cobrador', 'usuario creador', 'fecha creacion'];
 
         // Convert each member of the returned collection into an array,
         // and append it to the payments array.
@@ -155,7 +155,7 @@ class ExcelController extends Controller
         $clientesArray = [];
 
         // Define the Excel spreadsheet headers
-        $clientesArray[] = ['id_cliente', 'nombre cliente', 'apellido', 'documento', 'direccion casa', 'direccion trabajo', 'lugar trabajo', 'telefono', 'celular', 'ciudad', 'estado', 'cobrador', 'usuario creador', 'fecha hora creacion'];
+        $clientesArray[] = ['id', 'nombre', 'apellido', 'documento', 'direccion', 'telefono', 'celular', 'ciudad', 'estado', 'usuario creador', 'fecha creacion'];
 
         // Convert each member of the returned collection into an array,
         // and append it to the payments array.
@@ -231,7 +231,7 @@ class ExcelController extends Controller
         $usersArray = [];
 
         // Define the Excel spreadsheet headers
-        $usersArray[] = ['id_usuario', 'nombre', 'apellido', 'documento', 'direccion casa', 'telefono', 'fecha hora creacion'];
+        $usersArray[] = ['id', 'nombre', 'apellido', 'documento', 'direccion', 'telefono', 'email', 'tipo usuario', 'estado', 'fecha creacion'];
 
         foreach ($users as $user) {
             $usersArray[] = (Array)$user;
@@ -310,7 +310,7 @@ class ExcelController extends Controller
         $clientesArray = [];
 
         // Define the Excel spreadsheet headers
-        $clientesArray[] = ['nombre cobrador', 'nombre cliente', 'codigo_prestamo', 'prestamo_valor', 'prestamo_tasa', 'prestamo_tipo', 'prestamo_tiempo_cobro', 'prestamo_numero_cuotas', 'prestamo_fecha', 'prestamo_fecha_inicial', 'prestamo_fecha_proximo_cobro', 'prestamo_valor_abono', 'prestamo_valor_actual', 'prestamo_valor_proxima_cuota', 'usuario creador', 'fecha hora creacion'];
+        $clientesArray[] = ['nombre cobrador', 'nombre cliente', 'codigo_prestamo', 'prestamo_valor', 'prestamo_tasa', 'prestamo_tipo', 'prestamo_tiempo_cobro', 'prestamo_numero_cuotas', 'prestamo_fecha', 'prestamo_fecha_inicial', 'prestamo_fecha_proximo_cobro', 'prestamo_valor_abono', 'prestamo_valor_actual', 'prestamo_valor_proxima_cuota', 'esta_prestamo', 'utilidad_mes', 'usuario creador', 'fecha creacion'];
 
         foreach ($clientes as $cliente) {
             $clientesArray[] = $cliente->toArray();
@@ -540,7 +540,7 @@ class ExcelController extends Controller
         $usersArray = [];
 
         // Define the Excel spreadsheet headers
-        $usersArray[] = ['cobrador', 'cliente', 'valor pagado', 'valor pagado a capital', 'valor pagado a interes', 'fecha fecha pago cuota'];
+        $usersArray[] = ['cobrador', 'cliente', 'valor pagado', 'valor pagado a capital', 'valor pagado a interes', 'fecha pago cuota'];
 
         foreach ($users as $user) {
             $usersArray[] = (Array)$user;

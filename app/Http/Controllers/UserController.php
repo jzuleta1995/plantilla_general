@@ -115,23 +115,34 @@ class UserController extends Controller
 
     public function cambioClave(Request $request)
     {
-    // dd(bcrypt($request->nueva_password));
+        /*++++++++++++++++++++++++++++++++++++++++++++++*/
+        /*********validaciones ***************************/
+            if($request->password == ''){
+                return Redirect()->route('user.cambioClave')
+                    ->with('info', 'Debe Ingresar La Contraseña Actual');
+            }
+            if($request->nueva_password =='' ||   $request->confirmacion_password == ''){
+                return Redirect()->route('user.cambioClave')
+                    ->with('info', ' Debe Ingresar Informacion En Los Campos (Contraseña Nueva  Y Contraseña De Confirmacion) ');
+            }
 
-        if($request->nueva_password != $request->confirmacion_password){
-            return Redirect()->route('user.cambioClave')
-                ->with('info', 'La Contraseña Nueva ' . $request->nueva_password . ' no coincide con la contraseña de confirmacion '.$request->confirmacion_password);
-        }
+            if($request->nueva_password != $request->confirmacion_password){
+                return Redirect()->route('user.cambioClave')
+                    ->with('info', 'La Contraseña Nueva  No Coincide Con La Contraseña De Confirmacion ');
+            }
+        /*********fin validaciones ***************************/
+        /*++++++++++++++++++++++++++++++++++++++++++++++*/
 
         $usuarios = User::find( Auth::id());
 
-        $clave_encriptada     = $usuarios->password;
+        $clave_encriptada      = $usuarios->password;
         $clave_sin_encriptadar = $request->password;
-        $clave_nueva          = $request->nueva_password;
+        $clave_nueva           = $request->nueva_password;
 
         //se valida si la clave actual es igual a la clave nueva
         if(Hash::check($clave_nueva, $clave_encriptada)){
             return Redirect()->route('user.cambioClave')
-                ->with('info', 'La Contraseña Nueva  ' . $request->password . ' Debe Ser diferente a la Contraseña Guardada');
+                ->with('info', 'La Contraseña Nueva  Debe Ser diferente a la Contraseña Guardada');
         }
 
        //se valida que la clave actual sin encriptar, sea igual a la clave encritada
@@ -145,7 +156,7 @@ class UserController extends Controller
 
          }else{
             return Redirect()->route('user.cambioClave')
-                ->with('info', 'La Contraseña Actual ' . $request->password . ' no coincide con la contraseña de Guardada');
+                ->with('info', 'La Contraseña Actual  No Coincide Con La Contraseña Guardada');
          }
    }
 
@@ -164,6 +175,21 @@ class UserController extends Controller
 
         if ($request->email !='' && $request->email!= 'null'){
 
+
+            /*++++++++++++++++++++++++++++++++++++++++++++++*/
+            /*********validaciones ***************************/
+                if($request->respuesta_secreta =='' ){
+                    return Redirect()->route('password.nuevaClave')
+                        ->with('info', ' Debe Ingresar La Respuesta Secreta ');
+                }
+
+                if($request->nueva_password =='' ||   $request->confirmacion_password == ''){
+                    return Redirect()->route('password.nuevaClave')
+                        ->with('info', ' Debe Ingresar Informacion En Los Campos (Contraseña Nueva  Y Contraseña De Confirmacion) ');
+                }
+
+            /*********fin validaciones ***************************/
+            /*++++++++++++++++++++++++++++++++++++++++++++++*/
                 /* se trae la respuesta secreta con el correo ingresado*/
                 //$users = DB::select('select respuesta_secreta from users where email = ?', [$request->email]);
 

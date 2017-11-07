@@ -146,10 +146,20 @@ var Prestamo = {
                 $('#prestamo_valor_actual').val("");
             }
         }
+    },
+
+    limpiarCampoValor: function () {
+        $('#cliente').focusin(function (){
+
+           $('#prestamo_valor').val("");
+        });
     }
+
 }
 
 $(document).ready(function () {
     Prestamo.calculoValor();
     Prestamo.calculoFecha();
+    Prestamo.limpiarCampoValor();
+
 })

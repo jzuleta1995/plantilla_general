@@ -20,3 +20,7 @@ function validaUnicoPrestamoCliente()
         },
     });
 }
+function limpiaCampoValor() {
+    $("#prestamo_valor").val("");
+
+}

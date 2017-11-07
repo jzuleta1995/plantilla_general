@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Cliente;
 use App\Cobrador;
+use App\Http\Requests\ClienteEditRequest;
 use App\Http\Requests\ClienteRequest;
 use App\Fiador;
+use App\Http\Requests\CobradorEditRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
@@ -149,7 +151,7 @@ class ClienteController extends Controller
 
     }
 
-    public function update(ClienteRequest $request, $id)
+    public function update(ClienteEditRequest $request, $id)
     {
         $cliente = Cliente::find($id);
 

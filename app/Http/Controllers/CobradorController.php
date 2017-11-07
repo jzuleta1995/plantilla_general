@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cobrador;
+use App\Http\Requests\CobradorEditRequest;
 use App\Http\Requests\CobradorRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -63,7 +64,7 @@ class CobradorController extends Controller
     }
 
 
-    public function update(CobradorRequest $request, $id)
+    public function update(CobradorEditRequest $request, $id)
     {
         $cobrador = Cobrador::find($id);
 

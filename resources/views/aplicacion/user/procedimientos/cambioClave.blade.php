@@ -17,7 +17,7 @@
                             {!! Form::password('password',  ['class'=>'form-control', 'placeholder' =>   '***********']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('nueva_password', 'Nueva de la Contraseña') !!}
+                            {!! Form::label('nueva_password', 'Nueva Contraseña') !!}
                             {!! Form::password('nueva_password',  ['class'=>'form-control', 'placeholder' =>   '***********']) !!}
                         </div>
                         <div class="form-group">

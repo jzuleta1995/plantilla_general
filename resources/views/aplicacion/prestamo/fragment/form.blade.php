@@ -6,7 +6,7 @@
                 @if(is_object($cliente))
                     {!! Form::text('cliente', $cliente->cliente_nombre_completo, ['class'=>'form-control', 'id' => 'cliente', 'value' => 'id', 'placeholder'  =>  'Nombre de cliente', 'size'    => 'S']) !!}
                 @else
-                    {!! Form::text('cliente', null, ['class'=>'form-control', 'id' => 'cliente', 'value' => 'id', 'placeholder'  =>  'Nombre de cliente', 'size'    => 'S', 'onblur' => 'validaUnicoPrestamoCliente()']) !!}
+                    {!! Form::text('cliente', null, ['class'=>'form-control', 'id' => 'cliente', 'value' => 'id', 'placeholder'  =>  'Nombre de cliente', 'size'    => 'S', 'onblur' => 'validaUnicoPrestamoCliente()', 'onfocus' => 'limpiaCampoValor()']) !!}
                 @endif
             </div>
         </div>
