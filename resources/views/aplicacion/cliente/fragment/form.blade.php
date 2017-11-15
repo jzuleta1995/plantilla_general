@@ -58,7 +58,7 @@
 <div class="row">
     <div class="col-md-push-1 col-md-4">
         <div class="form-group">
-            {!! Form::label('cobrador', 'Cobrador') !!}
+            {!! Form::label('cobrador', 'Cobrador', ['class' => 'form-required']) !!}
             {!! Form::hidden('cobrador_id', null, ['class'=>'form-control', 'id' => 'cobrador_id', 'value' => 'id', 'placeholder'  =>  'Nombre del cobrador']) !!}
             @if(is_object($cobrador))
                 {!! Form::text('cobrador', $cobrador->cobrador_nombre_completo, ['class'=>'form-control', 'id' => 'cobrador', 'value' => 'id', 'placeholder'  =>  'Nombre del cobrador', 'size'    => 'S']) !!}
@@ -69,7 +69,7 @@
     </div>
     <div class="col-md-push-2 col-md-4">
         <div class="form-group">
-            {!! Form::label('cliente_ciudad', 'Ciudad') !!}
+            {!! Form::label('cliente_ciudad', 'Ciudad', ['class' => 'form-required']) !!}
             {!! Form::text('cliente_ciudad', null, ['class'=>'form-control','placeholder'  =>  'Ciudad de Residencia']) !!}
         </div>
     </div>

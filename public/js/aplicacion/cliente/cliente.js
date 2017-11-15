@@ -44,7 +44,7 @@ var TabFunctions = {
                 hidden = false;
             }
 
-            if(! hidden){
+            if(!hidden){
 
                 $('#more').addClass('hidden');
                 $('#tab2').removeClass('hidden');

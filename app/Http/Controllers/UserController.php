@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserEditRequest;
 use App\Http\Requests\UserRequest;
 use App\User;
+use Illuminate\Validation\Rule;
+use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
@@ -16,9 +18,11 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
-        if(Auth::id() != 1 ){
+
+        if(Auth::user()->tipo !=  "ADMINISTRADOR" ){
             $users = DB::table('users')
-                ->whereNotIn('id', [1])
+                ->where('nombre', 'ILIKE', $request->get('nombre'))
+                ->whereNotIn('tipo', ['ADMINISTRADOR'])
                 ->paginate(30);
 
         }else{
@@ -78,6 +82,16 @@ class UserController extends Controller
     public function update(UserEditRequest $request, $id)
     {
         $user = User::find($id);
+
+        $validator = Validator::make($request->all(), [
+            'user_documento' => [Rule::unique('users')->ignore($id)]
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('user.edit', $id)
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         $user->nombre           = trim(strtoupper($request->nombre));
         $user->apellido         = trim(strtoupper($request->apellido));

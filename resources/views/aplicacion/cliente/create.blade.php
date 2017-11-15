@@ -36,5 +36,4 @@
     <script src="{{ asset('js/aplicacion/cliente/cliente.js') }}"></script>
     <script src="{{ asset('js/autocomplete.js') }}"></script>
     <script>autocompleteClass.autocompleteComponent('#cobrador', '#cobrador_id', 'cobrador');</script>
-    <script src="{{ asset('js/modal/confirm_modal.js') }}"></script>
 @endsection
