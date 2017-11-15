@@ -84,9 +84,10 @@ class UserController extends Controller
         $user = User::find($id);
 
         $validator = Validator::make($request->all(), [
-            'user_documento' => [Rule::unique('users')->ignore($id)]
+            'documento' => [Rule::unique('users')->ignore($id)]
         ]);
 
+       // dd($validator);
         if ($validator->fails()) {
             return redirect()->route('user.edit', $id)
                 ->withErrors($validator)
