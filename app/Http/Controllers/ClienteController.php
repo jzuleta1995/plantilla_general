@@ -49,7 +49,7 @@ class ClienteController extends Controller
         $cliente->cliente_telefono          = $request->cliente_telefono;
         $cliente->cliente_celular           = $request->cliente_celular;
         $cliente->cobrador_id               = $request->cobrador_id;
-        $cliente->cliente_ciudad            = $request->cliente_ciudad;
+        $cliente->cliente_ciudad            = trim(strtoupper($request->cliente_ciudad));
         $cliente->cliente_estado            = $request->cliente_estado;
         $cliente->user_id                   = Auth::id();
         $cliente->cliente_fechacreacion     = date("Y-m-d");
@@ -171,10 +171,11 @@ class ClienteController extends Controller
         $cliente->cliente_documento             = trim($request->cliente_documento);
         $cliente->cliente_direccion_casa        = trim(strtoupper($request->cliente_direccion_casa));
         $cliente->cliente_direccion_trabajo     = trim(strtoupper($request->cliente_direccion_trabajo));
+        $cliente->cliente_lugar_trabajo         = trim(strtoupper($request->cliente_lugar_trabajo));
         $cliente->cliente_telefono              = trim($request->cliente_telefono);
         $cliente->cliente_celular               = trim($request->cliente_celular);
         $cliente->cobrador_id                   = trim($request->cobrador_id);
-        $cliente->cliente_ciudad                = trim($request->cliente_ciudad);
+        $cliente->cliente_ciudad                = trim(strtoupper($request->cliente_ciudad));
         $cliente->cliente_estado                = trim($request->cliente_estado);
         $cliente->user_id                       = Auth::id();
         $cliente->save();

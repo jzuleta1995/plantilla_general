@@ -37,7 +37,12 @@ class PrestamoController extends Controller
     }
 
     public function store(PrestamoRequest $request)
-    { 
+    {
+        if($request->prestamo_valor == 0 || $request->prestamo_tasa == 0 || $request->prestamo_valor_cuota == 0){
+            return Redirect()->route('prestamo.create')
+                ->with('info', 'No Debe Ingresar Valores En Cero');
+        }
+
         $cliente = Cliente::find($request->cliente_id);
         $prestamo = new Prestamo($request->all());
 

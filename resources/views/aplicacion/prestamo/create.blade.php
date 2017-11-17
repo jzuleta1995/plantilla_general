@@ -9,6 +9,8 @@
     <div class="container">
         <!-- se incluye mensajes de erros -->
         @include('template.partials.error')
+        @include('template.partials.info')
+
 
         {!! Form::open(['route' => 'prestamo.store', 'method'   =>  'POST', 'id' => 'formulario', 'autocomplete' => 'off']) !!}
           <div class="container panel" id="design">

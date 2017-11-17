@@ -29,6 +29,7 @@ class AutocompleteController extends Controller
 
                 $queries = DB::table('clientes')
                     ->where($nombre_completo1, 'ilike', $term.'%')
+                    ->where('clientes.cliente_estado', '=', 'ACTIVO')
                     ->take(10)->get();
 
                 foreach ($queries as $query)
@@ -48,6 +49,7 @@ class AutocompleteController extends Controller
 
                 $queries = DB::table('cobradors')
                     ->where($nombre_completo1, 'ilike', $term.'%')
+                    ->where('cobradors.cobrador_estado', '=', 'ACTIVO')
                     ->take(10)->get();
 
                 foreach ($queries as $query)

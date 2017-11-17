@@ -38,7 +38,7 @@ class CobradorController extends Controller
         $cobrador->cobrador_direccion       = trim(strtoupper($request->cobrador_direccion));
         $cobrador->cobrador_telefono        = $request->cobrador_telefono;
         $cobrador->cobrador_celular         = $request->cobrador_celular;
-        $cobrador->cobrador_ciudad          = $request->cobrador_ciudad;
+        $cobrador->cobrador_ciudad          = trim(strtoupper($request->cobrador_ciudad));
         $cobrador->cobrador_estado          = $request->cobrador_estado;
         $cobrador->user_id                  = Auth::id();
         $cobrador->cobrador_fechacreacion   = date("Y-m-d");
@@ -85,7 +85,7 @@ class CobradorController extends Controller
         $cobrador->cobrador_direccion       = trim(strtoupper($request->cobrador_direccion));
         $cobrador->cobrador_telefono        = $request->cobrador_telefono;
         $cobrador->cobrador_celular         = $request->cobrador_celular;
-        $cobrador->cobrador_ciudad          = $request->cobrador_ciudad;
+        $cobrador->cobrador_ciudad          = trim(strtoupper($request->cobrador_ciudad));
         $cobrador->cobrador_estado          = $request->cobrador_estado;
         $cobrador->user_id = Auth::id();
         $cobrador->save();
