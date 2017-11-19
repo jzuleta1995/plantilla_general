@@ -11,7 +11,9 @@ use Barryvdh\DomPDF\Facade AS PDF;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
+Route::post('login', 'AuthController@authenticate');
 
 
 Route::get('/', function () {
@@ -24,7 +26,6 @@ Route::name('olvidastecontrasena')
 });
 
 
-Auth::routes();
 
 Route::resource('/user', 'UserController', [
     'except' =>  ['destroy']
@@ -240,6 +241,7 @@ Route::group(['prefix'  =>  '/admin', 'middleware'   =>  'auth'], function () {
         return $pdf->download('archivo.pdf');
 
     });
+
 
 });
 
