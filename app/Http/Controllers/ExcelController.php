@@ -461,6 +461,7 @@ class ExcelController extends Controller
                 'abonos.abono_tipo_pago',
                 'abonos.abono_valor_cuota',
                 'abonos.abono_valor',
+                'abonos.abono_capital_abonado_abierto',
                 'abonos.abono_observacion',
                 'abonos.abono_estado',
                 'abonos.abono_fecha',
@@ -482,7 +483,7 @@ class ExcelController extends Controller
         $clientesArray = [];
 
         // Define the Excel spreadsheet headers
-        $clientesArray[] = ['nombre cobrador', 'nombre cliente', 'Codigo Prestamo', 'Codigo Abono', 'Tipo Pago', 'Valor Couta A Pagar', 'Valor Cuota Pagada', 'Observacion Abono', 'Estado Abono', 'Fech Abono', 'Usuario Creador Abono'];
+        $clientesArray[] = ['nombre cobrador', 'nombre cliente', 'Codigo Prestamo', 'Codigo Abono', 'Tipo Pago', 'Valor Couta A Pagar', 'Valor Cuota Pagada', 'pagado a capital en esta cuota abierto',  'Observacion Abono', 'Estado Abono', 'Fech Abono', 'Usuario Creador Abono'];
 
         foreach ($clientes as $cliente) {
             $clientesArray[] = $cliente->toArray();

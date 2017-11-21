@@ -34,6 +34,8 @@ class ClienteRequest extends FormRequest
             'cliente_celular'            => 'required',
             'cliente_estado'             => 'required',
             'cobrador_id'                => 'required',
+            'cliente_ciudad'             => 'required',
+
 
         ];
     }

@@ -43,6 +43,8 @@
                 <div class="row">
                     <div class="col-md-6">
                         {!! Form::submit('ENVIAR',  ['class'=>'btn btn-primary']) !!}
+                        <button  type="button" class="btn btn-primary" onclick="limpiar()" >LIMPIAR</button>
+
                     </div>
                 </div>
                 <br>
@@ -79,6 +81,7 @@
                     <td class="text-center">{{ $prestamo->valor_real_pagado }}</td>
                     <td class="text-center">{{ $prestamo->valor_pagado_a_capital }}</td>
                     <td class="text-center">{{ $prestamo->valor_pagado_a_interes }} %</td>
+                    <td class="text-center">$</td>
 
                     <?php $totalValorRealPagado = $totalValorRealPagado + $prestamo->valor_real_pagado;
                           $totalValorCapital    = $totalValorCapital + $prestamo->valor_pagado_a_capital ;
@@ -113,4 +116,6 @@
     <script src="{{ asset('js/autocomplete.js') }}"></script>
     <script>autocompleteClass.autocompleteComponent('#cobrador', '#cobrador_id', 'cobrador');</script>
     <script>autocompleteClass.autocompleteComponent('#cliente', '#cliente_id', 'cliente');</script>
+    <script src="{{ asset('js/Home.js') }}"></script>
+
 @endsection

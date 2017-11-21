@@ -15,7 +15,11 @@ class AuthController extends Controller
      */
     public function authenticate(Request $request)
     {
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'estado' => 'INACTIVO'])) {
+        $fecha_actual = date("Y-m-d");
+
+        //dd($fecha_actual);
+
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'estado' => 'ACTIVO']) &&  $fecha_actual < '2018-01-31') {
             // Authentication passed...
             return redirect()->intended('admin/home');
         } else {
