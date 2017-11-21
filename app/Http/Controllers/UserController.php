@@ -19,13 +19,19 @@ class UserController extends Controller
     public function index(Request $request)
     {
 
-        if(Auth::user()->tipo !=  "ADMINISTRADOR" ){
+        if(Auth::user()->tipo ==  "MIEMBRO" ){
             $users = DB::table('users')
                 ->where('nombre', 'ILIKE', $request->get('nombre'))
-                ->whereNotIn('tipo', ['ADMINISTRADOR'])
+                ->whereNotIn('tipo', ['ADMINISTRADOR','SUPERADMINISTRADOR'])
                 ->paginate(30);
 
-        }else{
+        }else if(Auth::user()->tipo ==  "ADMINISTRADOR" ){
+        $users = DB::table('users')
+            ->where('nombre', 'ILIKE', $request->get('nombre'))
+            ->whereNotIn('tipo', ['SUPERADMINISTRADOR'])
+            ->paginate(30);
+
+        }else if(Auth::user()->tipo ==  "SUPERADMINISTRADOR" ){
             $users = User::nombre($request->get('nombre'))
                 ->orderBy('id', 'ASC')
                 ->paginate(30);

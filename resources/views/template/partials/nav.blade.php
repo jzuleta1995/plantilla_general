@@ -16,7 +16,7 @@
                 <li><a class="nav-link" href="{{ route('cliente.index') }}">Cliente</a></li>
                 <li><a class="nav-link nav-header" href="{{ route('cobrador.index') }}">Cobrador</a>
                 <li><a class="nav-link" href="{{ route('prestamo.index') }}">Prestamo</a></li>
-                @if(Auth::user()->tipo == 'ADMINISTRADOR')
+                @if(Auth::user()->tipo == 'ADMINISTRADOR' || Auth::user()->tipo =='SUPERADMINISTRADOR')
                     <li><a class="nav-link" href="{{ route('prestamo.utilidad') }}">Visor Utilidad</a></li>
                     <li><a class="nav-link" href="{{ route('user.index') }}">Usuario</a></li>
                 @endif
@@ -25,7 +25,9 @@
                     <ul class="dropdown-menu">
                         <li><a class="nav-link" href="{{ route('excel.indexInformeCliente') }}">Informe Clientes</a></li>
                         <li><a class="nav-link" href="{{ route('excel.indexInformeCobrador') }}">Informe Cobradores</a></li>
-                        <li><a class="nav-link" href="{{ route('excel.indexInformeUsuario') }}">Informe Usuario</a></li>
+                        @if(Auth::user()->tipo == 'ADMINISTRADOR' || Auth::user()->tipo =='SUPERADMINISTRADOR')
+                          <li><a class="nav-link" href="{{ route('excel.indexInformeUsuario') }}">Informe Usuario</a></li>
+                        @endif
                         <li><a class="nav-link" href="{{ route('excel.indexInformePrestamo') }}">Informe Prestamos</a></li>
                         <li><a class="nav-link" href="{{ route('excel.indexInformeAbono') }}">Informe Abonos A Prestamos</a></li>
                         <li><a class="nav-link" href="{{ route('excel.indexInformeRutaCobro') }}">Informe Ruta De Cobro</a></li>
