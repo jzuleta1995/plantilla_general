@@ -61,10 +61,12 @@ class PrestamoController extends Controller
         $prestamo->prestamo_valor_proxima_cuota  = str_replace(',','',str_replace('.','',$request->prestamo_valor_proxima_cuota));
         $prestamo->prestamo_estado               = $request->prestamo_estado;
         $prestamo->prestamo_valor_actual         = str_replace(',','',str_replace('.','',$request->prestamo_valor_actual));
-        $prestamo->prestamo_estado               = 'ACTIVO';
-        $prestamo->user_id                       = Auth::id();
-        $prestamo->prestamo_fechacreacion        = date("Y-m-d");
-        $prestamo->prestamo_nombrecliente        = $cliente->cliente_nombre_completo;
+        $prestamo->prestamo_estado                = 'ACTIVO';
+        $prestamo->user_id                        = Auth::id();
+        $prestamo->prestamo_fechacreacion         = date("Y-m-d");
+        $prestamo->prestamo_nombrecliente         = $cliente->cliente_nombre_completo;
+        $prestamo->prestamo_valor_cuota_calculada = str_replace(',','',str_replace('.','',$request->prestamo_valor_cuota));
+
 
         $prestamo->save();
 

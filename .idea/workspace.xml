@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f9ffb77d-5cfc-4d97-bad7-2aa6d90acf7a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AbonoController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AbonoController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/aplicacion/abono/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/aplicacion/abono/create.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/aplicacion/prestamo/fragment/visorabono.blade.php" afterPath="$PROJECT_DIR$/resources/views/aplicacion/prestamo/fragment/visorabono.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/home.blade.php" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/PrestamoController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/PrestamoController.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -83,12 +79,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AbonoController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AbonoController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AbonoController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
               <caret line="45" column="125" lean-forward="false" selection-start-line="45" selection-start-column="125" selection-end-line="45" selection-end-column="125" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PrestamoController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PrestamoController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="67" column="123" lean-forward="false" selection-start-line="67" selection-start-column="123" selection-end-line="67" selection-end-column="123" />
+              <folding>
+                <marker date="1511325398000" expanded="true" signature="6641:6743" ph="select p.id,... prestamos" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -110,16 +118,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1785">
               <caret line="119" column="0" lean-forward="false" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="nav.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/template/partials/nav.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="102" lean-forward="false" selection-start-line="18" selection-start-column="102" selection-end-line="18" selection-end-column="102" />
               <folding />
             </state>
           </provider>
@@ -155,7 +153,6 @@
         <option value="$PROJECT_DIR$/app/Http/Requests/CobradorEditRequest.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/CobradorController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ClienteController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/PrestamoController.php" />
         <option value="$PROJECT_DIR$/resources/views/aplicacion/prestamo/create.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AutocompleteController.php" />
         <option value="$PROJECT_DIR$/resources/views/aplicacion/user/procedimientos/cambioEstadoUsuario.blade.php" />
@@ -176,6 +173,7 @@
         <option value="$PROJECT_DIR$/resources/views/aplicacion/prestamo/fragment/visorabono.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/aplicacion/abono/create.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AbonoController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/PrestamoController.php" />
       </list>
     </option>
   </component>
@@ -376,12 +374,12 @@
       <workItem from="1511201240770" duration="1400000" />
       <workItem from="1511226226866" duration="2626000" />
       <workItem from="1511287799907" duration="1728000" />
-      <workItem from="1511307139248" duration="1867000" />
+      <workItem from="1511307139248" duration="2025000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98675000" />
+    <option name="totallyTimeSpent" value="98833000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="710" extended-state="0" />
@@ -451,13 +449,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/ForgotPasswordController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-176">
@@ -603,6 +594,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="41" lean-forward="false" selection-start-line="5" selection-start-column="41" selection-end-line="5" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -818,6 +810,16 @@
         <state relative-caret-position="255">
           <caret line="45" column="125" lean-forward="false" selection-start-line="45" selection-start-column="125" selection-end-line="45" selection-end-column="125" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PrestamoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="67" column="123" lean-forward="false" selection-start-line="67" selection-start-column="123" selection-end-line="67" selection-end-column="123" />
+          <folding>
+            <marker date="1511325398000" expanded="true" signature="6641:6743" ph="select p.id,... prestamos" />
+          </folding>
         </state>
       </provider>
     </entry>
