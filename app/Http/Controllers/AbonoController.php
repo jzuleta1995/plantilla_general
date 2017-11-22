@@ -36,6 +36,17 @@ class AbonoController extends Controller
             ->where('prestamo_id', '=', $request->prestamo_id)
             ->first();
 
+        $prestamo = Prestamo::find($request->prestamo_id);
+
+        $valor_total_deuda = $prestamo->prestamo_valor_actual;
+        $valor_abono = str_replace(',','',str_replace('.','',$request->abono_valor));
+
+        if( $valor_abono > $valor_total_deuda){
+            return Redirect()->route('abono.create', $request->prestamo_id)
+                ->with('info', 'El Valor Abonado ('.$valor_abono.') Excede El Valor Total De LA Deuda ('.$valor_total_deuda.')');
+        }
+
+
 
         if( $codigoAbonos == ''){
             $cod_abono = 1;
@@ -45,7 +56,7 @@ class AbonoController extends Controller
 
 
         $abono = new Abono();
-        $abono->abono_item                  = $cod_abono;
+        $abono->abono_item          = $cod_abono;
         $abono->prestamo_id         = $request->prestamo_id;
         $abono->cliente_id          = $request->cliente_id;
         $abono->abono_valor_cuota   = str_replace(',','',str_replace('.','',$request->abono_valor_cuota));

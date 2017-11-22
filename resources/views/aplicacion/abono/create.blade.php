@@ -6,6 +6,8 @@
     <div class="container panel" id="design">
         <!-- se incluye mensajes de erros -->
         @include('template.partials.error')
+        @include('template.partials.info')
+
 
         {!! Form::open(['route' => 'abono.store', 'method'   =>  'POST', 'id' => 'formulario', 'autocomplete' => 'off']) !!}
             <div class="row">

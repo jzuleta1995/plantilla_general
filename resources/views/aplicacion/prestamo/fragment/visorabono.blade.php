@@ -31,7 +31,7 @@
                       @endif
 
                    <?php if ($a ==1){ ?>
-                          @if( Auth::user()->tipo == 'ADMINISTRADOR' && $abono->abono_estado=='ACTIVO' )
+                          @if( (Auth::user()->tipo == 'ADMINISTRADOR' || Auth::user()->tipo == 'SUPERADMINISTRADOR') && $abono->abono_estado=='ACTIVO' )
                               <td class="text-center">
                                   <a class="btn btn-danger" data-toggle="modal" data-target="#editModal" onclick="mostrarModalAbono('{{$abono -> id}}','{{$abono -> abono_item}}','{{$abono -> prestamo_id}}')"><span class="glyphicon glyphicon-remove"></span></a>
                               </td>

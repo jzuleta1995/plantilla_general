@@ -97,7 +97,7 @@
                             <td class="text-center">$</td>
                             <td class="text-center">{{ $prestamo->prestamo_fecha_proximo_cobro }}</td>
                             <?php $valorTotal = $valorTotal + $prestamo->prestamo_utilidad_mes ;?>
-                        @if( Auth::user()->tipo == 'ADMINISTRADOR')
+                        @if( Auth::user()->tipo == 'ADMINISTRADOR' || Auth::user()->tipo == 'SUPERADMINISTRADOR')
                             <td class="text-center">
                             <a class="btn btn-danger"   data-toggle="modal" data-target="#editModal" onclick="mostrarModalPrestamo('{{$prestamo -> id}}')"> <span class="glyphicon glyphicon-remove"></span></a>
                             </td>
