@@ -17,3 +17,7 @@ function mostrar(){
         document.getElementById('numero_cuota').style.display = 'block';
     }
 }
+
+$(document).ready(function () {
+    mostrar();
+})
